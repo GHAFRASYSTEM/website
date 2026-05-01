@@ -1,0 +1,430 @@
+backend:
+  name: git-gateway
+  branch: main
+
+local_backend: true
+
+media_folder: 'public/images'
+public_folder: '/images'
+
+site_url: https://ghafranord.org
+display_url: https://ghafranord.org
+logo_url: /images/logo.svg
+
+collections:
+  - name: 'pages'
+    label: 'Pages'
+    files:
+      - label: 'Home Page'
+        name: 'home'
+        file: 'content/home.md'
+        fields:
+          - {
+              label: 'Meta Description',
+              name: 'metaDescription',
+              widget: 'text',
+              hint: 'SEO description shown in search engine results.',
+            }
+          - { label: 'Hero Title', name: 'heroTitle', widget: 'string' }
+          - { label: 'Hero Subtitle', name: 'heroSubtitle', widget: 'text' }
+          - label: 'Hero CTA'
+            name: 'heroCta'
+            widget: 'object'
+            fields:
+              - { label: 'Button Text', name: 'text', widget: 'string' }
+              - { label: 'Button Link', name: 'link', widget: 'string' }
+          - { label: 'Mission Title', name: 'missionTitle', widget: 'string' }
+          - { label: 'Mission Body', name: 'missionBody', widget: 'markdown' }
+          - {
+              label: 'Mission Image',
+              name: 'missionImage',
+              widget: 'image',
+              hint: 'Image displayed beside the mission text.',
+            }
+          - label: 'Featured Program Slugs'
+            name: 'featuredProgramSlugs'
+            widget: 'list'
+            field: { label: 'Program Slug', name: 'slug', widget: 'string' }
+          - {
+              label: '"What We Do" Section Title',
+              name: 'whatWeDoTitle',
+              widget: 'string',
+              default: 'What We Do',
+            }
+          - {
+              label: '"What We Do" Section Subtitle',
+              name: 'whatWeDoSubtitle',
+              widget: 'text',
+              default: 'Discover how we support and empower the Ghanaian community in Lille through our activities and services.',
+            }
+          - {
+              label: '"View All Activities" Button Text',
+              name: 'viewAllActivitiesText',
+              widget: 'string',
+              default: 'View All Activities',
+            }
+          - {
+              label: '"View All Activities" Button Link',
+              name: 'viewAllActivitiesLink',
+              widget: 'string',
+              default: '/programs',
+            }
+          - {
+              label: 'Gallery Section Title',
+              name: 'galleryTitle',
+              widget: 'string',
+              default: 'Community Moments',
+            }
+          - {
+              label: 'Gallery Section Subtitle',
+              name: 'gallerySubtitle',
+              widget: 'text',
+              default: 'Highlights from our events, meetings, and activities that bring the Ghanaian community together.',
+            }
+          - label: 'Gallery Images'
+            name: 'galleryImages'
+            widget: 'list'
+            summary: '{{fields.alt}}'
+            fields:
+              - { label: 'Image', name: 'src', widget: 'image' }
+              - { label: 'Caption / Alt Text', name: 'alt', widget: 'string' }
+          - { label: 'CTA Title', name: 'ctaTitle', widget: 'string' }
+          - { label: 'CTA Body', name: 'ctaBody', widget: 'text' }
+          - label: 'CTA Button'
+            name: 'ctaButton'
+            widget: 'object'
+            fields:
+              - { label: 'Button Text', name: 'text', widget: 'string' }
+              - { label: 'Button Link', name: 'link', widget: 'string' }
+          - label: 'Member CTA Button'
+            name: 'memberCta'
+            widget: 'object'
+            fields:
+              - {
+                  label: 'Button Text',
+                  name: 'text',
+                  widget: 'string',
+                  default: 'Become a Member',
+                }
+              - {
+                  label: 'Button Link',
+                  name: 'link',
+                  widget: 'string',
+                  default: '/get-involved#membership',
+                }
+
+      - label: 'About Us'
+        name: 'about'
+        file: 'content/about.md'
+        fields:
+          - {
+              label: 'Meta Description',
+              name: 'metaDescription',
+              widget: 'text',
+              hint: 'SEO description shown in search engine results.',
+            }
+          - { label: 'Page Title', name: 'title', widget: 'string' }
+          - {
+              label: 'Mission Section Title',
+              name: 'missionSectionTitle',
+              widget: 'string',
+              default: 'Our Mission',
+            }
+          - {
+              label: 'Vision Section Title',
+              name: 'visionSectionTitle',
+              widget: 'string',
+              default: 'Our Vision',
+            }
+          - { label: 'History Title', name: 'historyTitle', widget: 'string' }
+          - { label: 'History Body', name: 'historyBody', widget: 'markdown' }
+          - { label: 'Mission Statement', name: 'mission', widget: 'text' }
+          - { label: 'Vision Statement', name: 'vision', widget: 'text' }
+          - {
+              label: 'Values Section Title',
+              name: 'valuesSectionTitle',
+              widget: 'string',
+              default: 'Our Values',
+            }
+          - label: 'Core Values'
+            name: 'values'
+            widget: 'list'
+            fields:
+              - { label: 'Title', name: 'title', widget: 'string' }
+              - { label: 'Description', name: 'description', widget: 'text' }
+              - {
+                  label: 'Icon',
+                  name: 'icon',
+                  widget: 'string',
+                  hint: 'Icon name (e.g., heart, globe, eye, users)',
+                }
+          - {
+              label: 'Executives Section Title',
+              name: 'executivesSectionTitle',
+              widget: 'string',
+              default: 'Our Executives',
+            }
+          - label: 'Timeline Events'
+            name: 'timelineEvents'
+            widget: 'list'
+            fields:
+              - { label: 'Year', name: 'year', widget: 'string' }
+              - { label: 'Title', name: 'title', widget: 'string' }
+              - { label: 'Description', name: 'description', widget: 'text' }
+          - {
+              label: 'FAQ Section Title',
+              name: 'faqSectionTitle',
+              widget: 'string',
+              default: 'Frequently Asked Questions',
+            }
+          - {
+              label: 'FAQ Section Subtitle',
+              name: 'faqSectionSubtitle',
+              widget: 'text',
+              default: 'Everything you need to know about GHA-FRA Nord, membership, events, and how we can help.',
+            }
+          - label: 'FAQ Items'
+            name: 'faqs'
+            widget: 'list'
+            summary: '{{fields.question}}'
+            fields:
+              - { label: 'Question', name: 'question', widget: 'string' }
+              - { label: 'Answer', name: 'answer', widget: 'text' }
+
+      - label: 'Programs Page'
+        name: 'programs'
+        file: 'content/programs.md'
+        fields:
+          - {
+              label: 'Meta Description',
+              name: 'metaDescription',
+              widget: 'text',
+              hint: 'SEO description shown in search engine results.',
+            }
+          - { label: 'Page Title', name: 'title', widget: 'string' }
+          - { label: 'Page Subtitle', name: 'subtitle', widget: 'text' }
+          - {
+              label: 'Programs Section Title',
+              name: 'programsSectionTitle',
+              widget: 'string',
+              default: 'Programs',
+            }
+          - {
+              label: 'Programs Section Subtitle',
+              name: 'programsSectionSubtitle',
+              widget: 'text',
+              default: 'Our core programs that support the Ghanaian community in Lille.',
+            }
+          - {
+              label: 'Events Section Title',
+              name: 'eventsSectionTitle',
+              widget: 'string',
+              default: 'Activities & Events',
+            }
+          - {
+              label: 'Events Section Subtitle',
+              name: 'eventsSectionSubtitle',
+              widget: 'text',
+              default: "GHA-FRA has lots of activities and events all year round. Mark your calendars so you don't miss a beat.",
+            }
+          - label: 'Activities & Events'
+            name: 'events'
+            widget: 'list'
+            summary: '{{fields.title}} — {{fields.when}}'
+            fields:
+              - { label: 'Title', name: 'title', widget: 'string' }
+              - { label: 'When', name: 'when', widget: 'string' }
+              - { label: 'Description', name: 'description', widget: 'text' }
+              - {
+                  label: 'Icon',
+                  name: 'icon',
+                  widget: 'select',
+                  options:
+                    [
+                      'users',
+                      'smile',
+                      'calendar',
+                      'sparkles',
+                      'chat',
+                      'trophy',
+                    ],
+                  default: 'calendar',
+                  hint: 'Choose an icon for this event',
+                }
+          - { label: 'Body', name: 'body', widget: 'markdown' }
+
+      - label: 'Get Involved'
+        name: 'get-involved'
+        file: 'content/get-involved.md'
+        fields:
+          - {
+              label: 'Meta Description',
+              name: 'metaDescription',
+              widget: 'text',
+              hint: 'SEO description shown in search engine results.',
+            }
+          - { label: 'Page Title', name: 'title', widget: 'string' }
+          - {
+              label: 'Donate Section Title',
+              name: 'donateTitle',
+              widget: 'string',
+            }
+          - {
+              label: 'Donate Section Body',
+              name: 'donateBody',
+              widget: 'markdown',
+            }
+          - label: 'Donation Options'
+            name: 'donateOptions'
+            widget: 'list'
+            fields:
+              - { label: 'Amount', name: 'amount', widget: 'string' }
+              - { label: 'Description', name: 'description', widget: 'text' }
+          - {
+              label: 'Member Carousel Section Title',
+              name: 'memberCarouselTitle',
+              widget: 'string',
+              default: 'Our Community Members',
+            }
+          - {
+              label: 'Member Carousel Section Subtitle',
+              name: 'memberCarouselSubtitle',
+              widget: 'text',
+              default: 'Meet the vibrant individuals who make up the GHA-FRA Nord family.',
+            }
+          - label: 'Member Carousel Images'
+            name: 'memberImages'
+            widget: 'list'
+            summary: '{{fields.image}}'
+            field: { label: 'Image', name: 'image', widget: 'image' }
+          - {
+              label: 'Membership Section Title',
+              name: 'membershipTitle',
+              widget: 'string',
+            }
+          - {
+              label: 'Membership Section Body',
+              name: 'membershipBody',
+              widget: 'markdown',
+            }
+          - label: 'Membership Details'
+            name: 'membershipInfo'
+            widget: 'list'
+            fields:
+              - { label: 'Title', name: 'title', widget: 'string' }
+              - { label: 'Description', name: 'description', widget: 'text' }
+
+      - label: 'Contact Us'
+        name: 'contact'
+        file: 'content/contact.md'
+        fields:
+          - {
+              label: 'Meta Description',
+              name: 'metaDescription',
+              widget: 'text',
+              hint: 'SEO description shown in search engine results.',
+            }
+          - { label: 'Page Title', name: 'title', widget: 'string' }
+          - { label: 'Subtitle', name: 'subtitle', widget: 'text' }
+          - {
+              label: 'Contact Info Section Title',
+              name: 'contactInfoTitle',
+              widget: 'string',
+              default: 'Get in Touch',
+            }
+          - { label: 'Address', name: 'address', widget: 'string' }
+          - { label: 'Phone', name: 'phone', widget: 'string' }
+          - { label: 'Email', name: 'email', widget: 'string' }
+          - { label: 'Office Hours', name: 'officeHours', widget: 'string' }
+
+  - name: 'settings'
+    label: 'Site Settings'
+    files:
+      - label: 'General Settings'
+        name: 'general'
+        file: 'content/settings.json'
+        format: 'json'
+        fields:
+          - { label: 'Site Name', name: 'siteName', widget: 'string' }
+          - { label: 'Site URL', name: 'siteUrl', widget: 'string' }
+          - {
+              label: 'Site Description',
+              name: 'siteDescription',
+              widget: 'text',
+            }
+          - label: 'Social Links'
+            name: 'socialLinks'
+            widget: 'object'
+            fields:
+              - {
+                  label: 'Facebook',
+                  name: 'facebook',
+                  widget: 'string',
+                  required: false,
+                }
+              - {
+                  label: 'Twitter',
+                  name: 'twitter',
+                  widget: 'string',
+                  required: false,
+                }
+              - {
+                  label: 'Instagram',
+                  name: 'instagram',
+                  widget: 'string',
+                  required: false,
+                }
+              - {
+                  label: 'LinkedIn',
+                  name: 'linkedin',
+                  widget: 'string',
+                  required: false,
+                }
+              - {
+                  label: 'YouTube',
+                  name: 'youtube',
+                  widget: 'string',
+                  required: false,
+                }
+          - { label: 'Contact Email', name: 'contactEmail', widget: 'string' }
+          - { label: 'Contact Phone', name: 'contactPhone', widget: 'string' }
+          - { label: 'Address', name: 'address', widget: 'string' }
+
+  - name: 'team'
+    label: 'Executives'
+    folder: 'content/team'
+    create: true
+    slug: '{{slug}}'
+    identifier_field: 'name'
+    extension: 'md'
+    fields:
+      - { label: 'Name', name: 'name', widget: 'string' }
+      - { label: 'Role / Position', name: 'role', widget: 'string' }
+      - { label: 'Photo', name: 'image', widget: 'image' }
+      - {
+          label: 'Display Order',
+          name: 'order',
+          widget: 'number',
+          value_type: 'int',
+          min: 1,
+        }
+      - { label: 'Bio', name: 'body', widget: 'markdown' }
+
+  - name: 'programs-list'
+    label: 'Programs'
+    folder: 'content/programs-list'
+    create: true
+    slug: '{{slug}}'
+    identifier_field: 'title'
+    extension: 'md'
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Short Description', name: 'excerpt', widget: 'text' }
+      - { label: 'Image', name: 'image', widget: 'image' }
+      - {
+          label: 'Featured on Home?',
+          name: 'featured',
+          widget: 'boolean',
+          default: false,
+        }
+      - { label: 'Full Description', name: 'body', widget: 'markdown' }
