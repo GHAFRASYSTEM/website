@@ -10,7 +10,7 @@ GHA-FRA Nord provides comprehensive support and guidance to Ghanaian students an
 
 ## What We Offer
 
-- **Orientation for Newcomers**: Welcoming and guiding newly arrived Ghanaians in Lille with practical information about daily life, transportation, housing, and administrative procedures
+- **Orientation for Newcomers**: Welcoming and guiding newly arrived Ghanaians in France with practical information about daily life, transportation, housing, and administrative procedures
 - **Academic Support**: Assisting Ghanaian students with university enrollment, academic processes, and connecting them with peer networks
 - **Professional Guidance**: Helping professionals understand the French job market, workplace culture, and career development opportunities
 - **Language & Cultural Integration**: Supporting members in adapting to French language and cultural norms while maintaining Ghanaian cultural identity

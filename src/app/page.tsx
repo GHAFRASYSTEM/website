@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { getHomeContent, getPrograms } from '@/lib/content'
 import PhotoCarousel from '@/components/shared/PhotoCarousel'
+import AppDownloadSection from '@/components/shared/AppDownloadSection'
 
 export default function HomePage() {
   const home = getHomeContent()
@@ -76,6 +77,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <AppDownloadSection />
 
       <section className="py-16 md:py-24 geo-dots">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

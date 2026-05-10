@@ -1,6 +1,6 @@
 ---
 metaDescription: Support GHA-FRA Nord through donations or become a member. Join
-  the Ghanaian community in Lille.
+  the Ghanaian community in France.
 title: Get Involved
 donateTitle: Support Our Community
 donateBody: Your generous contribution helps fund community events, support
@@ -35,8 +35,7 @@ memberImages:
   - /images/model-image-13.jpeg
   - /images/model-image-14.jpeg
 membershipTitle: Become a Member
-membershipBody: GHA-FRA Nord welcomes all Ghanaians in Lille and the Nord
-  region. Membership gives you access to all our services, events, and the
+membershipBody: GHA-FRA Nord welcomes all Ghanaians in Lille and France. Membership gives you access to all our services, events, and the
   support of a vibrant community.
 membershipInfo:
   - title: Eligibility
@@ -48,5 +47,5 @@ membershipInfo:
     description: Monthly dues of 5 euros for students and non-working members.
   - title: Benefits
     description: Access to all community events, integration support, legal
-      guidance, advocacy services, and a network of over 300 Ghanaians in Lille.
+      guidance, advocacy services, and a network of over 500+ Ghanaians in France.
 ---

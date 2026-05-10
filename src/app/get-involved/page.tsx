@@ -23,7 +23,7 @@ export default function GetInvolvedPage() {
             className="object-cover opacity-40"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-tertiary-900/70 via-tertiary-900/45 to-tertiary-900/30" />
+          <div className="absolute inset-0 bg-linear-to-r from-tertiary-900/70 via-tertiary-900/45 to-tertiary-900/30" />
         </div>
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h1 className="font-heading text-4xl md:text-5xl font-bold">
@@ -60,11 +60,11 @@ export default function GetInvolvedPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
             {content.donateOptions.map((option, i) => (
               <div key={i} className="card card-donate p-6 text-center">
-                <div className="text-3xl font-bold bg-gradient-to-br from-accent-600 to-accent-400 bg-clip-text text-transparent mb-2">
+                <div className="text-3xl font-bold bg-linear-to-br from-accent-600 to-accent-400 bg-clip-text text-transparent mb-2">
                   &euro;{option.amount}
                 </div>
                 <p className="text-neutral-600 text-sm">{option.description}</p>
-                <button className="mt-4 w-full px-4 py-2.5 text-sm font-semibold text-neutral-900 bg-gradient-to-r from-accent-400 to-accent-500 rounded-lg hover:from-accent-500 hover:to-accent-600 transition-all shadow-sm hover:shadow-md cursor-pointer">
+                <button className="mt-4 w-full px-4 py-2.5 text-sm font-semibold text-neutral-900 bg-linear-to-r from-accent-400 to-accent-500 rounded-lg hover:from-accent-500 hover:to-accent-600 transition-all shadow-sm hover:shadow-md cursor-pointer">
                   Donate &euro;{option.amount}
                 </button>
               </div>
@@ -128,8 +128,12 @@ export default function GetInvolvedPage() {
               </div>
             ))}
           </div>
+          
+       
           <div className="max-w-2xl mx-auto mt-12">
             <MembershipForm />
+           
+          
           </div>
         </div>
       </section>

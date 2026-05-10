@@ -2,9 +2,9 @@
 metaDescription: GHA-FRA Nord is the Ghanaian community association in Lille,
   Hauts-de-France, empowering and uniting Ghanaians to thrive through
   solidarity, cultural pride, and mutual support.
-heroTitle: Empowering the Ghanaian Community in Lille
-heroSubtitle: GHA-FRA Nord is a vibrant community association uniting Ghanaians
-  in Lille, Hauts-de-France. We provide support, foster cultural pride, and help
+heroTitle: Empowering the Ghanaian Community in France
+heroSubtitle: GHA-FRA  is a vibrant community association uniting Ghanaians
+  in France. We provide support, foster cultural pride, and help
   every member thrive socially, culturally, and professionally.
 heroCta:
   text: Join Our Community
@@ -22,7 +22,7 @@ featuredProgramSlugs:
   - cultural-events
 whatWeDoTitle: What We Do
 whatWeDoSubtitle: Discover how we support and empower the Ghanaian community in
-  Lille through our activities and services.
+  Lille, France through our activities and services.
 viewAllActivitiesText: View All Activities
 viewAllActivitiesLink: /programs
 galleryTitle: Community Moments
