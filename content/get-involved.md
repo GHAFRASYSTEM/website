@@ -1,11 +1,6 @@
 ---
-<<<<<<< HEAD
 metaDescription: Support GHAFRA Nord through donations or become a member. Join
   the Ghanaian community in Lille.
-=======
-metaDescription: Support GHA-FRA Nord through donations or become a member. Join
-  the Ghanaian community in France.
->>>>>>> main
 title: Get Involved
 donateTitle: Support Our Community
 donateBody: Your generous contribution helps fund community events, support
@@ -30,7 +25,7 @@ donateOptions:
       a meaningful contribution to the community.
     isCustomAmount: true
     inputPlaceholder: Enter any amount in euros
-    buttonText: Donate custom amount
+    buttonText: Donate
     minAmount: 1
 memberCarouselTitle: Our Community Members
 memberCarouselSubtitle: Meet the vibrant individuals who make up the GHAFRA Nord family.

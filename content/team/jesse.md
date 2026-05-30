@@ -1,7 +1,7 @@
 ---
 name: 'Okai Jessey'
 role: 'Administrator'
-image: '/images/profile-photos-of-executives/jesse.jpeg'
+image: '/images/profile-photos-of-executives/jesse-pic-final.png'
 order: 8
 ---
 

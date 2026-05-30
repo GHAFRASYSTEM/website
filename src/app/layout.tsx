@@ -10,6 +10,7 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit' })
 
 const settings = getSiteSettings()
+const logoPath = '/images/extracted/image-12.jpg'
 
 export const metadata: Metadata = {
   metadataBase: new URL(settings.siteUrl),
@@ -18,6 +19,11 @@ export const metadata: Metadata = {
     template: `%s | ${settings.siteName}`,
   },
   description: settings.siteDescription,
+  icons: {
+    icon: logoPath,
+    shortcut: logoPath,
+    apple: logoPath,
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -25,7 +31,7 @@ export const metadata: Metadata = {
     siteName: settings.siteName,
     images: [
       {
-        url: '/images/extracted/image-12.jpg',
+        url: logoPath,
         width: 1200,
         height: 630,
         alt: settings.siteName,
@@ -34,6 +40,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
+    images: [logoPath],
   },
   robots: {
     index: true,
@@ -65,7 +72,7 @@ export default function RootLayout({
               '@type': 'NonGovernmentalOrganization',
               name: settings.siteName,
               url: settings.siteUrl,
-              logo: `${settings.siteUrl}/images/extracted/image-12.jpg`,
+              logo: `${settings.siteUrl}${logoPath}`,
               description: settings.siteDescription,
               address: {
                 '@type': 'PostalAddress',

@@ -93,11 +93,11 @@ faqs:
       Ghana Embassy Paris, the Ghana Ministry of Foreign Affairs and the
       Diaspora Affairs Office of the Ghana President.
   - question: What regular events does GHAFRA organize?
-    answer: "We have activities year-round: monthly community meetings, weekly
-      sports sessions every Saturday at Complexe Sportif Jacqueline Auriol
-      (Wazemmes), the annual General Assembly in January, Fresher's Welcome
-      Party in September for newly arrived Ghanaians, GHAFRA Month celebrations
-      throughout October, and the Bronya Afahyɛ (Christmas party) in December."
+    answer: "We have activities year-round: monthly community meetings, the Vœux
+      de GHAFRA every January, Love month every February, 6th March Outdoor
+      Commemoration, Ghana Month every March, Faites de la Musique every June,
+      France Month every July, Fresher's Party every September, GHAFRA month
+      every October and GHAFRA Christmas Party every December."
   - question: Where do the weekly sports activities take place?
     answer:
       GHAFRA Sports takes place every Saturday at Complexe Sportif Jacqueline

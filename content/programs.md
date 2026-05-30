@@ -11,34 +11,56 @@ eventsSectionTitle: Activities & Events
 eventsSectionSubtitle: GHAFRA has lots of activities and events all year round.
   Mark your calendars so you don't miss a beat.
 events:
-  - title: General Assembly
-    when: January (last Saturday)
-    description: The General Assembly of GHAFRA is held every year in January,
-      usually the last Saturday of the month.
-    icon: users
-  - title: Fresher's Welcome Party
-    when: September
-    description: Held every year in September to welcome newly arrived Ghanaians.
-      Date is communicated upon confirmation of venue.
-    icon: smile
-  - title: GHAFRA Month
-    when: October
-    description: October is officially GHAFRA month — all activities are centered
-      around highlighting and celebrating GHAFRA.
-    icon: calendar
-  - title: GHAFRA Bronya Afahyɛ
-    when: December
-    description: Our annual Christmas celebration bringing the entire community
-      together to mark the festive season.
-    icon: sparkles
   - title: Monthly Meetings
     when: Every month
-    description: Regular meetings held to discuss issues, developments, and the
-      progress of GHAFRA.
+    description: Monthly community meetings keep members informed, connected,
+      and involved in the life of GHAFRA.
     icon: chat
-  - title: GHAFRA Sports
-    when: Every Saturday
-    description: Weekly sporting activities at Complexe Sportif Jacqueline Auriol, Wazemmes.
+  - title: Vœux de GHAFRA
+    when: January
+    description: Our annual New Year gathering to share goodwill, celebrate the
+      start of the year, and reconnect as a community.
+    icon: users
+  - title: Love Month
+    when: February
+    description: A February celebration centered on love, care, and community
+      togetherness.
+    icon: smile
+  - title: 6th March Outdoor Commemoration
+    when: March 6
+    description: An outdoor commemoration marking Ghana's Independence Day with
+      community pride and reflection.
+    icon: calendar
+  - title: Ghana Month
+    when: March
+    description: A month of activities highlighting Ghanaian identity, history,
+      and culture.
+    icon: sparkles
+  - title: Faites de la Musique
+    when: June
+    description: A music-focused cultural celebration that brings the community
+      together through performance and shared joy.
+    icon: smile
+  - title: France Month
+    when: July
+    description: July activities that celebrate life in France while deepening
+      community connection and integration.
+    icon: users
+  - title: Fresher's Party
+    when: September
+    description: A welcome celebration for newly arrived Ghanaians and students
+      joining the community.
+    icon: calendar
+  - title: GHAFRA Month
+    when: October
+    description: October is dedicated to celebrating GHAFRA and showcasing the
+      association's impact and spirit.
     icon: trophy
+  - title: GHAFRA Christmas Party
+    when: December
+    description: Our annual Christmas celebration bringing the community
+      together to close the year in joy.
+    icon: sparkles
 ---
+
 \

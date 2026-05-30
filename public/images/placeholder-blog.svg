@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
-  <rect width="800" height="450" fill="#f0fdf4" rx="8"/>
-  <rect x="200" y="120" width="400" height="20" rx="4" fill="#bbf7d0"/>
-  <rect x="250" y="160" width="300" height="12" rx="3" fill="#d6d3d1"/>
-  <rect x="220" y="190" width="360" height="12" rx="3" fill="#d6d3d1"/>
-  <rect x="260" y="220" width="280" height="12" rx="3" fill="#d6d3d1"/>
-  <text x="400" y="320" font-family="system-ui, sans-serif" font-size="22" fill="#166534" text-anchor="middle">Blog Post Image</text>
-  <text x="400" y="350" font-family="system-ui, sans-serif" font-size="13" fill="#15803d" text-anchor="middle" opacity="0.6">800 x 450</text>
-</svg>

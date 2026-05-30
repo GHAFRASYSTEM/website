@@ -196,7 +196,11 @@ export default function AboutPage() {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {team.map((member) => (
-              <div key={member.slug} className="card card-team">
+              <Link
+                key={member.slug}
+                href={`/about/executives/${member.slug}`}
+                className="card card-team cursor-pointer transition-transform duration-200 hover:-translate-y-1"
+              >
                 <div className="card-img-wrap relative h-64 bg-neutral-100">
                   <Image
                     src={member.image}
@@ -217,27 +221,8 @@ export default function AboutPage() {
                   <p className="text-neutral-600 text-sm line-clamp-3">
                     {member.body.trim()}
                   </p>
-                  <Link
-                    href={`/about/executives/${member.slug}`}
-                    className="mt-4 inline-flex items-center text-sm font-semibold text-primary-700 transition-colors hover:text-primary-800"
-                  >
-                    View full profile
-                    <svg
-                      className="ml-1 h-4 w-4"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth="2"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
-                      />
-                    </svg>
-                  </Link>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
