@@ -1,11 +1,21 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
 import { getHomeContent, getPrograms } from '@/lib/content'
 import PhotoCarousel from '@/components/shared/PhotoCarousel'
 import AppDownloadSection from '@/components/shared/AppDownloadSection'
+import { buildPageMetadata } from '@/lib/seo'
+
+const home = getHomeContent()
+
+export const metadata: Metadata = buildPageMetadata({
+  description: home.metaDescription,
+  path: '/',
+  image: home.galleryImages[0]?.src,
+  imageAlt: home.galleryImages[0]?.alt || home.heroTitle,
+})
 
 export default function HomePage() {
-  const home = getHomeContent()
   const programs = getPrograms().filter((p) =>
     home.featuredProgramSlugs.includes(p.slug),
   )
@@ -20,6 +30,7 @@ export default function HomePage() {
             fill
             className="object-cover opacity-40"
             priority
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-tertiary-900/70 via-tertiary-900/45 to-tertiary-900/30" />
         </div>
@@ -63,6 +74,7 @@ export default function HomePage() {
                 alt={home.missionTitle}
                 fill
                 className="object-cover"
+                sizes="(max-width: 767px) 100vw, 40vw"
               />
             </div>
             <div className="flex-1 text-center md:text-left">
@@ -103,6 +115,7 @@ export default function HomePage() {
                     alt={program.title}
                     fill
                     className="object-cover"
+                    sizes="(max-width: 767px) 100vw, (max-width: 1279px) 50vw, 33vw"
                   />
                 </div>
                 <div className="p-6">

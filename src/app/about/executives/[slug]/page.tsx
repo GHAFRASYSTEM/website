@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { getTeamMemberBySlug, getTeamMembers } from '@/lib/content'
 import { markdownToHtml } from '@/lib/markdown'
 import { notFound } from 'next/navigation'
+import { buildPageMetadata } from '@/lib/seo'
 
 export function generateStaticParams() {
   return getTeamMembers().map((member) => ({ slug: member.slug }))
@@ -20,10 +21,13 @@ export async function generateMetadata({
 
   const description = member.body.replace(/\s+/g, ' ').trim().slice(0, 160)
 
-  return {
+  return buildPageMetadata({
     title: member.name,
     description,
-  }
+    path: `/about/executives/${member.slug}`,
+    image: member.image,
+    imageAlt: `${member.name} - ${member.role}`,
+  })
 }
 
 export default async function ExecutiveProfilePage({
@@ -47,6 +51,7 @@ export default async function ExecutiveProfilePage({
             fill
             className="object-cover opacity-40"
             priority
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-tertiary-900/70 via-tertiary-900/45 to-tertiary-900/30" />
         </div>
@@ -78,6 +83,7 @@ export default async function ExecutiveProfilePage({
                 alt={member.name}
                 fill
                 className="object-cover"
+                sizes="(max-width: 1023px) 100vw, 320px"
               />
             </div>
             <div className="max-w-3xl">

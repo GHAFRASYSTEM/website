@@ -2,13 +2,16 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import { getContactContent } from '@/lib/content'
 import ContactForm from '@/components/contact/ContactForm'
+import { buildPageMetadata } from '@/lib/seo'
 
 const contact = getContactContent()
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: 'Contact Us',
   description: contact.metaDescription,
-}
+  path: '/contact',
+  imageAlt: 'Contact GHAFRA Nord',
+})
 
 export default function ContactPage() {
   return (
@@ -21,6 +24,7 @@ export default function ContactPage() {
             fill
             className="object-cover opacity-40"
             priority
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-tertiary-900/70 via-tertiary-900/45 to-tertiary-900/30" />
         </div>

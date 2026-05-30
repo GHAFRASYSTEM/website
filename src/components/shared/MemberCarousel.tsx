@@ -62,11 +62,19 @@ export default function MemberCarousel({ images }: MemberCarouselProps) {
   return (
     <div className="flex flex-col items-center w-full overflow-hidden">
       {/* Carousel track: fixed width, centered, items overlap via negative margin */}
-      <div className="relative flex items-center justify-center" style={{ width: 'fit-content', maxWidth: '100%' }}>
+      <div
+        className="relative flex items-center justify-center"
+        style={{ width: 'fit-content', maxWidth: '100%' }}
+      >
         {slots.map(({ index, offset }) => {
           const pos = getPosition(offset)
           // Negative margin pulls neighbours inward so the row doesn't expand the page
-          const mx = Math.abs(offset) === 2 ? '-0.75rem' : Math.abs(offset) === 1 ? '-0.5rem' : '0'
+          const mx =
+            Math.abs(offset) === 2
+              ? '-0.75rem'
+              : Math.abs(offset) === 1
+                ? '-0.5rem'
+                : '0'
           return (
             <button
               key={`slot-${offset}`}
@@ -93,7 +101,7 @@ export default function MemberCarousel({ images }: MemberCarouselProps) {
                 alt={`Community member ${index + 1}`}
                 fill
                 className="object-cover transition-opacity duration-500"
-                sizes="208px"
+                sizes="(max-width: 640px) 128px, (max-width: 1024px) 160px, 208px"
               />
             </button>
           )
@@ -126,8 +134,18 @@ export default function MemberCarousel({ images }: MemberCarouselProps) {
           className="w-10 h-10 rounded-full bg-white/80 hover:bg-white text-neutral-700 flex items-center justify-center shadow-md transition-colors duration-200"
           aria-label="Previous member"
         >
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+          <svg
+            className="w-5 h-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="2"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15.75 19.5L8.25 12l7.5-7.5"
+            />
           </svg>
         </button>
         <button
@@ -137,8 +155,18 @@ export default function MemberCarousel({ images }: MemberCarouselProps) {
           className="w-10 h-10 rounded-full bg-white/80 hover:bg-white text-neutral-700 flex items-center justify-center shadow-md transition-colors duration-200"
           aria-label="Next member"
         >
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+          <svg
+            className="w-5 h-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="2"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M8.25 4.5l7.5 7.5-7.5 7.5"
+            />
           </svg>
         </button>
       </div>

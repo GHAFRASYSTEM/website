@@ -33,7 +33,13 @@ export default function Header() {
     <header className="sticky top-0 z-50 relative overflow-hidden">
       {/* Background image */}
       <div className="absolute inset-0">
-        <Image src="/bg-image.png" alt="" fill className="object-cover" />
+        <Image
+          src="/bg-image.png"
+          alt=""
+          fill
+          className="object-cover"
+          sizes="100vw"
+        />
         <div
           className={`absolute inset-0 transition-all duration-300 ${
             scrolled
@@ -52,6 +58,7 @@ export default function Header() {
                 alt="GHAFRA Nord Logo"
                 fill
                 className="object-cover"
+                sizes="36px"
               />
             </div>
             <div className="flex items-baseline gap-1">

@@ -32,6 +32,7 @@ export default function Footer() {
                   alt="GHAFRA Nord Logo"
                   fill
                   className="object-cover"
+                  sizes="40px"
                 />
               </div>
               <div>
