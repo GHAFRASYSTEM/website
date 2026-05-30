@@ -22,7 +22,7 @@ featuredProgramSlugs:
   - cultural-events
 whatWeDoTitle: What We Do
 whatWeDoSubtitle: Discover how we support and empower the Ghanaian community in
-  Lille through our activities and services.
+  Lille, France through our activities and services.
 viewAllActivitiesText: View All Activities
 viewAllActivitiesLink: /programs
 galleryTitle: Community Moments

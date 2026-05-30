@@ -18,7 +18,7 @@ mission: To establish a vibrant and inclusive community that advocates for the
   Nord region. Through collective action and collaboration, we provide
   comprehensive support for integration, legal assistance, community advocacy,
   and cultural connection.
-vision: To empower and unite the Ghanaian community in France (Lille) to thrive
+vision: To empower and unite the Ghanaian community in France to thrive
   and succeed, fostering a supportive environment where every individual can
   achieve their full potential and contribute positively to society.
 valuesSectionTitle: Our Values
@@ -69,8 +69,7 @@ faqs:
     answer:
       GHAFRA Nord (also known as GHAFRA) is a non-profit association created
       on March 30, 2024, in Lille, France. It was established to promote the
-      wellbeing and integration of Ghanaians in the Lille and Hauts-de-France
-      region. The association is officially registered under association number
+      wellbeing and integration of Ghanaians in the France. The association is officially registered under association number
       W595044222 and is recognized by the Embassy of Ghana in Paris.
   - question: Who can become a member of GHAFRA?
     answer: You must be Ghanaian to become a member. Membership applications are
