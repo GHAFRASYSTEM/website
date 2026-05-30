@@ -1,5 +1,66 @@
 This is the website for GHAFRA Nord, built with [Next.js](https://nextjs.org).
 
+## Decap CMS Setup On Vercel
+
+The production CMS at `/admin` uses Decap CMS with the GitHub backend.
+
+Because the site is deployed on Vercel, Decap cannot use Netlify Identity or `git-gateway`. Instead, it uses GitHub OAuth through the Vercel API routes at:
+
+- `/api/auth`
+- `/api/callback`
+
+### 1. Create a GitHub OAuth App
+
+In GitHub:
+
+1. Go to `Settings` -> `Developer settings` -> `OAuth Apps`.
+2. Click `New OAuth App`.
+3. Use these values:
+
+```text
+Application name: GHAFRA CMS
+Homepage URL: https://www.ghafra.com
+Authorization callback URL: https://www.ghafra.com/api/callback
+```
+
+4. Create the app.
+5. Copy the `Client ID`.
+6. Generate a new `Client secret` and copy it.
+
+### 2. Add Environment Variables
+
+In Vercel project settings, add:
+
+```bash
+GITHUB_CLIENT_ID=your-github-oauth-app-client-id
+GITHUB_CLIENT_SECRET=your-github-oauth-app-client-secret
+```
+
+Optional:
+
+```bash
+GITHUB_OAUTH_SCOPE=repo,user
+```
+
+Use `repo,user` for a private GitHub repository. If the repository is public, `public_repo,user` also works.
+
+### 3. Grant Repository Access
+
+Anyone who should use the CMS must have GitHub access to the repository:
+
+```text
+GHAFRASYSTEM/website
+```
+
+### 4. Login Flow
+
+After deployment:
+
+1. Open `https://www.ghafra.com/admin`
+2. Click `Login with GitHub`
+3. Authorize the GitHub app
+4. Decap CMS will use the Vercel OAuth callback to complete login
+
 ## Formspree Setup
 
 The site has two live forms:

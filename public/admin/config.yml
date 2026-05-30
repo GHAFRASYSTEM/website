@@ -1,14 +1,18 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: GHAFRASYSTEM/website
   branch: main
+  site_domain: www.ghafra.com
+  base_url: https://www.ghafra.com
+  auth_endpoint: api/auth
 
 local_backend: true
 
 media_folder: 'public/images'
 public_folder: '/images'
 
-site_url: https://ghafranord.org
-display_url: https://ghafranord.org
+site_url: https://www.ghafra.com
+display_url: https://www.ghafra.com
 logo_url: /images/extracted/image-12.jpg
 
 collections:
