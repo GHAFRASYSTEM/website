@@ -122,6 +122,20 @@ collections:
                   widget: 'string',
                   default: 'Screenshot of the GHAFRA-NORD mobile app home screen',
                 }
+              - {
+                  label: 'Secondary App Image',
+                  name: 'secondaryAppImage',
+                  widget: 'image',
+                  required: false,
+                  default: '/images/ghafra_app.jpeg',
+                }
+              - {
+                  label: 'Secondary App Image Alt Text',
+                  name: 'secondaryAppImageAlt',
+                  widget: 'string',
+                  required: false,
+                  default: 'Screenshot of the GHAFRA mobile app resources screen',
+                }
               - label: 'App Store Button'
                 name: 'appStoreButton'
                 widget: 'object'
@@ -203,6 +217,18 @@ collections:
             }
           - { label: 'Page Title', name: 'title', widget: 'string' }
           - {
+              label: 'Executive Detail Back Link Text',
+              name: 'executiveDetailBackLinkText',
+              widget: 'string',
+              default: 'Back to About',
+            }
+          - {
+              label: 'Executive Detail Label',
+              name: 'executiveDetailLabel',
+              widget: 'string',
+              default: 'Executive Profile',
+            }
+          - {
               label: 'Mission Section Title',
               name: 'missionSectionTitle',
               widget: 'string',
@@ -281,6 +307,24 @@ collections:
             }
           - { label: 'Page Title', name: 'title', widget: 'string' }
           - { label: 'Page Subtitle', name: 'subtitle', widget: 'text' }
+          - {
+              label: 'Program Detail Back Link Text',
+              name: 'detailBackLinkText',
+              widget: 'string',
+              default: 'All Activities',
+            }
+          - {
+              label: 'Integration Detail Image Alt Text One',
+              name: 'integrationImageOneAlt',
+              widget: 'string',
+              default: 'Integration support guidance illustration one',
+            }
+          - {
+              label: 'Integration Detail Image Alt Text Two',
+              name: 'integrationImageTwoAlt',
+              widget: 'string',
+              default: 'Integration support guidance illustration two',
+            }
           - {
               label: 'Programs Section Title',
               name: 'programsSectionTitle',
@@ -390,6 +434,74 @@ collections:
                   default: 1,
                   hint: 'Used only when Custom Amount Option is enabled.',
                 }
+          - label: 'Donation UI'
+            name: 'donationUi'
+            widget: 'object'
+            fields:
+              - {
+                  label: 'Custom Section Eyebrow',
+                  name: 'customSectionEyebrow',
+                  widget: 'string',
+                }
+              - {
+                  label: 'Custom Section Title',
+                  name: 'customSectionTitle',
+                  widget: 'string',
+                }
+              - {
+                  label: 'Custom Section Description',
+                  name: 'customSectionDescription',
+                  widget: 'text',
+                }
+              - {
+                  label: 'Custom Amount Label',
+                  name: 'customAmountLabel',
+                  widget: 'string',
+                }
+              - {
+                  label: 'Fixed Button Prefix',
+                  name: 'fixedButtonPrefix',
+                  widget: 'string',
+                }
+              - {
+                  label: 'Ready Message',
+                  name: 'readyMessage',
+                  widget: 'string',
+                  hint: 'Use {amount} where the formatted amount should appear.',
+                }
+              - {
+                  label: 'Minimum Message',
+                  name: 'minimumMessage',
+                  widget: 'string',
+                  hint: 'Use {amount} where the formatted amount should appear.',
+                }
+              - { label: 'Modal Title', name: 'modalTitle', widget: 'string' }
+              - { label: 'Modal Message', name: 'modalMessage', widget: 'text' }
+              - {
+                  label: 'Modal Close Button Text',
+                  name: 'modalCloseText',
+                  widget: 'string',
+                }
+              - label: 'Validation Errors'
+                name: 'errors'
+                widget: 'object'
+                fields:
+                  - {
+                      label: 'Empty Amount Error',
+                      name: 'emptyAmount',
+                      widget: 'string',
+                    }
+                  - {
+                      label: 'Invalid Amount Error',
+                      name: 'invalidAmount',
+                      widget: 'string',
+                    }
+                  - {
+                      label: 'Minimum Amount Error',
+                      name: 'minimumAmount',
+                      widget: 'string',
+                      hint: 'Use {amount} where the formatted amount should appear.',
+                    }
           - {
               label: 'Member Carousel Section Title',
               name: 'memberCarouselTitle',
@@ -423,6 +535,178 @@ collections:
             fields:
               - { label: 'Title', name: 'title', widget: 'string' }
               - { label: 'Description', name: 'description', widget: 'text' }
+          - label: 'Membership Form'
+            name: 'membershipForm'
+            widget: 'object'
+            fields:
+              - { label: 'Form Title', name: 'title', widget: 'string' }
+              - { label: 'Form Intro', name: 'intro', widget: 'text' }
+              - {
+                  label: 'Success Title',
+                  name: 'successTitle',
+                  widget: 'string',
+                }
+              - {
+                  label: 'Success Message',
+                  name: 'successMessage',
+                  widget: 'text',
+                }
+              - { label: 'Error Intro', name: 'errorIntro', widget: 'text' }
+              - {
+                  label: 'Submit Button Text',
+                  name: 'submitText',
+                  widget: 'string',
+                }
+              - {
+                  label: 'Submitting Button Text',
+                  name: 'submittingText',
+                  widget: 'string',
+                }
+              - label: 'Field Labels and Placeholders'
+                name: 'fields'
+                widget: 'object'
+                fields:
+                  - {
+                      label: 'First Name Label',
+                      name: 'firstNameLabel',
+                      widget: 'string',
+                    }
+                  - {
+                      label: 'First Name Placeholder',
+                      name: 'firstNamePlaceholder',
+                      widget: 'string',
+                    }
+                  - {
+                      label: 'Last Name Label',
+                      name: 'lastNameLabel',
+                      widget: 'string',
+                    }
+                  - {
+                      label: 'Last Name Placeholder',
+                      name: 'lastNamePlaceholder',
+                      widget: 'string',
+                    }
+                  - {
+                      label: 'Email Label',
+                      name: 'emailLabel',
+                      widget: 'string',
+                    }
+                  - {
+                      label: 'Email Placeholder',
+                      name: 'emailPlaceholder',
+                      widget: 'string',
+                    }
+                  - {
+                      label: 'Phone Label',
+                      name: 'phoneLabel',
+                      widget: 'string',
+                    }
+                  - {
+                      label: 'Phone Placeholder',
+                      name: 'phonePlaceholder',
+                      widget: 'string',
+                    }
+                  - {
+                      label: 'Status Label',
+                      name: 'statusLabel',
+                      widget: 'string',
+                    }
+                  - {
+                      label: 'Status Placeholder',
+                      name: 'statusPlaceholder',
+                      widget: 'string',
+                    }
+                  - {
+                      label: 'Student Option',
+                      name: 'studentOption',
+                      widget: 'string',
+                    }
+                  - {
+                      label: 'Working Professional Option',
+                      name: 'workingProfessionalOption',
+                      widget: 'string',
+                    }
+                  - {
+                      label: 'Retired Option',
+                      name: 'retiredOption',
+                      widget: 'string',
+                    }
+                  - {
+                      label: 'Other Option',
+                      name: 'otherOption',
+                      widget: 'string',
+                    }
+                  - {
+                      label: 'School Label',
+                      name: 'schoolLabel',
+                      widget: 'string',
+                    }
+                  - {
+                      label: 'School Placeholder',
+                      name: 'schoolPlaceholder',
+                      widget: 'string',
+                    }
+                  - {
+                      label: 'Program Label',
+                      name: 'programLabel',
+                      widget: 'string',
+                    }
+                  - {
+                      label: 'Program Placeholder',
+                      name: 'programPlaceholder',
+                      widget: 'string',
+                    }
+                  - {
+                      label: 'Current Role Label',
+                      name: 'currentRoleLabel',
+                      widget: 'string',
+                    }
+                  - {
+                      label: 'Current Role Placeholder',
+                      name: 'currentRolePlaceholder',
+                      widget: 'string',
+                    }
+                  - {
+                      label: 'Previous Role Label',
+                      name: 'previousRoleLabel',
+                      widget: 'string',
+                    }
+                  - {
+                      label: 'Previous Role Placeholder',
+                      name: 'previousRolePlaceholder',
+                      widget: 'string',
+                    }
+                  - { label: 'City Label', name: 'cityLabel', widget: 'string' }
+                  - {
+                      label: 'City Placeholder',
+                      name: 'cityPlaceholder',
+                      widget: 'string',
+                    }
+                  - {
+                      label: 'Special Talent Label',
+                      name: 'specialTalentLabel',
+                      widget: 'string',
+                    }
+                  - {
+                      label: 'Special Talent Optional Label',
+                      name: 'specialTalentOptionalLabel',
+                      widget: 'string',
+                    }
+                  - {
+                      label: 'Special Talent Placeholder',
+                      name: 'specialTalentPlaceholder',
+                      widget: 'string',
+                    }
+                  - {
+                      label: 'Message Label',
+                      name: 'messageLabel',
+                      widget: 'string',
+                    }
+                  - {
+                      label: 'Message Placeholder',
+                      name: 'messagePlaceholder',
+                      widget: 'string',
+                    }
 
       - label: 'Contact Us'
         name: 'contact'
@@ -442,10 +726,84 @@ collections:
               widget: 'string',
               default: 'Get in Touch',
             }
+          - { label: 'Address Label', name: 'addressLabel', widget: 'string' }
+          - { label: 'Phone Label', name: 'phoneLabel', widget: 'string' }
+          - { label: 'Email Label', name: 'emailLabel', widget: 'string' }
+          - {
+              label: 'Office Hours Label',
+              name: 'officeHoursLabel',
+              widget: 'string',
+            }
           - { label: 'Address', name: 'address', widget: 'string' }
           - { label: 'Phone', name: 'phone', widget: 'string' }
           - { label: 'Email', name: 'email', widget: 'string' }
           - { label: 'Office Hours', name: 'officeHours', widget: 'string' }
+          - label: 'Contact Form'
+            name: 'form'
+            widget: 'object'
+            fields:
+              - { label: 'Form Title', name: 'title', widget: 'string' }
+              - {
+                  label: 'Success Title',
+                  name: 'successTitle',
+                  widget: 'string',
+                }
+              - {
+                  label: 'Success Message',
+                  name: 'successMessage',
+                  widget: 'text',
+                }
+              - { label: 'Error Intro', name: 'errorIntro', widget: 'text' }
+              - {
+                  label: 'Submit Button Text',
+                  name: 'submitText',
+                  widget: 'string',
+                }
+              - {
+                  label: 'Sending Button Text',
+                  name: 'sendingText',
+                  widget: 'string',
+                }
+              - label: 'Field Labels and Placeholders'
+                name: 'fields'
+                widget: 'object'
+                fields:
+                  - { label: 'Name Label', name: 'nameLabel', widget: 'string' }
+                  - {
+                      label: 'Name Placeholder',
+                      name: 'namePlaceholder',
+                      widget: 'string',
+                    }
+                  - {
+                      label: 'Email Label',
+                      name: 'emailLabel',
+                      widget: 'string',
+                    }
+                  - {
+                      label: 'Email Placeholder',
+                      name: 'emailPlaceholder',
+                      widget: 'string',
+                    }
+                  - {
+                      label: 'Subject Label',
+                      name: 'subjectLabel',
+                      widget: 'string',
+                    }
+                  - {
+                      label: 'Subject Placeholder',
+                      name: 'subjectPlaceholder',
+                      widget: 'string',
+                    }
+                  - {
+                      label: 'Message Label',
+                      name: 'messageLabel',
+                      widget: 'string',
+                    }
+                  - {
+                      label: 'Message Placeholder',
+                      name: 'messagePlaceholder',
+                      widget: 'string',
+                    }
 
   - name: 'settings'
     label: 'Site Settings'
@@ -499,6 +857,76 @@ collections:
           - { label: 'Contact Email', name: 'contactEmail', widget: 'string' }
           - { label: 'Contact Phone', name: 'contactPhone', widget: 'string' }
           - { label: 'Address', name: 'address', widget: 'string' }
+          - label: 'Navigation'
+            name: 'navigation'
+            widget: 'object'
+            fields:
+              - label: 'Main Links'
+                name: 'mainLinks'
+                widget: 'list'
+                summary: '{{fields.name}}'
+                fields:
+                  - { label: 'Link Text', name: 'name', widget: 'string' }
+                  - { label: 'Link URL', name: 'href', widget: 'string' }
+              - label: 'Member Button'
+                name: 'memberButton'
+                widget: 'object'
+                fields:
+                  - { label: 'Button Text', name: 'text', widget: 'string' }
+                  - { label: 'Button URL', name: 'href', widget: 'string' }
+              - label: 'Donate Button'
+                name: 'donateButton'
+                widget: 'object'
+                fields:
+                  - { label: 'Button Text', name: 'text', widget: 'string' }
+                  - { label: 'Button URL', name: 'href', widget: 'string' }
+          - label: 'Footer'
+            name: 'footer'
+            widget: 'object'
+            fields:
+              - {
+                  label: 'Quick Links Title',
+                  name: 'quickLinksTitle',
+                  widget: 'string',
+                }
+              - label: 'Quick Links'
+                name: 'quickLinks'
+                widget: 'list'
+                summary: '{{fields.name}}'
+                fields:
+                  - { label: 'Link Text', name: 'name', widget: 'string' }
+                  - { label: 'Link URL', name: 'href', widget: 'string' }
+              - {
+                  label: 'Get Involved Title',
+                  name: 'getInvolvedTitle',
+                  widget: 'string',
+                }
+              - label: 'Get Involved Links'
+                name: 'getInvolvedLinks'
+                widget: 'list'
+                summary: '{{fields.name}}'
+                fields:
+                  - { label: 'Link Text', name: 'name', widget: 'string' }
+                  - { label: 'Link URL', name: 'href', widget: 'string' }
+              - {
+                  label: 'Contact Title',
+                  name: 'contactTitle',
+                  widget: 'string',
+                }
+              - {
+                  label: 'Copyright Text',
+                  name: 'copyrightText',
+                  widget: 'string',
+                }
+          - label: 'Not Found Page'
+            name: 'notFound'
+            widget: 'object'
+            fields:
+              - { label: 'Code', name: 'code', widget: 'string' }
+              - { label: 'Title', name: 'title', widget: 'string' }
+              - { label: 'Message', name: 'message', widget: 'text' }
+              - { label: 'Button Text', name: 'buttonText', widget: 'string' }
+              - { label: 'Button URL', name: 'buttonHref', widget: 'string' }
 
   - name: 'team'
     label: 'Executives'

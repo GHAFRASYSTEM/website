@@ -68,7 +68,9 @@ export default function ContactPage() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-neutral-900">Address</h3>
+                    <h3 className="font-semibold text-neutral-900">
+                      {contact.addressLabel}
+                    </h3>
                     <p className="text-neutral-600">{contact.address}</p>
                   </div>
                 </div>
@@ -89,7 +91,9 @@ export default function ContactPage() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-neutral-900">Phone</h3>
+                    <h3 className="font-semibold text-neutral-900">
+                      {contact.phoneLabel}
+                    </h3>
                     <a
                       href={`tel:${contact.phone}`}
                       className="text-primary-600 hover:underline"
@@ -115,7 +119,9 @@ export default function ContactPage() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-neutral-900">Email</h3>
+                    <h3 className="font-semibold text-neutral-900">
+                      {contact.emailLabel}
+                    </h3>
                     <a
                       href={`mailto:${contact.email}`}
                       className="text-primary-600 hover:underline"
@@ -142,14 +148,14 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-neutral-900">
-                      Office Hours
+                      {contact.officeHoursLabel}
                     </h3>
                     <p className="text-neutral-600">{contact.officeHours}</p>
                   </div>
                 </div>
               </div>
             </div>
-            <ContactForm />
+            <ContactForm content={contact.form} contactEmail={contact.email} />
           </div>
         </div>
       </section>

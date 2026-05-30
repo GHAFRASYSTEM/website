@@ -97,9 +97,9 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans text-neutral-800 antialiased">
-        <Header />
+        <Header settings={settings} />
         <main className="min-h-screen">{children}</main>
-        <Footer />
+        <Footer settings={settings} />
         <ScrollToTop />
       </body>
     </html>

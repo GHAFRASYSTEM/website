@@ -4,14 +4,23 @@ import { useId, useState } from 'react'
 import type { GetInvolvedContent } from '@/lib/types'
 
 type DonationOption = GetInvolvedContent['donateOptions'][number]
-const donationComingSoonMessage = 'Online donations will be available soon.'
+
+function interpolateAmount(template: string, amount: string) {
+  return template.replace('{amount}', amount)
+}
 
 function ComingSoonModal({
   isOpen,
   onClose,
+  title,
+  message,
+  closeText,
 }: {
   isOpen: boolean
   onClose: () => void
+  title: string
+  message: string
+  closeText: string
 }) {
   if (!isOpen) {
     return null
@@ -46,17 +55,17 @@ function ComingSoonModal({
           id="donation-coming-soon-title"
           className="mt-4 font-heading text-2xl font-bold text-neutral-900"
         >
-          Donations Coming Soon
+          {title}
         </h3>
         <p className="mt-3 text-sm leading-relaxed text-neutral-600">
-          {donationComingSoonMessage}
+          {message}
         </p>
         <button
           type="button"
           onClick={onClose}
           className="mt-6 inline-flex cursor-pointer items-center justify-center rounded-lg bg-gradient-to-r from-accent-400 to-accent-500 px-5 py-2.5 text-sm font-semibold text-neutral-900 shadow-sm transition-all hover:from-accent-500 hover:to-accent-600 hover:shadow-md"
         >
-          Close
+          {closeText}
         </button>
       </div>
     </div>
@@ -82,18 +91,22 @@ function normalizeAmountInput(value: string) {
   return decimals ? `${wholePart}.${decimals}` : wholePart
 }
 
-function getCustomAmountError(rawAmount: string, minAmount: number) {
+function getCustomAmountError(
+  rawAmount: string,
+  minAmount: number,
+  ui: GetInvolvedContent['donationUi'],
+) {
   if (!rawAmount.trim()) {
-    return 'Enter an amount to continue.'
+    return ui.errors.emptyAmount
   }
 
   const amount = Number(rawAmount)
   if (!Number.isFinite(amount)) {
-    return 'Enter a valid euro amount.'
+    return ui.errors.invalidAmount
   }
 
   if (amount < minAmount) {
-    return `Minimum donation is ${formatCurrency(minAmount)}.`
+    return interpolateAmount(ui.errors.minimumAmount, formatCurrency(minAmount))
   }
 
   return ''
@@ -101,9 +114,11 @@ function getCustomAmountError(rawAmount: string, minAmount: number) {
 
 function CustomDonationCard({
   option,
+  ui,
   onDonateAttempt,
 }: {
   option: DonationOption
+  ui: GetInvolvedContent['donationUi']
   onDonateAttempt: () => void
 }) {
   const inputId = useId()
@@ -111,7 +126,7 @@ function CustomDonationCard({
   const [rawAmount, setRawAmount] = useState('')
   const [touched, setTouched] = useState(false)
 
-  const error = getCustomAmountError(rawAmount, minAmount)
+  const error = getCustomAmountError(rawAmount, minAmount, ui)
   const parsedAmount = Number(rawAmount)
   const hasValidAmount = rawAmount.trim() !== '' && !error
   const previewAmount = hasValidAmount ? formatCurrency(parsedAmount) : null
@@ -126,7 +141,7 @@ function CustomDonationCard({
         htmlFor={inputId}
         className="mt-4 block text-left text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500"
       >
-        Enter amount
+        {ui.customAmountLabel}
       </label>
       <div
         className={`mt-2 flex items-center rounded-lg border bg-white px-3 py-2 shadow-sm transition-colors ${
@@ -148,7 +163,7 @@ function CustomDonationCard({
           onBlur={() => {
             setTouched(true)
             if (
-              !getCustomAmountError(rawAmount, minAmount) &&
+              !getCustomAmountError(rawAmount, minAmount, ui) &&
               rawAmount.trim()
             ) {
               setRawAmount(Number(rawAmount).toFixed(2))
@@ -171,8 +186,8 @@ function CustomDonationCard({
         ) : (
           <p id={`${inputId}-help`} className="text-xs text-neutral-500">
             {previewAmount
-              ? `Ready to donate ${previewAmount}.`
-              : `Minimum donation ${formatCurrency(minAmount)}.`}
+              ? interpolateAmount(ui.readyMessage, previewAmount)
+              : interpolateAmount(ui.minimumMessage, formatCurrency(minAmount))}
           </p>
         )}
       </div>
@@ -197,9 +212,11 @@ function CustomDonationCard({
 
 function FixedDonationCard({
   option,
+  ui,
   onDonateAttempt,
 }: {
   option: DonationOption
+  ui: GetInvolvedContent['donationUi']
   onDonateAttempt: () => void
 }) {
   const parsedAmount = Number(option.amount)
@@ -218,7 +235,7 @@ function FixedDonationCard({
         onClick={onDonateAttempt}
         className="mt-4 w-full cursor-pointer rounded-lg bg-gradient-to-r from-accent-400 to-accent-500 px-4 py-2.5 text-sm font-semibold text-neutral-900 shadow-sm transition-all hover:from-accent-500 hover:to-accent-600 hover:shadow-md"
       >
-        Donate {formattedAmount}
+        {ui.fixedButtonPrefix} {formattedAmount}
       </button>
     </div>
   )
@@ -226,8 +243,10 @@ function FixedDonationCard({
 
 export default function DonationOptions({
   options,
+  ui,
 }: {
   options: GetInvolvedContent['donateOptions']
+  ui: GetInvolvedContent['donationUi']
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const fixedOptions = options.filter((option) => !option.isCustomAmount)
@@ -241,6 +260,7 @@ export default function DonationOptions({
             <FixedDonationCard
               key={`${option.amount}-${index}`}
               option={option}
+              ui={ui}
               onDonateAttempt={() => setIsModalOpen(true)}
             />
           ))}
@@ -251,13 +271,13 @@ export default function DonationOptions({
         <div className="mx-auto mt-8 max-w-2xl rounded-[1.75rem] border border-accent-200/70 bg-linear-to-br from-white via-accent-50/60 to-primary-50/40 p-4 shadow-[0_18px_45px_rgba(26,25,24,0.08)] sm:mt-10 sm:p-5">
           <div className="text-center">
             <span className="inline-flex items-center rounded-full border border-accent-300/70 bg-white/80 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-accent-700">
-              Flexible Giving
+              {ui.customSectionEyebrow}
             </span>
             <h3 className="mt-3 font-heading text-xl font-bold text-neutral-900 sm:text-2xl">
-              Prefer a different amount?
+              {ui.customSectionTitle}
             </h3>
             <p className="mx-auto mt-2 max-w-xl text-sm leading-relaxed text-neutral-600">
-              Choose a custom donation amount that fits what you want to give.
+              {ui.customSectionDescription}
             </p>
           </div>
           <div className="mt-5">
@@ -265,6 +285,7 @@ export default function DonationOptions({
               <CustomDonationCard
                 key={`custom-${index}`}
                 option={option}
+                ui={ui}
                 onDonateAttempt={() => setIsModalOpen(true)}
               />
             ))}
@@ -275,6 +296,9 @@ export default function DonationOptions({
       <ComingSoonModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
+        title={ui.modalTitle}
+        message={ui.modalMessage}
+        closeText={ui.modalCloseText}
       />
     </>
   )

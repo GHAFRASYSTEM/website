@@ -1,10 +1,16 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { getPrograms, getProgramBySlug } from '@/lib/content'
+import {
+  getPrograms,
+  getProgramBySlug,
+  getProgramsPageContent,
+} from '@/lib/content'
 import { markdownToHtml } from '@/lib/markdown'
 import { notFound } from 'next/navigation'
 import { buildPageMetadata } from '@/lib/seo'
+
+const programsPage = getProgramsPageContent()
 
 export async function generateStaticParams() {
   return getPrograms().map((p) => ({ slug: p.slug }))
@@ -70,7 +76,7 @@ export default async function ProgramDetailPage({
                 d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
               />
             </svg>
-            All Activities
+            {programsPage.detailBackLinkText}
           </Link>
           <h1 className="font-heading text-4xl md:text-5xl font-bold">
             {program.title}
@@ -111,7 +117,7 @@ export default async function ProgramDetailPage({
                       <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-primary-100">
                         <Image
                           src="/images/tip-0.png"
-                          alt="Integration support guidance illustration one"
+                          alt={programsPage.integrationImageOneAlt}
                           fill
                           className="object-cover"
                           sizes="(max-width: 1023px) 100vw, 768px"
@@ -120,7 +126,7 @@ export default async function ProgramDetailPage({
                       <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-primary-100">
                         <Image
                           src="/images/tip-1.png"
-                          alt="Integration support guidance illustration two"
+                          alt={programsPage.integrationImageTwoAlt}
                           fill
                           className="object-cover"
                           sizes="(max-width: 1023px) 100vw, 768px"

@@ -1,12 +1,13 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import { getGetInvolvedContent } from '@/lib/content'
+import { getGetInvolvedContent, getSiteSettings } from '@/lib/content'
 import DonationOptions from '@/components/get-involved/DonationOptions'
 import MemberCarousel from '@/components/shared/MemberCarousel'
 import MembershipForm from '@/components/get-involved/MembershipForm'
 import { buildPageMetadata } from '@/lib/seo'
 
 const content = getGetInvolvedContent()
+const settings = getSiteSettings()
 
 export const metadata: Metadata = buildPageMetadata({
   title: 'Get Involved',
@@ -62,7 +63,10 @@ export default function GetInvolvedPage() {
               {content.donateBody}
             </p>
           </div>
-          <DonationOptions options={content.donateOptions} />
+          <DonationOptions
+            options={content.donateOptions}
+            ui={content.donationUi}
+          />
         </div>
       </section>
 
@@ -123,7 +127,10 @@ export default function GetInvolvedPage() {
           </div>
 
           <div className="max-w-2xl mx-auto mt-12">
-            <MembershipForm />
+            <MembershipForm
+              content={content.membershipForm}
+              contactEmail={settings.contactEmail}
+            />
           </div>
         </div>
       </section>

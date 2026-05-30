@@ -90,7 +90,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <AppDownloadSection />
+      <AppDownloadSection content={home.appDownloadSection} />
 
       <section className="py-16 md:py-24 geo-dots">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

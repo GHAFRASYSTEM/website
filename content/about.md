@@ -2,6 +2,8 @@
 metaDescription: Learn about GHAFRA Nord's mission, vision, values, and the
   executive leadership behind the Ghanaian community association in Lille.
 title: About GHAFRA Nord
+executiveDetailBackLinkText: Back to About
+executiveDetailLabel: Executive Profile
 missionSectionTitle: Our Mission
 visionSectionTitle: Our Vision
 historyTitle: Our Story

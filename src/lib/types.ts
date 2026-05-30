@@ -2,6 +2,26 @@ export interface SiteSettings {
   siteName: string
   siteUrl: string
   siteDescription: string
+  navigation: {
+    mainLinks: { name: string; href: string }[]
+    memberButton: { text: string; href: string }
+    donateButton: { text: string; href: string }
+  }
+  footer: {
+    quickLinksTitle: string
+    quickLinks: { name: string; href: string }[]
+    getInvolvedTitle: string
+    getInvolvedLinks: { name: string; href: string }[]
+    contactTitle: string
+    copyrightText: string
+  }
+  notFound: {
+    code: string
+    title: string
+    message: string
+    buttonText: string
+    buttonHref: string
+  }
   socialLinks: {
     facebook?: string
     twitter?: string
@@ -36,6 +56,8 @@ export interface HomeContent {
     body: string
     appImage: string
     appImageAlt: string
+    secondaryAppImage?: string
+    secondaryAppImageAlt?: string
     appStoreButton: {
       pretitle: string
       title: string
@@ -56,6 +78,8 @@ export interface HomeContent {
 export interface AboutContent {
   metaDescription: string
   title: string
+  executiveDetailBackLinkText: string
+  executiveDetailLabel: string
   missionSectionTitle: string
   visionSectionTitle: string
   historyTitle: string
@@ -106,8 +130,65 @@ export interface GetInvolvedContent {
     buttonText?: string
     minAmount?: number
   }[]
+  donationUi: {
+    customSectionEyebrow: string
+    customSectionTitle: string
+    customSectionDescription: string
+    customAmountLabel: string
+    fixedButtonPrefix: string
+    readyMessage: string
+    minimumMessage: string
+    modalTitle: string
+    modalMessage: string
+    modalCloseText: string
+    errors: {
+      emptyAmount: string
+      invalidAmount: string
+      minimumAmount: string
+    }
+  }
   membershipTitle: string
   membershipBody: string
+  membershipForm: {
+    title: string
+    intro: string
+    successTitle: string
+    successMessage: string
+    errorIntro: string
+    submitText: string
+    submittingText: string
+    fields: {
+      firstNameLabel: string
+      firstNamePlaceholder: string
+      lastNameLabel: string
+      lastNamePlaceholder: string
+      emailLabel: string
+      emailPlaceholder: string
+      phoneLabel: string
+      phonePlaceholder: string
+      statusLabel: string
+      statusPlaceholder: string
+      studentOption: string
+      workingProfessionalOption: string
+      retiredOption: string
+      otherOption: string
+      schoolLabel: string
+      schoolPlaceholder: string
+      programLabel: string
+      programPlaceholder: string
+      currentRoleLabel: string
+      currentRolePlaceholder: string
+      previousRoleLabel: string
+      previousRolePlaceholder: string
+      cityLabel: string
+      cityPlaceholder: string
+      specialTalentLabel: string
+      specialTalentOptionalLabel: string
+      specialTalentPlaceholder: string
+      messageLabel: string
+      messagePlaceholder: string
+    }
+  }
   membershipInfo: {
     title: string
     description: string
@@ -122,16 +203,41 @@ export interface ContactContent {
   title: string
   subtitle: string
   contactInfoTitle: string
+  addressLabel: string
+  phoneLabel: string
+  emailLabel: string
+  officeHoursLabel: string
   address: string
   phone: string
   email: string
   officeHours: string
+  form: {
+    title: string
+    successTitle: string
+    successMessage: string
+    errorIntro: string
+    submitText: string
+    sendingText: string
+    fields: {
+      nameLabel: string
+      namePlaceholder: string
+      emailLabel: string
+      emailPlaceholder: string
+      subjectLabel: string
+      subjectPlaceholder: string
+      messageLabel: string
+      messagePlaceholder: string
+    }
+  }
 }
 
 export interface ProgramsPageContent {
   metaDescription: string
   title: string
   subtitle: string
+  detailBackLinkText: string
+  integrationImageOneAlt: string
+  integrationImageTwoAlt: string
   programsSectionTitle: string
   programsSectionSubtitle: string
   eventsSectionTitle: string

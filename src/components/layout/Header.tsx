@@ -4,16 +4,9 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
+import type { SiteSettings } from '@/lib/types'
 
-const navigation = [
-  { name: 'Home', href: '/' },
-  { name: 'About', href: '/about' },
-  { name: 'Activities', href: '/programs' },
-  { name: 'Get Involved', href: '/get-involved' },
-  { name: 'Contact', href: '/contact' },
-]
-
-export default function Header() {
+export default function Header({ settings }: { settings: SiteSettings }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const pathname = usePathname()
@@ -73,7 +66,7 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-1">
-            {navigation.map((item) => {
+            {settings.navigation.mainLinks.map((item) => {
               const isActive = pathname === item.href
               return (
                 <Link
@@ -93,16 +86,16 @@ export default function Header() {
 
             <div className="ml-4 pl-4 border-l border-white/20 flex items-center gap-2">
               <Link
-                href="/get-involved#membership"
+                href={settings.navigation.memberButton.href}
                 className="inline-flex items-center gap-1.5 px-4 py-2 text-[0.84rem] font-semibold text-white border border-white/30 rounded-md hover:bg-white/10 transition-colors duration-200"
               >
-                Become a Member
+                {settings.navigation.memberButton.text}
               </Link>
               <Link
-                href="/get-involved#donate"
+                href={settings.navigation.donateButton.href}
                 className="inline-flex items-center gap-1.5 px-4 py-2 text-[0.84rem] font-semibold text-neutral-900 bg-accent-400 rounded-md hover:bg-accent-500 transition-colors duration-200"
               >
-                Donate
+                {settings.navigation.donateButton.text}
                 <svg
                   className="w-3.5 h-3.5"
                   fill="none"
@@ -163,7 +156,7 @@ export default function Header() {
       >
         <div className="border-t border-white/10 bg-tertiary-900/90 backdrop-blur-xl">
           <div className="mx-auto max-w-7xl px-4 py-3 space-y-0.5">
-            {navigation.map((item) => {
+            {settings.navigation.mainLinks.map((item) => {
               const isActive = pathname === item.href
               return (
                 <Link
@@ -182,18 +175,18 @@ export default function Header() {
             })}
             <div className="pt-2 space-y-2">
               <Link
-                href="/get-involved#membership"
+                href={settings.navigation.memberButton.href}
                 className="flex items-center justify-center gap-1.5 w-full px-4 py-2.5 text-sm font-semibold text-white border border-white/30 rounded-md hover:bg-white/10 transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Become a Member
+                {settings.navigation.memberButton.text}
               </Link>
               <Link
-                href="/get-involved#donate"
+                href={settings.navigation.donateButton.href}
                 className="flex items-center justify-center gap-1.5 w-full px-4 py-2.5 text-sm font-semibold text-neutral-900 bg-accent-400 rounded-md hover:bg-accent-500 transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Donate
+                {settings.navigation.donateButton.text}
                 <svg
                   className="w-3.5 h-3.5"
                   fill="none"

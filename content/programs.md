@@ -5,6 +5,9 @@ title: Our Activities
 subtitle: GHAFRA Nord organizes a range of activities and provides essential
   services to support the Ghanaian community in Lille. From integration
   assistance to cultural celebrations, we are here for you.
+detailBackLinkText: All Activities
+integrationImageOneAlt: Integration support guidance illustration one
+integrationImageTwoAlt: Integration support guidance illustration two
 programsSectionTitle: Programs
 programsSectionSubtitle: Our core programs that support the Ghanaian community in Lille.
 eventsSectionTitle: Activities & Events
