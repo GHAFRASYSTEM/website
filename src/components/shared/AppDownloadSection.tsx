@@ -1,5 +1,7 @@
 'use client'
 import Image from 'next/image'
+import appScreenLeft from '@/assets/images/app-screen-left.png'
+import appScreenRight from '@/assets/images/app-screen-right.png'
 import type { HomeContent } from '@/lib/types'
 
 export default function AppDownloadSection({
@@ -7,7 +9,6 @@ export default function AppDownloadSection({
 }: {
   content: HomeContent['appDownloadSection']
 }) {
-  const secondaryImage = content.secondaryAppImage || content.appImage
   const secondaryImageAlt = content.secondaryAppImageAlt || content.appImageAlt
 
   return (
@@ -16,7 +17,9 @@ export default function AppDownloadSection({
       {content.eyebrow ? (
         <span className="section-eyebrow">{content.eyebrow}</span>
       ) : null}
-      <h2>{content.title}</h2>
+      <h2 className="section-title font-heading text-3xl font-bold gradient-title md:text-4xl">
+        {content.title}
+      </h2>
       <p>{content.body}</p>
 
       <div className="phones-frame">
@@ -25,7 +28,7 @@ export default function AppDownloadSection({
           <div className="phone-notch" />
           <div className="phone-screen">
             <Image
-              src={content.appImage}
+              src={appScreenLeft}
               alt={content.appImageAlt}
               fill
               style={{ objectFit: 'cover', borderRadius: '26px' }}
@@ -39,7 +42,7 @@ export default function AppDownloadSection({
           <div className="phone-notch" />
           <div className="phone-screen">
             <Image
-              src={secondaryImage}
+              src={appScreenRight}
               alt={secondaryImageAlt}
               fill
               style={{ objectFit: 'cover', borderRadius: '26px' }}
@@ -100,7 +103,6 @@ export default function AppDownloadSection({
           background: #f8f6f2;
           padding: 72px 24px;
           text-align: center;
-          font-family: Georgia, serif;
         }
 
         .divider-line {
@@ -115,22 +117,20 @@ export default function AppDownloadSection({
           display: inline-block;
           margin-bottom: 12px;
           font-size: 0.75rem;
+          font-family: inherit;
           font-weight: 700;
           letter-spacing: 0.18em;
           text-transform: uppercase;
           color: #306c43;
         }
 
-        .app-download-section h2 {
-          font-size: clamp(2rem, 4vw, 2.375rem);
-          font-weight: 700;
-          color: #c8a820;
+        .section-title {
           margin: 0 0 12px;
-          font-family: Georgia, serif;
         }
 
         .app-download-section p {
           font-size: 16px;
+          font-family: inherit;
           color: #555;
           margin: 0 auto 48px;
           max-width: 480px;
