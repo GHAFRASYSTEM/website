@@ -1,8 +1,8 @@
 ---
-name: 'Mustapha Abdulai'
+name: 'Abdulai Mustapha'
 role: 'President'
-image: '/images/extracted/image-7.jpg'
+image: '/images/profile-photos-of-executives/mustapha.jpeg'
 order: 1
 ---
 
-Mustapha serves as President and founding President of GHA-FRA Nord. His vision and leadership were instrumental in establishing the association in March 2024.
+Abdulai Mustapha serves as the President of GHAFRA Nord, providing strategic leadership and guiding the association's vision since its establishment. With a professional background in civil engineering and extensive experience in community leadership, he has played a key role in expanding membership, strengthening unity among Ghanaians in Northern France, and building meaningful partnerships with French institutions. His leadership is driven by a strong commitment to community development, integration, and the collective advancement of Ghanaians living in France.

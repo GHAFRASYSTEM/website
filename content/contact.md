@@ -1,5 +1,5 @@
 ---
-metaDescription: "Reach out to GHA-FRA Nord. We'd love to hear from you about membership, partnerships, or general inquiries."
+metaDescription: "Reach out to GHAFRA Nord. We'd love to hear from you about membership, partnerships, or general inquiries."
 title: 'Contact Us'
 subtitle: 'We would love to hear from you. Whether you have questions, want to join our community, or are ready to get involved, reach out to us anytime.'
 contactInfoTitle: 'Get in Touch'

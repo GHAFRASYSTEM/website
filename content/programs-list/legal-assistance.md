@@ -6,7 +6,7 @@ image: /images/workshop-2.jpeg
 featured: false
 ---
 
-GHA-FRA Nord assists members with visa renewal, residence permits, and legal issues, ensuring their rights are protected and upheld.
+GHAFRA Nord assists members with visa renewal, residence permits, and legal issues, ensuring their rights are protected and upheld.
 
 ## What We Offer
 

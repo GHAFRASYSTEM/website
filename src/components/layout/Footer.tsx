@@ -29,14 +29,14 @@ export default function Footer() {
               <div className="relative w-10 h-10 rounded-lg overflow-hidden ring-1 ring-white/30 group-hover:ring-white/60 transition-all duration-200">
                 <Image
                   src="/images/extracted/image-12.jpg"
-                  alt="GHA-FRA Nord Logo"
+                  alt="GHAFRA Nord Logo"
                   fill
                   className="object-cover"
                 />
               </div>
               <div>
                 <span className="font-heading font-bold text-lg group-hover:text-accent-300 transition-colors">
-                  GHA-FRA
+                  GHAFRA
                 </span>
                 <span className="font-heading text-xs text-accent-400 tracking-widest block -mt-1">
                   NORD

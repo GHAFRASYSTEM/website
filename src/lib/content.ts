@@ -55,6 +55,10 @@ export function getTeamMembers(): TeamMember[] {
   return readCollection<TeamMember>('team').sort((a, b) => a.order - b.order)
 }
 
+export function getTeamMemberBySlug(slug: string): TeamMember | undefined {
+  return getTeamMembers().find((member) => member.slug === slug)
+}
+
 export function getPrograms(): Program[] {
   return readCollection<Program>('programs-list')
 }

@@ -1,5 +1,5 @@
 ---
-metaDescription: Support GHA-FRA Nord through donations or become a member. Join
+metaDescription: Support GHAFRA Nord through donations or become a member. Join
   the Ghanaian community in Lille.
 title: Get Involved
 donateTitle: Support Our Community
@@ -7,18 +7,28 @@ donateBody: Your generous contribution helps fund community events, support
   newcomers, and sustain the activities that bring our community together. Every
   donation makes a difference.
 donateOptions:
-  - amount: "10"
-    description: Equivalent to one month of working member dues - helps sustain our
+  - amount: '10'
+    description:
+      Equivalent to one month of working member dues - helps sustain our
       regular operations
-  - amount: "25"
+  - amount: '25'
     description: Supports event materials for a community gathering or sports activity
-  - amount: "50"
+  - amount: '50'
     description: Helps fund the Freshers Welcome Party for newly arrived Ghanaians
-  - amount: "100"
-    description: Contributes to organizing major annual events like GHA-FRA Month or
+  - amount: '100'
+    description:
+      Contributes to organizing major annual events like GHAFRA Month or
       the Christmas celebration
+  - amount: Any amount
+    description:
+      Choose a custom donation amount that fits your budget and still makes
+      a meaningful contribution to the community.
+    isCustomAmount: true
+    inputPlaceholder: Enter any amount in euros
+    buttonText: Donate custom amount
+    minAmount: 1
 memberCarouselTitle: Our Community Members
-memberCarouselSubtitle: Meet the vibrant individuals who make up the GHA-FRA Nord family.
+memberCarouselSubtitle: Meet the vibrant individuals who make up the GHAFRA Nord family.
 memberImages:
   - /images/model-image-1.jpeg
   - /images/model-image-2.jpeg
@@ -35,12 +45,13 @@ memberImages:
   - /images/model-image-13.jpeg
   - /images/model-image-14.jpeg
 membershipTitle: Become a Member
-membershipBody: GHA-FRA Nord welcomes all Ghanaians in Lille and the Nord
+membershipBody: GHAFRA Nord welcomes all Ghanaians in Lille and the Nord
   region. Membership gives you access to all our services, events, and the
   support of a vibrant community.
 membershipInfo:
   - title: Eligibility
-    description: You must be Ghanaian to become a member. Membership applications
+    description:
+      You must be Ghanaian to become a member. Membership applications
       are reviewed by the executive committee for approval.
   - title: Working Members
     description: Monthly dues of 10 euros for working professionals and employed members.

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import { getGetInvolvedContent } from '@/lib/content'
+import DonationOptions from '@/components/get-involved/DonationOptions'
 import MemberCarousel from '@/components/shared/MemberCarousel'
 import MembershipForm from '@/components/get-involved/MembershipForm'
 
@@ -57,19 +58,7 @@ export default function GetInvolvedPage() {
               {content.donateBody}
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-            {content.donateOptions.map((option, i) => (
-              <div key={i} className="card card-donate p-6 text-center">
-                <div className="text-3xl font-bold bg-gradient-to-br from-accent-600 to-accent-400 bg-clip-text text-transparent mb-2">
-                  &euro;{option.amount}
-                </div>
-                <p className="text-neutral-600 text-sm">{option.description}</p>
-                <button className="mt-4 w-full px-4 py-2.5 text-sm font-semibold text-neutral-900 bg-gradient-to-r from-accent-400 to-accent-500 rounded-lg hover:from-accent-500 hover:to-accent-600 transition-all shadow-sm hover:shadow-md cursor-pointer">
-                  Donate &euro;{option.amount}
-                </button>
-              </div>
-            ))}
-          </div>
+          <DonationOptions options={content.donateOptions} />
         </div>
       </section>
 

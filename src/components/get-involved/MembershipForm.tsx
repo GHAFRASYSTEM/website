@@ -57,7 +57,7 @@ export default function MembershipForm() {
           Application Submitted!
         </h3>
         <p className="text-neutral-600">
-          Thank you for your interest in joining GHA-FRA Nord. Our executive
+          Thank you for your interest in joining GHAFRA Nord. Our executive
           committee will review your application and get back to you soon.
         </p>
       </div>
@@ -73,8 +73,8 @@ export default function MembershipForm() {
         Membership Registration
       </h3>
       <p className="text-neutral-500 text-sm mb-6">
-        Fill out the form below to apply for membership. All fields are
-        required.
+        Fill out the form below to apply for membership. Optional fields can be
+        left blank.
       </p>
 
       {status === 'error' && (
@@ -290,10 +290,27 @@ export default function MembershipForm() {
 
         <div>
           <label
+            htmlFor="member-special-talent"
+            className="block text-sm font-medium text-neutral-700 mb-1"
+          >
+            Any Special Talent or Handiwork?{' '}
+            <span className="text-neutral-400">(Optional)</span>
+          </label>
+          <textarea
+            id="member-special-talent"
+            name="specialTalentOrHandiwork"
+            rows={3}
+            className="w-full px-4 py-2.5 border border-neutral-300 bg-white text-neutral-900 rounded-lg focus:ring-2 focus:ring-tertiary-500 focus:border-tertiary-500 outline-none transition-colors resize-vertical placeholder:text-neutral-400"
+            placeholder="Share any skills, trades, crafts, or talents you would like to contribute..."
+          />
+        </div>
+
+        <div>
+          <label
             htmlFor="member-message"
             className="block text-sm font-medium text-neutral-700 mb-1"
           >
-            Why do you want to join GHA-FRA?
+            Why do you want to join GHAFRA?
           </label>
           <textarea
             id="member-message"

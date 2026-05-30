@@ -49,14 +49,14 @@ export default function Header() {
             <div className="relative w-9 h-9 rounded-lg overflow-hidden ring-1 ring-white/30 group-hover:ring-white/60 transition-all duration-200">
               <Image
                 src="/images/extracted/image-12.jpg"
-                alt="GHA-FRA Nord Logo"
+                alt="GHAFRA Nord Logo"
                 fill
                 className="object-cover"
               />
             </div>
             <div className="flex items-baseline gap-1">
               <span className="font-heading font-bold text-lg text-white tracking-tight group-hover:text-accent-300 transition-colors">
-                GHA-FRA
+                GHAFRA
               </span>
               <span className="font-heading text-xs font-semibold text-accent-400 tracking-wide uppercase">
                 Nord

@@ -7,7 +7,7 @@ image: /images/model-image-5.jpeg
 featured: true
 ---
 
-GHA-FRA Nord serves as the official political representative body for the Ghanaian community in the Nord region of France, liaising with key institutions to address community concerns.
+GHAFRA Nord serves as the official political representative body for the Ghanaian community in the Nord region of France, liaising with key institutions to address community concerns.
 
 ## Our Advocacy Work
 
@@ -18,4 +18,4 @@ GHA-FRA Nord serves as the official political representative body for the Ghanai
 
 ## Our Partnerships
 
-GHA-FRA Nord is officially recognized by the Embassy of Ghana in Paris and has established partnerships with various associations both locally in France and internationally. These partnerships amplify our ability to advocate for and support community members.
+GHAFRA Nord is officially recognized by the Embassy of Ghana in Paris and has established partnerships with various associations both locally in France and internationally. These partnerships amplify our ability to advocate for and support community members.

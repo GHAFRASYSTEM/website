@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 import { getAboutContent, getTeamMembers } from '@/lib/content'
 import FAQ from '@/components/about/FAQ'
 
@@ -98,7 +99,7 @@ export default function AboutPage() {
           <div className="w-24 h-24 md:w-32 md:h-32 rounded-2xl overflow-hidden ring-4 ring-white/20 shadow-2xl mb-6">
             <Image
               src="/images/extracted/image-12.jpg"
-              alt="GHA-FRA Nord Logo"
+              alt="GHAFRA Nord Logo"
               width={128}
               height={128}
               className="object-cover w-full h-full"
@@ -204,7 +205,7 @@ export default function AboutPage() {
                     className="object-cover"
                   />
                 </div>
-                <div className="p-5">
+                <div className="flex h-full flex-col p-5">
                   <h3 className="font-heading font-semibold text-lg text-neutral-900">
                     {member.name}
                   </h3>
@@ -216,6 +217,25 @@ export default function AboutPage() {
                   <p className="text-neutral-600 text-sm line-clamp-3">
                     {member.body.trim()}
                   </p>
+                  <Link
+                    href={`/about/executives/${member.slug}`}
+                    className="mt-4 inline-flex items-center text-sm font-semibold text-primary-700 transition-colors hover:text-primary-800"
+                  >
+                    View full profile
+                    <svg
+                      className="ml-1 h-4 w-4"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth="2"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                      />
+                    </svg>
+                  </Link>
                 </div>
               </div>
             ))}

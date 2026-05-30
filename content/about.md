@@ -1,19 +1,17 @@
 ---
-metaDescription: Learn about GHA-FRA Nord's mission, vision, values, and the
+metaDescription: Learn about GHAFRA Nord's mission, vision, values, and the
   executive leadership behind the Ghanaian community association in Lille.
-title: About GHA-FRA Nord
+title: About GHAFRA Nord
 missionSectionTitle: Our Mission
 visionSectionTitle: Our Vision
 historyTitle: Our Story
-historyBody: GHA-FRA Nord was created on the 30th of March 2024 in Lille,
+historyBody: GHAFRA Nord was created on the 30th of March 2024 in Lille,
   France. Due to the increasing number of Ghanaians, mostly students, in Lille,
   it became necessary to have an organization that sought the wellbeing and
   integration of Ghanaians in the region. The association was established as a
   non-profit in accordance with French law and is officially registered under
-  association number W595044222. Starting with 25 members, GHA-FRA Nord has
-  grown to a community of over 300 active members including students,
-  professionals, and retired citizens. The association is recognized by the
-  Embassy of Ghana in Paris and has partnerships with various associations both
+  association number W595044222. Starting with 25 members, GHAFRA Nord has
+  grown to a community of over 300 members with about 100 active members including students, professionals, and retired citizens. The association is recognized by the Embassy of Ghana in Paris and has partnerships with various associations both
   locally in France and internationally.
 mission: To establish a vibrant and inclusive community that advocates for the
   rights and well-being of Ghanaians residing in France, particularly in the
@@ -36,84 +34,96 @@ values:
       as a source of strength and wisdom.
     icon: globe
   - title: Integrity
-    description: We uphold honesty, transparency, and fairness in all dealings. We
+    description:
+      We uphold honesty, transparency, and fairness in all dealings. We
       take responsibility for our actions and protect the reputation of the
       community through our conduct.
     icon: eye
   - title: Empowerment
-    description: We believe in the power of partnerships — working alongside local
+    description:
+      We believe in the power of partnerships — working alongside local
       authorities, organizations, universities, and the Ghanaian Embassy to
       amplify our collective impact and help every member thrive.
     icon: users
 executivesSectionTitle: Our Executives
 timelineEvents:
-  - year: "2024"
+  - year: '2024'
     title: Founded
-    description: GHA-FRA Nord was established on March 30, 2024 in Lille, France
+    description: GHAFRA Nord was established on March 30, 2024 in Lille, France
       with 25 founding members.
-  - year: "2024"
+  - year: '2024'
     title: Official Registration
     description: Registered as a non-profit association under French law with
       association number W595044222.
-  - year: "2024"
+  - year: '2024'
     title: Embassy Recognition
     description: Officially recognized by the Embassy of Ghana in Paris, France.
-  - year: "2025"
+  - year: '2025'
     title: Growing Community
-    description: Grew to over 300 active members including students, professionals,
-      and retired citizens across the Nord region.
+    description: Grew to over 300 members with about 100 active members including students, professionals, and retired citizens across the Nord region.
 faqSectionTitle: Frequently Asked Questions
-faqSectionSubtitle: Everything you need to know about GHA-FRA Nord, membership,
+faqSectionSubtitle: Everything you need to know about GHAFRA Nord, membership,
   events, and how we can help.
 faqs:
-  - question: What is GHA-FRA Nord?
-    answer: GHA-FRA Nord (also known as GhaFra) is a non-profit association created
+  - question: What is GHAFRA Nord?
+    answer:
+      GHAFRA Nord (also known as GHAFRA) is a non-profit association created
       on March 30, 2024, in Lille, France. It was established to promote the
       wellbeing and integration of Ghanaians in the Lille and Hauts-de-France
       region. The association is officially registered under association number
       W595044222 and is recognized by the Embassy of Ghana in Paris.
-  - question: Who can become a member of GHA-FRA?
+  - question: Who can become a member of GHAFRA?
     answer: You must be Ghanaian to become a member. Membership applications are
       reviewed by the executive committee for approval. The board of directors
       accepts member candidates after the committee checks the application.
   - question: What are the membership dues?
-    answer: Working members pay monthly dues of €10, while non-working members (e.g.
+    answer:
+      Working members pay monthly dues of €10, while non-working members (e.g.
       students) pay €5 per month. These contributions help fund community
       programs, events, and support services.
-  - question: How many members does GHA-FRA currently have?
-    answer: GHA-FRA started with 25 founding members and has grown to over 300
+  - question: How many members does GHAFRA currently have?
+    answer: GHAFRA started with 25 founding members and has grown to over 300
       active members. Our members include students, working professionals, and
       retired citizens.
-  - question: What kind of support does GHA-FRA provide?
-    answer: We provide comprehensive support including guidance on visa renewal and
+  - question: What kind of support does GHAFRA provide?
+    answer:
+      We provide comprehensive support including guidance on visa renewal and
       residence permits, legal assistance, help navigating the French
       administrative system, financial and social support for struggling members
       and students, and liaison with city councils, universities, employers, the
       Ghana Embassy Paris, the Ghana Ministry of Foreign Affairs and the
       Diaspora Affairs Office of the Ghana President.
-  - question: What regular events does GHA-FRA organize?
+  - question: What regular events does GHAFRA organize?
     answer: "We have activities year-round: monthly community meetings, weekly
       sports sessions every Saturday at Complexe Sportif Jacqueline Auriol
       (Wazemmes), the annual General Assembly in January, Fresher's Welcome
-      Party in September for newly arrived Ghanaians, GHA-FRA Month celebrations
+      Party in September for newly arrived Ghanaians, GHAFRA Month celebrations
       throughout October, and the Bronya Afahyɛ (Christmas party) in December."
   - question: Where do the weekly sports activities take place?
-    answer: GHA-FRA Sports takes place every Saturday at Complexe Sportif Jacqueline
+    answer:
+      GHAFRA Sports takes place every Saturday at Complexe Sportif Jacqueline
       Auriol in the Wazemmes area of Lille. All members and interested community
       members are welcome to join.
-  - question: Can GHA-FRA help me with my visa or residence permit?
+  - question: Can GHAFRA help me with my visa or residence permit?
     answer: Yes. One of our core missions is to assist individuals with visa
       renewal, residence permits, and related legal issues. We work to ensure
       your rights are protected and can connect you with the appropriate
       resources and support.
-  - question: I just arrived in Lille. How can GHA-FRA help me settle in?
-    answer: We specifically support newcomers through our integration programs. We
+  - question: I just arrived in Lille. How can GHAFRA help me settle in?
+    answer:
+      We specifically support newcomers through our integration programs. We
       can help with navigating the French system, connecting you with the
       community, and providing guidance on administrative procedures. Every
       September we also hold a Fresher's Welcome Party to welcome newly arrived
       Ghanaians. We also provide support in finding accommodation.
-  - question: How can I get in touch with GHA-FRA?
-    answer: You can reach us by email at ghafra.nord@gmail.com, by phone at +33 7 43
+  - question: How you can contribute
+    answer: You can contribute by becoming a member, participating in community
+      events, supporting GHAFRA through donations, and offering your time,
+      skills, talents, or professional expertise to help strengthen the
+      community and support fellow Ghanaians in Lille.
+  - question: How can I get in touch with GHAFRA?
+    answer:
+      You can reach us by email at ghafra.nord@gmail.com, by phone at +33 7 43
       33 64 40, or through our social media channels on Facebook, Instagram,
       LinkedIn, and YouTube. You can also visit our Contact page to send us a
       message directly.

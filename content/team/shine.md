@@ -5,4 +5,4 @@ image: '/images/extracted/image-10.jpg'
 order: 4
 ---
 
-Shine oversees the administrative functions of GHA-FRA Nord, maintaining records, coordinating communications, and ensuring smooth organizational operations.
+Shine is a plant biotechnologist with a strong passion for improving food security. As General Secretary, she supports administrative coordination and communication within the association. Motivated by her personal experience as a Ghanaian student in France, she is committed to helping others navigate challenges, while making a positive impact and continuously developing herself.

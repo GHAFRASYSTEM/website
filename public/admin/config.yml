@@ -88,6 +88,84 @@ collections:
             fields:
               - { label: 'Image', name: 'src', widget: 'image' }
               - { label: 'Caption / Alt Text', name: 'alt', widget: 'string' }
+          - label: 'App Download Section'
+            name: 'appDownloadSection'
+            widget: 'object'
+            fields:
+              - {
+                  label: 'Eyebrow',
+                  name: 'eyebrow',
+                  widget: 'string',
+                  default: 'Mobile Access',
+                }
+              - {
+                  label: 'Title',
+                  name: 'title',
+                  widget: 'string',
+                  default: 'Download the GHAFRA-NORD App and keep the community close at hand.',
+                }
+              - {
+                  label: 'Body',
+                  name: 'body',
+                  widget: 'text',
+                  default: 'With the GHAFRA-NORD app, you can jump straight into updates, programs, community resources and many more, right from your phone!',
+                }
+              - {
+                  label: 'App Image',
+                  name: 'appImage',
+                  widget: 'image',
+                  default: '/images/ghafra_app.jpeg',
+                }
+              - {
+                  label: 'App Image Alt Text',
+                  name: 'appImageAlt',
+                  widget: 'string',
+                  default: 'Screenshot of the GHAFRA-NORD mobile app home screen',
+                }
+              - label: 'App Store Button'
+                name: 'appStoreButton'
+                widget: 'object'
+                fields:
+                  - {
+                      label: 'Pretitle',
+                      name: 'pretitle',
+                      widget: 'string',
+                      default: 'Download on the',
+                    }
+                  - {
+                      label: 'Title',
+                      name: 'title',
+                      widget: 'string',
+                      default: 'App Store',
+                    }
+                  - {
+                      label: 'Link',
+                      name: 'link',
+                      widget: 'string',
+                      default: 'https://example.com/app-store',
+                    }
+              - label: 'Google Play Button'
+                name: 'googlePlayButton'
+                widget: 'object'
+                fields:
+                  - {
+                      label: 'Pretitle',
+                      name: 'pretitle',
+                      widget: 'string',
+                      default: 'Get it on',
+                    }
+                  - {
+                      label: 'Title',
+                      name: 'title',
+                      widget: 'string',
+                      default: 'Google Play',
+                    }
+                  - {
+                      label: 'Link',
+                      name: 'link',
+                      widget: 'string',
+                      default: 'https://example.com/google-play',
+                    }
           - { label: 'CTA Title', name: 'ctaTitle', widget: 'string' }
           - { label: 'CTA Body', name: 'ctaBody', widget: 'text' }
           - label: 'CTA Button'
@@ -181,7 +259,7 @@ collections:
               label: 'FAQ Section Subtitle',
               name: 'faqSectionSubtitle',
               widget: 'text',
-              default: 'Everything you need to know about GHA-FRA Nord, membership, events, and how we can help.',
+              default: 'Everything you need to know about GHAFRA Nord, membership, events, and how we can help.',
             }
           - label: 'FAQ Items'
             name: 'faqs'
@@ -225,7 +303,7 @@ collections:
               label: 'Events Section Subtitle',
               name: 'eventsSectionSubtitle',
               widget: 'text',
-              default: "GHA-FRA has lots of activities and events all year round. Mark your calendars so you don't miss a beat.",
+              default: "GHAFRA has lots of activities and events all year round. Mark your calendars so you don't miss a beat.",
             }
           - label: 'Activities & Events'
             name: 'events'
@@ -280,6 +358,38 @@ collections:
             fields:
               - { label: 'Amount', name: 'amount', widget: 'string' }
               - { label: 'Description', name: 'description', widget: 'text' }
+              - {
+                  label: 'Custom Amount Option',
+                  name: 'isCustomAmount',
+                  widget: 'boolean',
+                  required: false,
+                  default: false,
+                  hint: 'Enable this for the donation card that should allow visitors to enter their own amount.',
+                }
+              - {
+                  label: 'Custom Amount Placeholder',
+                  name: 'inputPlaceholder',
+                  widget: 'string',
+                  required: false,
+                  default: 'Enter any amount in euros',
+                }
+              - {
+                  label: 'Custom Button Text',
+                  name: 'buttonText',
+                  widget: 'string',
+                  required: false,
+                  default: 'Donate custom amount',
+                }
+              - {
+                  label: 'Minimum Custom Amount',
+                  name: 'minAmount',
+                  widget: 'number',
+                  required: false,
+                  value_type: 'float',
+                  min: 1,
+                  default: 1,
+                  hint: 'Used only when Custom Amount Option is enabled.',
+                }
           - {
               label: 'Member Carousel Section Title',
               name: 'memberCarouselTitle',
@@ -290,7 +400,7 @@ collections:
               label: 'Member Carousel Section Subtitle',
               name: 'memberCarouselSubtitle',
               widget: 'text',
-              default: 'Meet the vibrant individuals who make up the GHA-FRA Nord family.',
+              default: 'Meet the vibrant individuals who make up the GHAFRA Nord family.',
             }
           - label: 'Member Carousel Images'
             name: 'memberImages'

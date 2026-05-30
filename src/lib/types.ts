@@ -30,6 +30,23 @@ export interface HomeContent {
   galleryTitle: string
   gallerySubtitle: string
   galleryImages: { src: string; alt: string }[]
+  appDownloadSection: {
+    eyebrow: string
+    title: string
+    body: string
+    appImage: string
+    appImageAlt: string
+    appStoreButton: {
+      pretitle: string
+      title: string
+      link: string
+    }
+    googlePlayButton: {
+      pretitle: string
+      title: string
+      link: string
+    }
+  }
   ctaTitle: string
   ctaBody: string
   ctaButton: { text: string; link: string }
@@ -81,7 +98,14 @@ export interface GetInvolvedContent {
   title: string
   donateTitle: string
   donateBody: string
-  donateOptions: { amount: string; description: string }[]
+  donateOptions: {
+    amount: string
+    description: string
+    isCustomAmount?: boolean
+    inputPlaceholder?: string
+    buttonText?: string
+    minAmount?: number
+  }[]
   membershipTitle: string
   membershipBody: string
   membershipInfo: {

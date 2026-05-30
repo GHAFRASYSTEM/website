@@ -6,7 +6,7 @@ image: /images/tip-0.png
 featured: true
 ---
 
-GHA-FRA Nord provides comprehensive support and guidance to Ghanaian students and professionals navigating the challenges of integration into the French system and lifestyle.
+GHAFRA Nord provides comprehensive support and guidance to Ghanaian students and professionals navigating the challenges of integration into the French system and lifestyle.
 
 ## What We Offer
 
@@ -17,4 +17,4 @@ GHA-FRA Nord provides comprehensive support and guidance to Ghanaian students an
 
 ## Who Is This For?
 
-This service is available to all GHA-FRA Nord members, with special focus on newcomers who have recently arrived in Lille and the Hauts-de-France region.
+This service is available to all GHAFRA Nord members, with special focus on newcomers who have recently arrived in Lille and the Hauts-de-France region.

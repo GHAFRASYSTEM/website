@@ -1,8 +1,8 @@
 ---
-name: 'Estherlla Tamakloe'
-role: "Int'l Relations & Projects Coordinator"
-image: '/images/extracted/image-11.jpg'
+name: 'Estherlla Abui Tamakloe'
+role: 'International Relations Officer'
+image: '/images/profile-photos-of-executives/estherlla.jpeg'
 order: 5
 ---
 
-Estherlla coordinates international partnerships and projects, fostering collaboration with organizations both locally in France and internationally to benefit the Ghanaian community.
+Estherlla Abui Tamakloe, an Accounting and Finance graduate and International Project Manager, serves as the International Coordinator & Project Manager for GHAFRA Nord. She brings expertise in financial analysis, organizational management, and international project coordination, with active involvement in Erasmus+ initiatives that promote youth development and community engagement across multicultural environments. Driven by a strong belief in integration and community support, Estherlla joined the association to help Ghanaians fully access opportunities available in France, particularly through international programs. Her work focuses on raising awareness, facilitating participation, and empowering members in their personal and professional growth. She began serving in September 2024.
