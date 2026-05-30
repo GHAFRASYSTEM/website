@@ -1,4 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+This is the website for GHAFRA Nord, built with [Next.js](https://nextjs.org).
+
+## Formspree Setup
+
+The site has two live forms:
+
+- Contact Us
+- Membership Registration
+
+Each form can use its own Formspree form ID.
+
+1. Create or log into your Formspree account.
+2. Create one Formspree form for contact submissions.
+3. Create one Formspree form for membership submissions.
+4. Copy each form ID from the Formspree endpoint.
+
+Example:
+
+```text
+https://formspree.io/f/xyzabcde
+```
+
+The form ID is `xyzabcde`.
+
+Create a `.env.local` file in the project root and add:
+
+```bash
+NEXT_PUBLIC_FORMSPREE_CONTACT_FORM_ID=your-contact-form-id
+NEXT_PUBLIC_FORMSPREE_MEMBERSHIP_FORM_ID=your-membership-form-id
+```
+
+Optional:
+
+- If you want both forms to go to the same Formspree inbox, you can instead set `NEXT_PUBLIC_FORMSPREE_ID` and leave the two specific variables unset.
+
+The current form components prefer the specific IDs first:
+
+- [src/components/contact/ContactForm.tsx](src/components/contact/ContactForm.tsx)
+- [src/components/get-involved/MembershipForm.tsx](src/components/get-involved/MembershipForm.tsx)
+
+An example env file is included in [.env.example](.env.example).
 
 ## Getting Started
 

@@ -2,7 +2,9 @@
 
 import { useState, type FormEvent } from 'react'
 
-const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID
+const FORMSPREE_ID =
+  process.env.NEXT_PUBLIC_FORMSPREE_CONTACT_FORM_ID ||
+  process.env.NEXT_PUBLIC_FORMSPREE_ID
 
 export default function ContactForm() {
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>(
@@ -92,6 +94,9 @@ export default function ContactForm() {
         tabIndex={-1}
         autoComplete="off"
       />
+
+      <input type="hidden" name="_subject" value="New Contact Message" />
+      <input type="hidden" name="formType" value="contact" />
 
       <div className="space-y-4">
         <div>

@@ -117,7 +117,7 @@ function CustomDonationCard({
   const previewAmount = hasValidAmount ? formatCurrency(parsedAmount) : null
 
   return (
-    <div className="card card-donate p-6 text-center">
+    <div className="card card-donate h-fit self-start p-6 text-center">
       <div className="mb-2 bg-gradient-to-br from-accent-600 to-accent-400 bg-clip-text text-3xl font-bold text-transparent">
         {option.amount}
       </div>
@@ -208,7 +208,7 @@ function FixedDonationCard({
     : option.amount
 
   return (
-    <div className="card card-donate p-6 text-center">
+    <div className="card card-donate h-fit self-start p-6 text-center">
       <div className="mb-2 bg-gradient-to-br from-accent-600 to-accent-400 bg-clip-text text-3xl font-bold text-transparent">
         {formattedAmount}
       </div>
@@ -230,26 +230,48 @@ export default function DonationOptions({
   options: GetInvolvedContent['donateOptions']
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const fixedOptions = options.filter((option) => !option.isCustomAmount)
+  const customOptions = options.filter((option) => option.isCustomAmount)
 
   return (
     <>
-      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-        {options.map((option, index) =>
-          option.isCustomAmount ? (
-            <CustomDonationCard
-              key={`custom-${index}`}
-              option={option}
-              onDonateAttempt={() => setIsModalOpen(true)}
-            />
-          ) : (
+      {fixedOptions.length > 0 && (
+        <div className="mx-auto grid max-w-6xl grid-cols-1 items-start gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {fixedOptions.map((option, index) => (
             <FixedDonationCard
               key={`${option.amount}-${index}`}
               option={option}
               onDonateAttempt={() => setIsModalOpen(true)}
             />
-          ),
-        )}
-      </div>
+          ))}
+        </div>
+      )}
+
+      {customOptions.length > 0 && (
+        <div className="mx-auto mt-8 max-w-2xl rounded-[1.75rem] border border-accent-200/70 bg-linear-to-br from-white via-accent-50/60 to-primary-50/40 p-4 shadow-[0_18px_45px_rgba(26,25,24,0.08)] sm:mt-10 sm:p-5">
+          <div className="text-center">
+            <span className="inline-flex items-center rounded-full border border-accent-300/70 bg-white/80 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-accent-700">
+              Flexible Giving
+            </span>
+            <h3 className="mt-3 font-heading text-xl font-bold text-neutral-900 sm:text-2xl">
+              Prefer a different amount?
+            </h3>
+            <p className="mx-auto mt-2 max-w-xl text-sm leading-relaxed text-neutral-600">
+              Choose a custom donation amount that fits what you want to give.
+            </p>
+          </div>
+          <div className="mt-5">
+            {customOptions.map((option, index) => (
+              <CustomDonationCard
+                key={`custom-${index}`}
+                option={option}
+                onDonateAttempt={() => setIsModalOpen(true)}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+
       <ComingSoonModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
