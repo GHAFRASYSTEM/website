@@ -3,8 +3,7 @@ This is the website for GHAFRA Nord, built with [Next.js](https://nextjs.org).
 ## Decap CMS Setup On Vercel
 
 The production CMS at `/admin` uses Decap CMS with the GitHub backend.
-
-Because the site is deployed on Vercel, Decap cannot use Netlify Identity or `git-gateway`. Instead, it uses GitHub OAuth through the Vercel API routes at:
+It uses GitHub OAuth through the Vercel API routes at:
 
 - `/api/auth`
 - `/api/callback`
@@ -34,6 +33,8 @@ In Vercel project settings, add:
 ```bash
 GITHUB_CLIENT_ID=your-github-oauth-app-client-id
 GITHUB_CLIENT_SECRET=your-github-oauth-app-client-secret
+NEXT_PUBLIC_FORMSPREE_CONTACT_FORM_ID=your-contact-form-id
+NEXT_PUBLIC_FORMSPREE_MEMBERSHIP_FORM_ID=your-membership-form-id
 ```
 
 Optional:
