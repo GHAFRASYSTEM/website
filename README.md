@@ -1,36 +1,123 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GHAFRA Nord Website
 
-## Getting Started
+Public website and content platform for GHAFRA Nord, the Ghanaian community association in Lille. The application serves the marketing site at `https://www.ghafra.com`, handles public forms through Formspree, and exposes Decap CMS with GitHub OAuth authentication for content editors.
 
-First, run the development server:
+## Stack
+
+- Next.js 16 App Router
+- React 19 and TypeScript
+- Tailwind CSS 4
+- Markdown and JSON content loaded from `content/`
+- Decap CMS in `public/admin`
+- Formspree for the contact and membership forms
+- GitHub OAuth routes hosted on Vercel for CMS authentication
+
+## Project Structure
+
+- `src/app`: page routes, metadata routes, and API endpoints
+- `src/app/api/cms/oauth/*`: GitHub OAuth authorize and callback handlers for Decap CMS
+- `src/components`: page sections, forms, layout, and shared UI
+- `src/lib/content.ts`: file-system content loader for markdown and JSON content
+- `src/lib/cms-oauth.ts`: shared helpers for the CMS popup auth flow
+- `content/`: editable page content, site settings, team members, and program entries
+- `public/admin/config.yml`: Decap CMS backend and collection configuration
+- `public/images`: uploaded and static images used by the site and CMS
+
+## Requirements
+
+- Node.js 20+
+- npm
+
+## Development
+
+1. Install dependencies:
+
+```bash
+npm install
+```
+
+2. Create a local env file from the example:
+
+```bash
+cp .env.example .env.local
+```
+
+3. Update the values in `.env.local` as needed.
+
+4. Start the dev server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The example values live in `.env.example`.
 
-## Learn More
+### Forms
 
-To learn more about Next.js, take a look at the following resources:
+- `NEXT_PUBLIC_FORMSPREE_CONTACT_FORM_ID`: Formspree form ID used by the contact form
+- `NEXT_PUBLIC_FORMSPREE_MEMBERSHIP_FORM_ID`: Formspree form ID used by the membership form
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### CMS OAuth
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `CMS_GITHUB_CLIENT_ID`: GitHub OAuth App client ID
+- `CMS_GITHUB_CLIENT_SECRET`: GitHub OAuth App client secret
+- `CMS_OAUTH_CALLBACK_URL`: public callback URL for the OAuth App, currently `https://www.ghafra.com/api/cms/oauth/callback`
+- `CMS_OAUTH_AUTHORIZE_URL`: documented public authorize URL for deployment consistency; the app serves the authorize route at `/api/cms/oauth/authorize`
 
-## Deploy on Vercel
+## Content Management
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Most site content is stored in the repository and loaded at build time or request time:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `content/home.md`, `about.md`, `programs.md`, `get-involved.md`, `contact.md`: page content
+- `content/programs-list/*.md`: program detail pages
+- `content/team/*.md`: executive profiles
+- `content/settings.json`: shared site settings such as canonical site URL, metadata, and social links
+
+The CMS is available at `/admin` and is configured to use the GitHub backend for the `GHAFRASYSTEM/website` repository.
+
+## Decap CMS and GitHub OAuth
+
+The CMS no longer uses Netlify Git Gateway. Authentication is handled by GitHub OAuth through the Vercel-hosted routes in `src/app/api/cms/oauth/authorize/route.ts` and `src/app/api/cms/oauth/callback/route.ts`.
+
+To configure CMS access:
+
+1. Create a GitHub OAuth App.
+2. Set the homepage URL to `https://www.ghafra.com`.
+3. Set the authorization callback URL to `https://www.ghafra.com/api/cms/oauth/callback`.
+4. Add `CMS_GITHUB_CLIENT_ID`, `CMS_GITHUB_CLIENT_SECRET`, and `CMS_OAUTH_CALLBACK_URL` in Vercel.
+5. Redeploy the application.
+6. Ensure every editor has write access to `GHAFRASYSTEM/website`.
+7. If the repository is owned by a GitHub organization with OAuth restrictions, approve the OAuth App at the organization level.
+
+After deployment, editors can log in at `https://www.ghafra.com/admin` with GitHub.
+
+## Local CMS Notes
+
+`public/admin/config.yml` has `local_backend: true`, but this repository does not include a Decap proxy server script. The production editing path is the supported one: `/admin` on the deployed Vercel site with GitHub OAuth.
+
+## Commands
+
+```bash
+npm run dev
+npm run build
+npm run start
+npm run lint
+```
+
+## Deployment
+
+- Production site: `https://www.ghafra.com`
+- Hosting: Vercel
+- CMS backend: GitHub
+- CMS admin: `https://www.ghafra.com/admin`
+
+Before promoting a deployment, verify:
+
+1. The Vercel environment variables are set.
+2. `npm run build` succeeds.
+3. `https://www.ghafra.com/admin` can complete the GitHub login flow.
+4. A content change from the CMS creates a commit in `GHAFRASYSTEM/website`.

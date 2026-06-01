@@ -2,7 +2,8 @@
 
 import { useState, type FormEvent } from 'react'
 
-const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID
+const FORMSPREE_MEMBERSHIP_FORM_ID =
+  process.env.NEXT_PUBLIC_FORMSPREE_MEMBERSHIP_FORM_ID
 
 export default function MembershipForm() {
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>(
@@ -18,11 +19,14 @@ export default function MembershipForm() {
     const data = new FormData(form)
 
     try {
-      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+      const res = await fetch(
+        `https://formspree.io/f/${FORMSPREE_MEMBERSHIP_FORM_ID}`,
+        {
         method: 'POST',
         body: data,
         headers: { Accept: 'application/json' },
-      })
+        },
+      )
 
       if (res.ok) {
         setStatus('sent')
