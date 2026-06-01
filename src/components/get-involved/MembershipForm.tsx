@@ -6,6 +6,12 @@ import type { GetInvolvedContent } from '@/lib/types'
 const FORMSPREE_MEMBERSHIP_FORM_ID =
   process.env.NEXT_PUBLIC_FORMSPREE_MEMBERSHIP_FORM_ID
 
+const fieldClassName =
+  'w-full rounded-lg border border-neutral-300 bg-white px-4 py-2.5 text-neutral-900 outline-none transition-colors placeholder:text-neutral-400 focus:border-tertiary-500 focus:ring-2 focus:ring-tertiary-500 dark:border-white/15 dark:bg-neutral-950 dark:text-neutral-50 dark:placeholder:text-neutral-500'
+
+const labelClassName =
+  'mb-1 block text-sm font-medium text-neutral-700 dark:text-neutral-50'
+
 export default function MembershipForm({
   content,
   contactEmail,
@@ -49,8 +55,8 @@ export default function MembershipForm({
 
   if (status === 'sent') {
     return (
-      <div className="bg-tertiary-50 rounded-xl p-8 text-center">
-        <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-tertiary-100 text-tertiary-600 mb-4">
+      <div className="rounded-xl bg-tertiary-50 p-8 text-center dark:bg-tertiary-950/30">
+        <div className="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full bg-tertiary-100 text-tertiary-600 dark:bg-tertiary-900/45 dark:text-tertiary-300">
           <svg
             className="w-8 h-8"
             fill="none"
@@ -65,10 +71,12 @@ export default function MembershipForm({
             />
           </svg>
         </div>
-        <h3 className="font-heading text-xl font-semibold text-neutral-900 mb-2">
+        <h3 className="mb-2 font-heading text-xl font-semibold text-neutral-900 dark:text-neutral-50">
           {content.successTitle}
         </h3>
-        <p className="text-neutral-600">{content.successMessage}</p>
+        <p className="text-neutral-600 dark:text-neutral-200">
+          {content.successMessage}
+        </p>
       </div>
     )
   }
@@ -76,15 +84,17 @@ export default function MembershipForm({
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-neutral-50 rounded-xl p-8 membership-form-border"
+      className="membership-form-border rounded-xl bg-neutral-50 p-5 sm:p-8 dark:bg-[#101916] dark:text-neutral-100"
     >
       <h3 className="font-heading text-2xl font-bold gradient-title mb-2">
         {content.title}
       </h3>
-      <p className="text-neutral-500 text-sm mb-6">{content.intro}</p>
+      <p className="mb-6 text-sm text-neutral-500 dark:text-neutral-300">
+        {content.intro}
+      </p>
 
       {status === 'error' && (
-        <div className="mb-4 rounded-lg bg-red-50 border border-red-200 p-4 text-sm text-red-700">
+        <div className="mb-4 rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700 dark:border-red-500/30 dark:bg-red-950/30 dark:text-red-200">
           {content.errorIntro}{' '}
           <a href={`mailto:${contactEmail}`} className="font-medium underline">
             {contactEmail}
@@ -110,7 +120,7 @@ export default function MembershipForm({
           <div>
             <label
               htmlFor="member-first-name"
-              className="block text-sm font-medium text-neutral-700 mb-1"
+              className={labelClassName}
             >
               {content.fields.firstNameLabel}
             </label>
@@ -119,14 +129,14 @@ export default function MembershipForm({
               id="member-first-name"
               name="firstName"
               required
-              className="w-full px-4 py-2.5 border border-neutral-300 bg-white text-neutral-900 rounded-lg focus:ring-2 focus:ring-tertiary-500 focus:border-tertiary-500 outline-none transition-colors placeholder:text-neutral-400"
+              className={fieldClassName}
               placeholder={content.fields.firstNamePlaceholder}
             />
           </div>
           <div>
             <label
               htmlFor="member-last-name"
-              className="block text-sm font-medium text-neutral-700 mb-1"
+              className={labelClassName}
             >
               {content.fields.lastNameLabel}
             </label>
@@ -135,7 +145,7 @@ export default function MembershipForm({
               id="member-last-name"
               name="lastName"
               required
-              className="w-full px-4 py-2.5 border border-neutral-300 bg-white text-neutral-900 rounded-lg focus:ring-2 focus:ring-tertiary-500 focus:border-tertiary-500 outline-none transition-colors placeholder:text-neutral-400"
+              className={fieldClassName}
               placeholder={content.fields.lastNamePlaceholder}
             />
           </div>
@@ -144,7 +154,7 @@ export default function MembershipForm({
         <div>
           <label
             htmlFor="member-email"
-            className="block text-sm font-medium text-neutral-700 mb-1"
+            className={labelClassName}
           >
             {content.fields.emailLabel}
           </label>
@@ -153,7 +163,7 @@ export default function MembershipForm({
             id="member-email"
             name="email"
             required
-            className="w-full px-4 py-2.5 border border-neutral-300 bg-white text-neutral-900 rounded-lg focus:ring-2 focus:ring-tertiary-500 focus:border-tertiary-500 outline-none transition-colors placeholder:text-neutral-400"
+            className={fieldClassName}
             placeholder={content.fields.emailPlaceholder}
           />
         </div>
@@ -161,7 +171,7 @@ export default function MembershipForm({
         <div>
           <label
             htmlFor="member-phone"
-            className="block text-sm font-medium text-neutral-700 mb-1"
+            className={labelClassName}
           >
             {content.fields.phoneLabel}
           </label>
@@ -170,7 +180,7 @@ export default function MembershipForm({
             id="member-phone"
             name="phone"
             required
-            className="w-full px-4 py-2.5 border border-neutral-300 bg-white text-neutral-900 rounded-lg focus:ring-2 focus:ring-tertiary-500 focus:border-tertiary-500 outline-none transition-colors placeholder:text-neutral-400"
+            className={fieldClassName}
             placeholder={content.fields.phonePlaceholder}
           />
         </div>
@@ -178,7 +188,7 @@ export default function MembershipForm({
         <div>
           <label
             htmlFor="member-status"
-            className="block text-sm font-medium text-neutral-700 mb-1"
+            className={labelClassName}
           >
             {content.fields.statusLabel}
           </label>
@@ -186,7 +196,7 @@ export default function MembershipForm({
             id="member-status"
             name="memberStatus"
             required
-            className="w-full px-4 py-2.5 border border-neutral-300 bg-white text-neutral-900 rounded-lg focus:ring-2 focus:ring-tertiary-500 focus:border-tertiary-500 outline-none transition-colors"
+            className={`${fieldClassName} dark:[color-scheme:dark]`}
             value={memberStatus}
             onChange={(e) => setMemberStatus(e.target.value)}
           >
@@ -207,7 +217,7 @@ export default function MembershipForm({
             <div>
               <label
                 htmlFor="member-school"
-                className="block text-sm font-medium text-neutral-700 mb-1"
+                className={labelClassName}
               >
                 {content.fields.schoolLabel}
               </label>
@@ -216,14 +226,14 @@ export default function MembershipForm({
                 id="member-school"
                 name="school"
                 required
-                className="w-full px-4 py-2.5 border border-neutral-300 bg-white text-neutral-900 rounded-lg focus:ring-2 focus:ring-tertiary-500 focus:border-tertiary-500 outline-none transition-colors placeholder:text-neutral-400"
+                className={fieldClassName}
                 placeholder={content.fields.schoolPlaceholder}
               />
             </div>
             <div>
               <label
                 htmlFor="member-program"
-                className="block text-sm font-medium text-neutral-700 mb-1"
+                className={labelClassName}
               >
                 {content.fields.programLabel}
               </label>
@@ -232,7 +242,7 @@ export default function MembershipForm({
                 id="member-program"
                 name="program"
                 required
-                className="w-full px-4 py-2.5 border border-neutral-300 bg-white text-neutral-900 rounded-lg focus:ring-2 focus:ring-tertiary-500 focus:border-tertiary-500 outline-none transition-colors placeholder:text-neutral-400"
+                className={fieldClassName}
                 placeholder={content.fields.programPlaceholder}
               />
             </div>
@@ -243,7 +253,7 @@ export default function MembershipForm({
           <div>
             <label
               htmlFor="member-role"
-              className="block text-sm font-medium text-neutral-700 mb-1"
+              className={labelClassName}
             >
               {content.fields.currentRoleLabel}
             </label>
@@ -252,7 +262,7 @@ export default function MembershipForm({
               id="member-role"
               name="currentRole"
               required
-              className="w-full px-4 py-2.5 border border-neutral-300 bg-white text-neutral-900 rounded-lg focus:ring-2 focus:ring-tertiary-500 focus:border-tertiary-500 outline-none transition-colors placeholder:text-neutral-400"
+              className={fieldClassName}
               placeholder={content.fields.currentRolePlaceholder}
             />
           </div>
@@ -262,7 +272,7 @@ export default function MembershipForm({
           <div>
             <label
               htmlFor="member-previous-role"
-              className="block text-sm font-medium text-neutral-700 mb-1"
+              className={labelClassName}
             >
               {content.fields.previousRoleLabel}
             </label>
@@ -271,7 +281,7 @@ export default function MembershipForm({
               id="member-previous-role"
               name="previousRole"
               required
-              className="w-full px-4 py-2.5 border border-neutral-300 bg-white text-neutral-900 rounded-lg focus:ring-2 focus:ring-tertiary-500 focus:border-tertiary-500 outline-none transition-colors placeholder:text-neutral-400"
+              className={fieldClassName}
               placeholder={content.fields.previousRolePlaceholder}
             />
           </div>
@@ -280,7 +290,7 @@ export default function MembershipForm({
         <div>
           <label
             htmlFor="member-city"
-            className="block text-sm font-medium text-neutral-700 mb-1"
+            className={labelClassName}
           >
             {content.fields.cityLabel}
           </label>
@@ -289,7 +299,7 @@ export default function MembershipForm({
             id="member-city"
             name="city"
             required
-            className="w-full px-4 py-2.5 border border-neutral-300 bg-white text-neutral-900 rounded-lg focus:ring-2 focus:ring-tertiary-500 focus:border-tertiary-500 outline-none transition-colors placeholder:text-neutral-400"
+            className={fieldClassName}
             placeholder={content.fields.cityPlaceholder}
           />
         </div>
@@ -297,10 +307,10 @@ export default function MembershipForm({
         <div>
           <label
             htmlFor="member-special-talent"
-            className="block text-sm font-medium text-neutral-700 mb-1"
+            className={labelClassName}
           >
             {content.fields.specialTalentLabel}{' '}
-            <span className="text-neutral-400">
+            <span className="text-neutral-400 dark:text-neutral-500">
               ({content.fields.specialTalentOptionalLabel})
             </span>
           </label>
@@ -308,7 +318,7 @@ export default function MembershipForm({
             id="member-special-talent"
             name="specialTalentOrHandiwork"
             rows={3}
-            className="w-full px-4 py-2.5 border border-neutral-300 bg-white text-neutral-900 rounded-lg focus:ring-2 focus:ring-tertiary-500 focus:border-tertiary-500 outline-none transition-colors resize-vertical placeholder:text-neutral-400"
+            className={`${fieldClassName} resize-vertical`}
             placeholder={content.fields.specialTalentPlaceholder}
           />
         </div>
@@ -316,7 +326,7 @@ export default function MembershipForm({
         <div>
           <label
             htmlFor="member-message"
-            className="block text-sm font-medium text-neutral-700 mb-1"
+            className={labelClassName}
           >
             {content.fields.messageLabel}
           </label>
@@ -325,7 +335,7 @@ export default function MembershipForm({
             name="message"
             rows={3}
             required
-            className="w-full px-4 py-2.5 border border-neutral-300 bg-white text-neutral-900 rounded-lg focus:ring-2 focus:ring-tertiary-500 focus:border-tertiary-500 outline-none transition-colors resize-vertical placeholder:text-neutral-400"
+            className={`${fieldClassName} resize-vertical`}
             placeholder={content.fields.messagePlaceholder}
           />
         </div>

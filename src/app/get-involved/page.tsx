@@ -19,7 +19,7 @@ export const metadata: Metadata = buildPageMetadata({
 export default function GetInvolvedPage() {
   return (
     <>
-      <section className="relative bg-primary-900 text-white py-16 md:py-24 overflow-hidden">
+      <section className="relative overflow-hidden bg-primary-900 py-16 text-white sm:py-20 md:py-24">
         <div className="absolute inset-0">
           <Image
             src="/bg-image.png"
@@ -32,7 +32,7 @@ export default function GetInvolvedPage() {
           <div className="absolute inset-0 bg-linear-to-r from-tertiary-900/70 via-tertiary-900/45 to-tertiary-900/30" />
         </div>
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h1 className="font-heading text-4xl md:text-5xl font-bold">
+          <h1 className="font-heading text-3xl font-bold sm:text-4xl md:text-5xl">
             {content.title}
           </h1>
         </div>
@@ -56,7 +56,7 @@ export default function GetInvolvedPage() {
                 />
               </svg>
             </div>
-            <h2 className="font-heading text-3xl md:text-4xl font-bold gradient-title mb-4">
+            <h2 className="font-heading text-2xl font-bold gradient-title mb-4 sm:text-3xl md:text-4xl">
               {content.donateTitle}
             </h2>
             <p className="text-lg text-neutral-600 leading-relaxed">
@@ -74,7 +74,7 @@ export default function GetInvolvedPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <div className="inline-block w-16 h-1 bg-primary-500 rounded-full mb-6" />
-            <h2 className="font-heading text-3xl md:text-4xl font-bold gradient-title mb-4">
+            <h2 className="font-heading text-2xl font-bold gradient-title mb-4 sm:text-3xl md:text-4xl">
               {content.memberCarouselTitle}
             </h2>
             <p className="text-neutral-600 max-w-2xl mx-auto">
@@ -106,14 +106,14 @@ export default function GetInvolvedPage() {
                 />
               </svg>
             </div>
-            <h2 className="font-heading text-3xl md:text-4xl font-bold gradient-title mb-4">
+            <h2 className="font-heading text-2xl font-bold gradient-title mb-4 sm:text-3xl md:text-4xl">
               {content.membershipTitle}
             </h2>
             <p className="text-lg text-neutral-600 leading-relaxed">
               {content.membershipBody}
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          <div className="mx-auto grid max-w-4xl grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2">
             {content.membershipInfo.map((info, i) => (
               <div key={i} className="card card-info p-6">
                 <h3 className="font-heading font-semibold text-lg text-neutral-900 mb-2">
@@ -126,7 +126,7 @@ export default function GetInvolvedPage() {
             ))}
           </div>
 
-          <div className="max-w-2xl mx-auto mt-12">
+          <div className="mx-auto mt-10 max-w-2xl sm:mt-12">
             <MembershipForm
               content={content.membershipForm}
               contactEmail={settings.contactEmail}

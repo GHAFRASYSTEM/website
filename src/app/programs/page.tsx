@@ -111,7 +111,7 @@ export default function ProgramsPage() {
 
   return (
     <>
-      <section className="relative bg-primary-900 text-white py-16 md:py-24 overflow-hidden">
+      <section className="relative overflow-hidden bg-primary-900 py-16 text-white sm:py-20 md:py-24">
         <div className="absolute inset-0">
           <Image
             src="/bg-image.png"
@@ -124,10 +124,10 @@ export default function ProgramsPage() {
           <div className="absolute inset-0 bg-gradient-to-r from-tertiary-900/70 via-tertiary-900/45 to-tertiary-900/30" />
         </div>
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h1 className="font-heading text-4xl md:text-5xl font-bold mb-4">
+          <h1 className="mb-4 font-heading text-3xl font-bold sm:text-4xl md:text-5xl">
             {programsPage.title}
           </h1>
-          <p className="text-lg text-primary-100 max-w-3xl">
+          <p className="max-w-3xl text-base text-primary-100 sm:text-lg">
             {programsPage.subtitle}
           </p>
         </div>
@@ -137,14 +137,14 @@ export default function ProgramsPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <div className="inline-block w-16 h-1 bg-primary-500 rounded-full mb-6" />
-            <h2 className="font-heading text-3xl md:text-4xl font-bold gradient-title mb-4">
+            <h2 className="font-heading text-2xl font-bold gradient-title mb-4 sm:text-3xl md:text-4xl">
               {programsPage.programsSectionTitle}
             </h2>
             <p className="text-neutral-600 max-w-2xl mx-auto">
               {programsPage.programsSectionSubtitle}
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
             {programs.map((program) => (
               <Link
                 key={program.slug}
@@ -193,7 +193,7 @@ export default function ProgramsPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <div className="inline-block w-16 h-1 bg-primary-500 rounded-full mb-6" />
-            <h2 className="font-heading text-3xl md:text-4xl font-bold gradient-title mb-4">
+            <h2 className="font-heading text-2xl font-bold gradient-title mb-4 sm:text-3xl md:text-4xl">
               {programsPage.eventsSectionTitle}
             </h2>
             <p className="text-neutral-600 max-w-2xl mx-auto">

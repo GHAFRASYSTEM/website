@@ -46,7 +46,7 @@ export default async function ProgramDetailPage({
 
   return (
     <>
-      <section className="relative bg-primary-900 text-white py-16 md:py-24 overflow-hidden">
+      <section className="relative overflow-hidden bg-primary-900 py-16 text-white sm:py-20 md:py-24">
         <div className="absolute inset-0">
           <Image
             src="/bg-image.png"
@@ -78,7 +78,7 @@ export default async function ProgramDetailPage({
             </svg>
             {programsPage.detailBackLinkText}
           </Link>
-          <h1 className="font-heading text-4xl md:text-5xl font-bold">
+          <h1 className="font-heading text-3xl font-bold sm:text-4xl md:text-5xl">
             {program.title}
           </h1>
         </div>

@@ -49,7 +49,7 @@ export default async function ExecutiveProfilePage({
 
   return (
     <>
-      <section className="relative overflow-hidden bg-primary-900 py-16 text-white md:py-24">
+      <section className="relative overflow-hidden bg-primary-900 py-16 text-white sm:py-20 md:py-24">
         <div className="absolute inset-0">
           <Image
             src="/bg-image.png"
@@ -82,7 +82,7 @@ export default async function ExecutiveProfilePage({
             {about.executiveDetailBackLinkText}
           </Link>
 
-          <div className="grid items-center gap-10 lg:grid-cols-[320px_minmax(0,1fr)]">
+          <div className="grid items-center gap-8 sm:gap-10 lg:grid-cols-[320px_minmax(0,1fr)]">
             <div className="relative mx-auto aspect-[4/5] w-full max-w-xs overflow-hidden rounded-3xl border border-white/15 bg-white/10 shadow-2xl shadow-black/20">
               <Image
                 src={member.image}
@@ -96,10 +96,10 @@ export default async function ExecutiveProfilePage({
               <p className="text-sm font-semibold uppercase tracking-[0.22em] text-accent-200">
                 {about.executiveDetailLabel}
               </p>
-              <h1 className="mt-3 font-heading text-4xl font-bold md:text-5xl">
+              <h1 className="mt-3 font-heading text-3xl font-bold sm:text-4xl md:text-5xl">
                 {member.name}
               </h1>
-              <p className="mt-4 text-xl font-medium text-primary-100">
+              <p className="mt-4 text-lg font-medium text-primary-100 sm:text-xl">
                 {member.role}
               </p>
             </div>
@@ -109,7 +109,7 @@ export default async function ExecutiveProfilePage({
 
       <section className="geo-grid py-16 md:py-24">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <article className="card p-8 md:p-10">
+          <article className="card p-6 sm:p-8 md:p-10">
             <div
               className="prose-content"
               dangerouslySetInnerHTML={{ __html: contentHtml }}

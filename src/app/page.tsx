@@ -34,17 +34,17 @@ export default function HomePage() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-tertiary-900/70 via-tertiary-900/45 to-tertiary-900/30" />
         </div>
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 md:py-32 lg:py-40">
+        <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-24 md:py-32 lg:px-8 lg:py-40">
           <div className="max-w-3xl">
-            <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+            <h1 className="mb-6 font-heading text-3xl font-bold leading-tight sm:text-4xl md:text-5xl lg:text-6xl">
               {home.heroTitle}
             </h1>
-            <p className="text-lg md:text-xl text-primary-100 mb-8 leading-relaxed">
+            <p className="mb-8 text-base leading-relaxed text-primary-100 sm:text-lg md:text-xl">
               {home.heroSubtitle}
             </p>
             <Link
               href={home.heroCta.link}
-              className="inline-flex items-center px-6 py-3 text-lg font-semibold bg-accent-400 text-neutral-900 rounded-lg hover:bg-accent-500 transition-colors"
+              className="inline-flex w-full items-center justify-center rounded-lg bg-accent-400 px-6 py-3 text-base font-semibold text-black transition-colors hover:bg-accent-500 sm:w-auto sm:text-lg"
             >
               {home.heroCta.text}
               <svg
@@ -170,7 +170,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="relative py-16 md:py-24 bg-gradient-to-br from-accent-400 to-accent-600 text-neutral-900 cta-gradient-top overflow-hidden">
+      <section className="relative py-16 md:py-24 bg-gradient-to-br from-accent-400 to-accent-600 text-black cta-gradient-top overflow-hidden">
         <div className="cta-geo-shapes" aria-hidden="true">
           <div className="cta-shape cta-shape-1" />
           <div className="cta-shape cta-shape-2" />
@@ -179,22 +179,22 @@ export default function HomePage() {
           <div className="cta-shape cta-shape-5" />
         </div>
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6 text-neutral-900">
+          <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6 text-black">
             {home.ctaTitle}
           </h2>
-          <p className="text-lg text-neutral-800 max-w-2xl mx-auto mb-8">
+          <p className="text-lg text-black/80 max-w-2xl mx-auto mb-8">
             {home.ctaBody}
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link
               href={home.memberCta.link}
-              className="inline-flex items-center px-8 py-4 text-lg font-semibold bg-neutral-900 text-white rounded-lg hover:bg-neutral-800 transition-colors"
+              className="inline-flex w-full items-center justify-center rounded-lg bg-neutral-900 px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-neutral-800 sm:w-auto sm:px-8 sm:py-4 sm:text-lg"
             >
               {home.memberCta.text}
             </Link>
             <Link
               href={home.ctaButton.link}
-              className="inline-flex items-center px-8 py-4 text-lg font-semibold bg-white text-neutral-900 rounded-lg hover:bg-neutral-100 transition-colors border border-neutral-200"
+              className="inline-flex w-full items-center justify-center rounded-lg border border-neutral-200 bg-white px-6 py-3 text-base font-semibold text-black transition-colors hover:bg-neutral-100 dark:border-white/10 dark:bg-neutral-950 dark:text-white dark:hover:bg-neutral-900 sm:w-auto sm:px-8 sm:py-4 sm:text-lg"
             >
               {home.ctaButton.text}
             </Link>

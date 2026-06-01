@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
+import ThemeModeToggle from '@/components/layout/ThemeModeToggle'
 import type { SiteSettings } from '@/lib/types'
 
 export default function Header({ settings }: { settings: SiteSettings }) {
@@ -44,8 +45,8 @@ export default function Header({ settings }: { settings: SiteSettings }) {
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="group flex items-center gap-2.5">
-            <div className="relative w-9 h-9 rounded-lg overflow-hidden ring-1 ring-white/30 group-hover:ring-white/60 transition-all duration-200">
+          <Link href="/" className="group flex items-center gap-2 sm:gap-2.5">
+            <div className="relative h-9 w-9 overflow-hidden rounded-lg ring-1 ring-white/30 transition-all duration-200 group-hover:ring-white/60">
               <Image
                 src="/images/extracted/image-12.jpg"
                 alt="GHAFRA Nord Logo"
@@ -55,10 +56,10 @@ export default function Header({ settings }: { settings: SiteSettings }) {
               />
             </div>
             <div className="flex items-baseline gap-1">
-              <span className="font-heading font-bold text-lg text-white tracking-tight group-hover:text-accent-300 transition-colors">
+              <span className="font-heading text-base font-bold tracking-tight text-white transition-colors group-hover:text-accent-300 sm:text-lg">
                 GHAFRA
               </span>
-              <span className="font-heading text-xs font-semibold text-accent-400 tracking-wide uppercase">
+              <span className="font-heading text-[0.65rem] font-semibold uppercase tracking-wide text-accent-400 sm:text-xs">
                 Nord
               </span>
             </div>
@@ -85,6 +86,7 @@ export default function Header({ settings }: { settings: SiteSettings }) {
             })}
 
             <div className="ml-4 pl-4 border-l border-white/20 flex items-center gap-2">
+              <ThemeModeToggle />
               <Link
                 href={settings.navigation.memberButton.href}
                 className="inline-flex items-center gap-1.5 px-4 py-2 text-[0.84rem] font-semibold text-white border border-white/30 rounded-md hover:bg-white/10 transition-colors duration-200"
@@ -93,7 +95,7 @@ export default function Header({ settings }: { settings: SiteSettings }) {
               </Link>
               <Link
                 href={settings.navigation.donateButton.href}
-                className="inline-flex items-center gap-1.5 px-4 py-2 text-[0.84rem] font-semibold text-neutral-900 bg-accent-400 rounded-md hover:bg-accent-500 transition-colors duration-200"
+                className="inline-flex items-center gap-1.5 px-4 py-2 text-[0.84rem] font-semibold text-black bg-accent-400 rounded-md hover:bg-accent-500 transition-colors duration-200"
               >
                 {settings.navigation.donateButton.text}
                 <svg
@@ -151,11 +153,16 @@ export default function Header({ settings }: { settings: SiteSettings }) {
       {/* Mobile menu panel */}
       <div
         className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          mobileMenuOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'
+          mobileMenuOpen
+            ? 'max-h-[calc(100svh-4rem)] opacity-100'
+            : 'max-h-0 opacity-0'
         }`}
       >
         <div className="border-t border-white/10 bg-tertiary-900/90 backdrop-blur-xl">
-          <div className="mx-auto max-w-7xl px-4 py-3 space-y-0.5">
+          <div className="mx-auto max-h-[calc(100svh-4rem)] max-w-7xl space-y-3 overflow-y-auto px-4 py-3">
+            <div className="flex justify-center sm:justify-start">
+              <ThemeModeToggle />
+            </div>
             {settings.navigation.mainLinks.map((item) => {
               const isActive = pathname === item.href
               return (
@@ -183,7 +190,7 @@ export default function Header({ settings }: { settings: SiteSettings }) {
               </Link>
               <Link
                 href={settings.navigation.donateButton.href}
-                className="flex items-center justify-center gap-1.5 w-full px-4 py-2.5 text-sm font-semibold text-neutral-900 bg-accent-400 rounded-md hover:bg-accent-500 transition-colors"
+                className="flex items-center justify-center gap-1.5 w-full px-4 py-2.5 text-sm font-semibold text-black bg-accent-400 rounded-md hover:bg-accent-500 transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {settings.navigation.donateButton.text}

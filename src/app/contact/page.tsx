@@ -16,7 +16,7 @@ export const metadata: Metadata = buildPageMetadata({
 export default function ContactPage() {
   return (
     <>
-      <section className="relative bg-primary-900 text-white py-16 md:py-24 overflow-hidden">
+      <section className="relative overflow-hidden bg-primary-900 py-16 text-white sm:py-20 md:py-24">
         <div className="absolute inset-0">
           <Image
             src="/bg-image.png"
@@ -29,10 +29,10 @@ export default function ContactPage() {
           <div className="absolute inset-0 bg-gradient-to-r from-tertiary-900/70 via-tertiary-900/45 to-tertiary-900/30" />
         </div>
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h1 className="font-heading text-4xl md:text-5xl font-bold mb-4">
+          <h1 className="mb-4 font-heading text-3xl font-bold sm:text-4xl md:text-5xl">
             {contact.title}
           </h1>
-          <p className="text-lg text-primary-100 max-w-3xl">
+          <p className="max-w-3xl text-base text-primary-100 sm:text-lg">
             {contact.subtitle}
           </p>
         </div>
@@ -40,7 +40,7 @@ export default function ContactPage() {
 
       <section className="py-16 md:py-24 geo-diamond">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12">
             <div>
               <h2 className="font-heading text-2xl font-bold gradient-title mb-6">
                 {contact.contactInfoTitle}

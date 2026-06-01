@@ -1,5 +1,69 @@
 @import 'tailwindcss';
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  color-scheme: light;
+  --site-background: #faf8f6;
+  --site-foreground: var(--color-neutral-800);
+  --site-foreground-strong: var(--color-neutral-900);
+  --site-foreground-muted: var(--color-neutral-700);
+  --site-foreground-soft: var(--color-neutral-600);
+  --site-foreground-faint: var(--color-neutral-500);
+  --site-surface: #ffffff;
+  --site-surface-muted: var(--color-neutral-50);
+  --site-surface-glass: rgba(255, 255, 255, 0.92);
+  --site-surface-glass-soft: rgba(255, 255, 255, 0.85);
+  --site-surface-green: rgba(240, 247, 242, 0.85);
+  --site-surface-gold: rgba(253, 249, 235, 0.85);
+  --site-border-glass: rgba(255, 255, 255, 0.6);
+  --site-border-soft: rgba(255, 255, 255, 0.5);
+  --site-border-strong: rgba(222, 220, 217, 0.6);
+  --site-pattern-primary: rgba(193, 8, 50, 0.04);
+  --site-pattern-primary-soft: rgba(193, 8, 50, 0.03);
+  --site-pattern-secondary: rgba(48, 108, 67, 0.08);
+  --site-pattern-secondary-soft: rgba(48, 108, 67, 0.04);
+  --site-pattern-accent: rgba(232, 195, 50, 0.05);
+  --site-shadow-overlay: rgba(26, 25, 24, 0.06);
+  --site-cta-stroke: rgba(0, 0, 0, 0.06);
+  --site-cta-shape-1: rgba(0, 0, 0, 0.04);
+  --site-cta-shape-2: rgba(0, 0, 0, 0.03);
+  --site-cta-shape-3: rgba(0, 0, 0, 0.035);
+  --site-cta-shape-4: rgba(0, 0, 0, 0.03);
+  --site-cta-shape-5: rgba(0, 0, 0, 0.025);
+}
+
+html.dark {
+  color-scheme: dark;
+  --site-background: #09120f;
+  --site-foreground: #e3ece6;
+  --site-foreground-strong: #f6f8f6;
+  --site-foreground-muted: #d0dad3;
+  --site-foreground-soft: #adb9b1;
+  --site-foreground-faint: #89958e;
+  --site-surface: #101916;
+  --site-surface-muted: #0f1d19;
+  --site-surface-glass: rgba(13, 25, 21, 0.92);
+  --site-surface-glass-soft: rgba(18, 31, 26, 0.85);
+  --site-surface-green: rgba(48, 108, 67, 0.18);
+  --site-surface-gold: rgba(232, 195, 50, 0.16);
+  --site-border-glass: rgba(117, 143, 131, 0.28);
+  --site-border-soft: rgba(117, 143, 131, 0.24);
+  --site-border-strong: rgba(117, 143, 131, 0.3);
+  --site-pattern-primary: rgba(193, 8, 50, 0.12);
+  --site-pattern-primary-soft: rgba(193, 8, 50, 0.09);
+  --site-pattern-secondary: rgba(48, 108, 67, 0.18);
+  --site-pattern-secondary-soft: rgba(48, 108, 67, 0.12);
+  --site-pattern-accent: rgba(232, 195, 50, 0.1);
+  --site-shadow-overlay: rgba(6, 10, 8, 0.32);
+  --site-cta-stroke: rgba(255, 255, 255, 0.08);
+  --site-cta-shape-1: rgba(255, 255, 255, 0.06);
+  --site-cta-shape-2: rgba(255, 255, 255, 0.045);
+  --site-cta-shape-3: rgba(255, 255, 255, 0.05);
+  --site-cta-shape-4: rgba(255, 255, 255, 0.04);
+  --site-cta-shape-5: rgba(255, 255, 255, 0.035);
+}
+
 @theme inline {
   /* Primary — Crimson Red (from logo: #c10832) */
   --color-primary-50: #fef2f4;
@@ -61,8 +125,11 @@
   }
 
   body {
-    background-color: #faf8f6;
-    color: var(--color-neutral-800);
+    background-color: var(--site-background);
+    color: var(--site-foreground);
+    transition:
+      background-color 0.25s ease,
+      color 0.25s ease;
   }
 }
 
@@ -110,56 +177,52 @@ h6 {
 
 /* Fine grid lines */
 .geo-grid {
-  background-color: #ffffff;
+  background-color: var(--site-surface);
   background-image:
-    linear-gradient(rgba(193, 8, 50, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(193, 8, 50, 0.04) 1px, transparent 1px);
+    linear-gradient(var(--site-pattern-primary) 1px, transparent 1px),
+    linear-gradient(90deg, var(--site-pattern-primary) 1px, transparent 1px);
   background-size: 40px 40px;
   animation: geo-drift 30s linear infinite;
 }
 
 /* Dot grid */
 .geo-dots {
-  background-color: var(--color-neutral-50);
-  background-image: radial-gradient(
-    circle,
-    rgba(48, 108, 67, 0.08) 1px,
-    transparent 1px
-  );
+  background-color: var(--site-surface-muted);
+  background-image: radial-gradient(circle, var(--site-pattern-secondary) 1px, transparent 1px);
   background-size: 24px 24px;
   animation: geo-drift 25s linear infinite;
 }
 
 /* Diagonal lines */
 .geo-diagonal {
-  background-color: #ffffff;
+  background-color: var(--site-surface);
   background-image: repeating-linear-gradient(
     45deg,
     transparent,
     transparent 20px,
-    rgba(232, 195, 50, 0.05) 20px,
-    rgba(232, 195, 50, 0.05) 21px
+    var(--site-pattern-accent) 20px,
+    var(--site-pattern-accent) 21px
   );
   animation: geo-drift-reverse 35s linear infinite;
 }
 
 /* Hexagonal / honeycomb feel via overlapping radial gradients */
 .geo-hexagon {
-  background-color: #ffffff;
+  background-color: var(--site-surface);
   background-image:
     radial-gradient(
       circle at 0% 50%,
-      rgba(193, 8, 50, 0.03) 9px,
+      var(--site-pattern-primary-soft) 9px,
       transparent 10px
     ),
     radial-gradient(
       circle at 100% 50%,
-      rgba(193, 8, 50, 0.03) 9px,
+      var(--site-pattern-primary-soft) 9px,
       transparent 10px
     ),
     radial-gradient(
       circle at 50% 0%,
-      rgba(48, 108, 67, 0.03) 9px,
+      var(--site-pattern-secondary-soft) 9px,
       transparent 10px
     );
   background-size: 40px 46px;
@@ -168,10 +231,10 @@ h6 {
 
 /* Cross / plus pattern */
 .geo-cross {
-  background-color: var(--color-neutral-50);
+  background-color: var(--site-surface-muted);
   background-image:
-    linear-gradient(rgba(193, 8, 50, 0.04) 2px, transparent 2px),
-    linear-gradient(90deg, rgba(193, 8, 50, 0.04) 2px, transparent 2px);
+    linear-gradient(var(--site-pattern-primary) 2px, transparent 2px),
+    linear-gradient(90deg, var(--site-pattern-primary) 2px, transparent 2px);
   background-size: 32px 32px;
   background-position: center center;
   animation: geo-drift-reverse 28s linear infinite;
@@ -179,12 +242,12 @@ h6 {
 
 /* Diamond / rhombus pattern */
 .geo-diamond {
-  background-color: #ffffff;
+  background-color: var(--site-surface);
   background-image:
-    linear-gradient(45deg, rgba(48, 108, 67, 0.04) 25%, transparent 25%),
-    linear-gradient(-45deg, rgba(48, 108, 67, 0.04) 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, rgba(48, 108, 67, 0.04) 75%),
-    linear-gradient(-45deg, transparent 75%, rgba(48, 108, 67, 0.04) 75%);
+    linear-gradient(45deg, var(--site-pattern-secondary-soft) 25%, transparent 25%),
+    linear-gradient(-45deg, var(--site-pattern-secondary-soft) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, var(--site-pattern-secondary-soft) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--site-pattern-secondary-soft) 75%);
   background-size: 36px 36px;
   background-position:
     0 0,
@@ -198,10 +261,10 @@ h6 {
 
 /* Base card — frosted glass with refined shadow & hover lift */
 .card {
-  background: rgba(255, 255, 255, 0.92);
+  background: var(--site-surface-glass);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--site-border-glass);
   border-radius: 1rem;
   box-shadow:
     0 1px 3px rgba(0, 0, 0, 0.04),
@@ -261,7 +324,7 @@ h6 {
   background: linear-gradient(
     to bottom,
     transparent 50%,
-    rgba(26, 25, 24, 0.06) 100%
+    var(--site-shadow-overlay) 100%
   );
   pointer-events: none;
   z-index: 1;
@@ -324,7 +387,7 @@ h6 {
 
 /* Donation card — ring glow on hover */
 .card-donate {
-  border: 2px solid rgba(222, 220, 217, 0.6);
+  border: 2px solid var(--site-border-strong);
   transition:
     transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
     box-shadow 0.35s ease,
@@ -340,10 +403,10 @@ h6 {
 
 /* Values card — subtle glass tile */
 .card-value {
-  background: rgba(255, 255, 255, 0.85);
+  background: var(--site-surface-glass-soft);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--site-border-soft);
   border-radius: 1rem;
   padding: 2rem 1.5rem;
   transition:
@@ -362,7 +425,7 @@ h6 {
 .card-mission {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--site-border-soft);
   border-radius: 1rem;
   padding: 2.5rem;
   position: relative;
@@ -390,7 +453,7 @@ h6 {
 }
 
 .card-mission-green {
-  background: rgba(240, 247, 242, 0.85);
+  background: var(--site-surface-green);
 }
 
 .card-mission-green::after {
@@ -402,7 +465,7 @@ h6 {
 }
 
 .card-mission-gold {
-  background: rgba(253, 249, 235, 0.85);
+  background: var(--site-surface-gold);
 }
 
 .card-mission-gold::after {
@@ -458,7 +521,7 @@ h6 {
 .membership-form-border {
   border: 2px solid transparent;
   background-image:
-    linear-gradient(var(--color-neutral-50), var(--color-neutral-50)),
+    linear-gradient(var(--site-surface), var(--site-surface)),
     conic-gradient(
       from var(--border-angle),
       var(--color-primary-600),
@@ -554,7 +617,7 @@ h6 {
 
 .cta-shape {
   position: absolute;
-  border: 1.5px solid rgba(0, 0, 0, 0.06);
+  border: 1.5px solid var(--site-cta-stroke);
   will-change: transform;
 }
 
@@ -592,7 +655,7 @@ h6 {
   top: 10%;
   left: 5%;
   border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-  background: rgba(0, 0, 0, 0.04);
+  background: var(--site-cta-shape-1);
   animation: geo-float-1 18s ease-in-out infinite;
 }
 
@@ -602,7 +665,7 @@ h6 {
   top: 60%;
   right: 8%;
   border-radius: 50%;
-  background: rgba(0, 0, 0, 0.03);
+  background: var(--site-cta-shape-2);
   animation: geo-float-2 22s ease-in-out infinite;
 }
 
@@ -612,7 +675,7 @@ h6 {
   top: 20%;
   right: 20%;
   transform: rotate(45deg);
-  background: rgba(0, 0, 0, 0.035);
+  background: var(--site-cta-shape-3);
   animation: geo-float-3 20s ease-in-out infinite;
 }
 
@@ -622,7 +685,7 @@ h6 {
   bottom: 15%;
   left: 15%;
   clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
-  background: rgba(0, 0, 0, 0.03);
+  background: var(--site-cta-shape-4);
   border: none;
   animation: geo-float-2 25s ease-in-out infinite;
 }
@@ -633,7 +696,7 @@ h6 {
   top: 45%;
   left: 55%;
   border-radius: 50%;
-  background: rgba(0, 0, 0, 0.025);
+  background: var(--site-cta-shape-5);
   animation: geo-float-1 24s ease-in-out infinite;
 }
 
@@ -712,4 +775,154 @@ h6 {
 .prose-content img {
   border-radius: 0.5rem;
   margin: 1.5rem 0;
+}
+
+html.dark .prose-content h3,
+html.dark .prose-content strong {
+  color: var(--site-foreground-strong);
+}
+
+html.dark .prose-content p,
+html.dark .prose-content li,
+html.dark .prose-content blockquote {
+  color: var(--site-foreground-muted);
+}
+
+html.dark .prose-content a {
+  color: #ff8ca6;
+}
+
+html.dark .prose-content blockquote {
+  border-left-color: rgba(244, 105, 138, 0.45);
+}
+
+@layer utilities {
+  .dark .bg-white {
+    background-color: var(--site-surface) !important;
+  }
+
+  .dark .bg-neutral-50 {
+    background-color: var(--site-surface-muted) !important;
+  }
+
+  .dark .bg-neutral-100 {
+    background-color: #182420 !important;
+  }
+
+  .dark .bg-neutral-900 {
+    background-color: #07100d !important;
+  }
+
+  .dark .bg-neutral-800 {
+    background-color: #0d1714 !important;
+  }
+
+  .dark .bg-primary-50 {
+    background-color: rgba(193, 8, 50, 0.16) !important;
+  }
+
+  .dark .bg-primary-100 {
+    background-color: rgba(193, 8, 50, 0.22) !important;
+  }
+
+  .dark .bg-tertiary-50 {
+    background-color: rgba(48, 108, 67, 0.18) !important;
+  }
+
+  .dark .bg-tertiary-100 {
+    background-color: rgba(48, 108, 67, 0.24) !important;
+  }
+
+  .dark .bg-accent-50 {
+    background-color: rgba(232, 195, 50, 0.16) !important;
+  }
+
+  .dark .bg-accent-100 {
+    background-color: rgba(232, 195, 50, 0.2) !important;
+  }
+
+  .dark .bg-white\/80 {
+    background-color: rgba(16, 25, 22, 0.82) !important;
+  }
+
+  .dark .bg-white\/50 {
+    background-color: rgba(16, 25, 22, 0.52) !important;
+  }
+
+  .dark .text-neutral-900 {
+    color: var(--site-foreground-strong) !important;
+  }
+
+  .dark .text-neutral-800 {
+    color: var(--site-foreground) !important;
+  }
+
+  .dark .text-neutral-700 {
+    color: var(--site-foreground-muted) !important;
+  }
+
+  .dark .text-neutral-600 {
+    color: var(--site-foreground-soft) !important;
+  }
+
+  .dark .text-neutral-500,
+  .dark .text-neutral-400 {
+    color: var(--site-foreground-faint) !important;
+  }
+
+  .dark .text-primary-600,
+  .dark .text-primary-700 {
+    color: #ff8ca6 !important;
+  }
+
+  .dark .text-tertiary-600 {
+    color: #7dc594 !important;
+  }
+
+  .dark .text-accent-700,
+  .dark .text-accent-800 {
+    color: #f3d875 !important;
+  }
+
+  .dark .border-neutral-200 {
+    border-color: rgba(117, 143, 131, 0.16) !important;
+  }
+
+  .dark .border-neutral-300 {
+    border-color: rgba(117, 143, 131, 0.24) !important;
+  }
+
+  .dark .border-neutral-800 {
+    border-color: rgba(117, 143, 131, 0.14) !important;
+  }
+
+  .dark .border-accent-200,
+  .dark .border-accent-200\/70,
+  .dark .border-accent-300\/70 {
+    border-color: rgba(232, 195, 50, 0.26) !important;
+  }
+
+  .dark .placeholder\:text-neutral-400::placeholder {
+    color: var(--site-foreground-faint) !important;
+  }
+
+  .dark .hover\:bg-neutral-50\/50:hover {
+    background-color: rgba(24, 36, 32, 0.72) !important;
+  }
+
+  .dark .hover\:bg-neutral-100:hover {
+    background-color: #22302b !important;
+  }
+
+  .dark .hover\:bg-neutral-800:hover {
+    background-color: #12201b !important;
+  }
+
+  .dark .hover\:bg-white:hover {
+    background-color: #1a2622 !important;
+  }
+
+  .dark .hover\:bg-white\/75:hover {
+    background-color: rgba(26, 38, 34, 0.78) !important;
+  }
 }

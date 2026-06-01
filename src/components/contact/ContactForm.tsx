@@ -6,6 +6,9 @@ import type { ContactContent } from '@/lib/types'
 const FORMSPREE_CONTACT_FORM_ID =
   process.env.NEXT_PUBLIC_FORMSPREE_CONTACT_FORM_ID
 
+const fieldClassName =
+  'w-full rounded-lg border border-neutral-300 bg-white px-4 py-2.5 text-neutral-900 outline-none transition-colors placeholder:text-neutral-400 focus:border-primary-500 focus:ring-2 focus:ring-primary-500 dark:border-white/15 dark:bg-neutral-950 dark:text-neutral-50 dark:placeholder:text-neutral-500'
+
 export default function ContactForm({
   content,
   contactEmail,
@@ -47,8 +50,8 @@ export default function ContactForm({
 
   if (status === 'sent') {
     return (
-      <div className="bg-primary-50 rounded-xl p-8 text-center">
-        <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary-100 text-primary-600 mb-4">
+      <div className="rounded-xl bg-primary-50 p-8 text-center dark:bg-primary-950/30">
+        <div className="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full bg-primary-100 text-primary-600 dark:bg-primary-900/50 dark:text-primary-300">
           <svg
             className="w-8 h-8"
             fill="none"
@@ -63,10 +66,12 @@ export default function ContactForm({
             />
           </svg>
         </div>
-        <h3 className="font-heading text-xl font-semibold text-neutral-900 mb-2">
+        <h3 className="mb-2 font-heading text-xl font-semibold text-neutral-900 dark:text-neutral-50">
           {content.successTitle}
         </h3>
-        <p className="text-neutral-600">{content.successMessage}</p>
+        <p className="text-neutral-600 dark:text-neutral-200">
+          {content.successMessage}
+        </p>
       </div>
     )
   }
@@ -74,14 +79,14 @@ export default function ContactForm({
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-neutral-50 rounded-xl p-8 membership-form-border"
+      className="membership-form-border rounded-xl bg-neutral-50 p-5 sm:p-8 dark:bg-[#101916] dark:text-neutral-100"
     >
       <h2 className="font-heading text-2xl font-bold gradient-title mb-6">
         {content.title}
       </h2>
 
       {status === 'error' && (
-        <div className="mb-4 rounded-lg bg-red-50 border border-red-200 p-4 text-sm text-red-700">
+        <div className="mb-4 rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700 dark:border-red-500/30 dark:bg-red-950/30 dark:text-red-200">
           {content.errorIntro}{' '}
           <a href={`mailto:${contactEmail}`} className="font-medium underline">
             {contactEmail}
@@ -105,7 +110,7 @@ export default function ContactForm({
         <div>
           <label
             htmlFor="name"
-            className="block text-sm font-medium text-neutral-700 mb-1"
+            className="mb-1 block text-sm font-medium text-neutral-700 dark:text-neutral-50"
           >
             {content.fields.nameLabel}
           </label>
@@ -114,14 +119,14 @@ export default function ContactForm({
             id="name"
             name="name"
             required
-            className="w-full px-4 py-2.5 border border-neutral-300 bg-white text-neutral-900 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors placeholder:text-neutral-400"
+            className={fieldClassName}
             placeholder={content.fields.namePlaceholder}
           />
         </div>
         <div>
           <label
             htmlFor="email"
-            className="block text-sm font-medium text-neutral-700 mb-1"
+            className="mb-1 block text-sm font-medium text-neutral-700 dark:text-neutral-50"
           >
             {content.fields.emailLabel}
           </label>
@@ -130,14 +135,14 @@ export default function ContactForm({
             id="email"
             name="email"
             required
-            className="w-full px-4 py-2.5 border border-neutral-300 bg-white text-neutral-900 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors placeholder:text-neutral-400"
+            className={fieldClassName}
             placeholder={content.fields.emailPlaceholder}
           />
         </div>
         <div>
           <label
             htmlFor="subject"
-            className="block text-sm font-medium text-neutral-700 mb-1"
+            className="mb-1 block text-sm font-medium text-neutral-700 dark:text-neutral-50"
           >
             {content.fields.subjectLabel}
           </label>
@@ -146,14 +151,14 @@ export default function ContactForm({
             id="subject"
             name="subject"
             required
-            className="w-full px-4 py-2.5 border border-neutral-300 bg-white text-neutral-900 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors placeholder:text-neutral-400"
+            className={fieldClassName}
             placeholder={content.fields.subjectPlaceholder}
           />
         </div>
         <div>
           <label
             htmlFor="message"
-            className="block text-sm font-medium text-neutral-700 mb-1"
+            className="mb-1 block text-sm font-medium text-neutral-700 dark:text-neutral-50"
           >
             {content.fields.messageLabel}
           </label>
@@ -162,7 +167,7 @@ export default function ContactForm({
             name="message"
             rows={5}
             required
-            className="w-full px-4 py-2.5 border border-neutral-300 bg-white text-neutral-900 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors resize-vertical placeholder:text-neutral-400"
+            className={`${fieldClassName} resize-vertical`}
             placeholder={content.fields.messagePlaceholder}
           />
         </div>
