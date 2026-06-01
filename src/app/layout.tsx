@@ -11,6 +11,7 @@ const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit' })
 
 const settings = getSiteSettings()
 const logoPath = '/images/extracted/image-12.jpg'
+const themeScript = `(function(){const storageKey='theme-preference';const root=document.documentElement;const media=window.matchMedia('(prefers-color-scheme: dark)');const stored=window.localStorage.getItem(storageKey);const mode=stored==='light'||stored==='dark'||stored==='auto'?stored:'auto';const resolved=mode==='auto'?(media.matches?'dark':'light'):mode;root.dataset.themeMode=mode;root.classList.toggle('dark',resolved==='dark');root.style.colorScheme=resolved;})();`
 
 export const metadata: Metadata = {
   metadataBase: new URL(settings.siteUrl),
@@ -67,8 +68,13 @@ export default function RootLayout({
   ].filter(Boolean)
 
   return (
-    <html lang="en" className={`${inter.variable} ${outfit.variable}`}>
+    <html
+      lang="en"
+      className={`${inter.variable} ${outfit.variable}`}
+      suppressHydrationWarning
+    >
       <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -96,7 +102,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="font-sans text-neutral-800 antialiased">
+      <body className="font-sans antialiased">
         <Header settings={settings} />
         <main className="min-h-screen">{children}</main>
         <Footer settings={settings} />

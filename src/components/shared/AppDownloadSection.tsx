@@ -100,9 +100,12 @@ export default function AppDownloadSection({
 
       <style jsx>{`
         .app-download-section {
-          background: #f8f6f2;
-          padding: 72px 24px;
+          background: var(--site-surface-muted);
+          padding: 64px 20px;
           text-align: center;
+          transition:
+            background-color 0.25s ease,
+            color 0.25s ease;
         }
 
         .divider-line {
@@ -131,7 +134,7 @@ export default function AppDownloadSection({
         .app-download-section p {
           font-size: 16px;
           font-family: inherit;
-          color: #555;
+          color: var(--site-foreground-soft);
           margin: 0 auto 48px;
           max-width: 480px;
           line-height: 1.6;
@@ -152,7 +155,7 @@ export default function AppDownloadSection({
           height: 290px;
           background: #1a1a1a;
           border-radius: 28px;
-          border: 3px solid #333;
+          border: 3px solid rgba(20, 29, 26, 0.85);
           position: relative;
           overflow: hidden;
           box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
@@ -200,7 +203,7 @@ export default function AppDownloadSection({
           display: inline-flex;
           align-items: center;
           gap: 12px;
-          padding: 14px 28px;
+          padding: 14px 22px;
           border-radius: 14px;
           text-decoration: none;
           font-family: sans-serif;
@@ -222,9 +225,9 @@ export default function AppDownloadSection({
         }
 
         .btn-android {
-          background: white;
-          color: #222;
-          border: 2px solid #ddd;
+          background: var(--site-surface);
+          color: var(--site-foreground-strong);
+          border: 2px solid rgba(117, 143, 131, 0.24);
         }
 
         .btn-store-icon {
@@ -286,6 +289,45 @@ export default function AppDownloadSection({
             width: 100%;
             justify-content: center;
             min-width: 0;
+          }
+        }
+
+        @media (max-width: 420px) {
+          .phones-frame {
+            max-width: 256px;
+            margin-bottom: 28px;
+          }
+
+          .phone {
+            width: 104px;
+            height: 192px;
+            border-radius: 22px;
+          }
+
+          .phone-left {
+            transform: rotate(-5deg) translateX(10px);
+          }
+
+          .phone-right {
+            transform: rotate(5deg) translateX(-10px);
+          }
+
+          .phone-notch {
+            width: 52px;
+            height: 16px;
+          }
+
+          .phone-screen {
+            border-radius: 20px;
+          }
+
+          .btn-store {
+            gap: 10px;
+            padding: 12px 16px;
+          }
+
+          .btn-label {
+            font-size: 15px;
           }
         }
       `}</style>

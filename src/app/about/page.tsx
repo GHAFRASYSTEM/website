@@ -87,7 +87,7 @@ export default function AboutPage() {
 
   return (
     <>
-      <section className="relative bg-primary-900 text-white py-20 md:py-32 overflow-hidden">
+      <section className="relative overflow-hidden bg-primary-900 py-16 text-white sm:py-20 md:py-32">
         <div className="absolute inset-0">
           <Image
             src="/bg-image.png"
@@ -99,8 +99,8 @@ export default function AboutPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-tertiary-900/70 via-tertiary-900/45 to-tertiary-900/30" />
         </div>
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
-          <div className="w-24 h-24 md:w-32 md:h-32 rounded-2xl overflow-hidden ring-4 ring-white/20 shadow-2xl mb-6">
+        <div className="relative mx-auto flex max-w-7xl flex-col items-center px-4 text-center sm:px-6 lg:px-8">
+          <div className="mb-6 h-20 w-20 overflow-hidden rounded-2xl ring-4 ring-white/20 shadow-2xl sm:h-24 sm:w-24 md:h-32 md:w-32">
             <Image
               src="/images/extracted/image-12.jpg"
               alt="GHAFRA Nord Logo"
@@ -110,7 +110,7 @@ export default function AboutPage() {
               priority
             />
           </div>
-          <h1 className="font-heading text-4xl md:text-5xl font-bold drop-shadow-lg">
+          <h1 className="font-heading text-3xl font-bold drop-shadow-lg sm:text-4xl md:text-5xl">
             {about.title}
           </h1>
         </div>
@@ -118,7 +118,7 @@ export default function AboutPage() {
 
       <section className="py-16 md:py-24 geo-grid">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12">
             <div className="card-mission card-mission-green">
               <h2 className="font-heading text-2xl font-bold gradient-title mb-4">
                 {about.missionSectionTitle}

@@ -33,7 +33,7 @@ function ComingSoonModal({
         role="dialog"
         aria-modal="true"
         aria-labelledby="donation-coming-soon-title"
-        className="relative w-full max-w-md rounded-3xl bg-white p-6 text-center shadow-2xl"
+        className="relative w-full max-w-md rounded-3xl bg-white p-6 text-center shadow-2xl dark:bg-[#101916] dark:shadow-black/40"
       >
         <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-accent-100 text-accent-700">
           <svg
@@ -63,7 +63,7 @@ function ComingSoonModal({
         <button
           type="button"
           onClick={onClose}
-          className="mt-6 inline-flex cursor-pointer items-center justify-center rounded-lg bg-gradient-to-r from-accent-400 to-accent-500 px-5 py-2.5 text-sm font-semibold text-neutral-900 shadow-sm transition-all hover:from-accent-500 hover:to-accent-600 hover:shadow-md"
+          className="mt-6 inline-flex cursor-pointer items-center justify-center rounded-lg bg-gradient-to-r from-accent-400 to-accent-500 px-5 py-2.5 text-sm font-semibold text-black shadow-sm transition-all hover:from-accent-500 hover:to-accent-600 hover:shadow-md"
         >
           {closeText}
         </button>
@@ -200,7 +200,7 @@ function CustomDonationCard({
           }
         }}
         disabled={!hasValidAmount}
-        className="mt-2 w-full cursor-pointer rounded-lg bg-gradient-to-r from-accent-400 to-accent-500 px-4 py-2.5 text-sm font-semibold text-neutral-900 shadow-sm transition-all hover:from-accent-500 hover:to-accent-600 hover:shadow-md disabled:cursor-not-allowed disabled:from-neutral-200 disabled:to-neutral-300 disabled:text-neutral-500 disabled:shadow-none"
+        className="mt-2 w-full cursor-pointer rounded-lg bg-gradient-to-r from-accent-400 to-accent-500 px-4 py-2.5 text-sm font-semibold text-black shadow-sm transition-all hover:from-accent-500 hover:to-accent-600 hover:shadow-md disabled:cursor-not-allowed disabled:from-neutral-200 disabled:to-neutral-300 disabled:text-neutral-500 disabled:shadow-none"
       >
         {hasValidAmount && previewAmount
           ? `${option.buttonText || 'Donate'} ${previewAmount}`
@@ -233,7 +233,7 @@ function FixedDonationCard({
       <button
         type="button"
         onClick={onDonateAttempt}
-        className="mt-4 w-full cursor-pointer rounded-lg bg-gradient-to-r from-accent-400 to-accent-500 px-4 py-2.5 text-sm font-semibold text-neutral-900 shadow-sm transition-all hover:from-accent-500 hover:to-accent-600 hover:shadow-md"
+        className="mt-4 w-full cursor-pointer rounded-lg bg-gradient-to-r from-accent-400 to-accent-500 px-4 py-2.5 text-sm font-semibold text-black shadow-sm transition-all hover:from-accent-500 hover:to-accent-600 hover:shadow-md"
       >
         {ui.fixedButtonPrefix} {formattedAmount}
       </button>
@@ -268,7 +268,7 @@ export default function DonationOptions({
       )}
 
       {customOptions.length > 0 && (
-        <div className="mx-auto mt-8 max-w-2xl rounded-[1.75rem] border border-accent-200/70 bg-linear-to-br from-white via-accent-50/60 to-primary-50/40 p-4 shadow-[0_18px_45px_rgba(26,25,24,0.08)] sm:mt-10 sm:p-5">
+        <div className="mx-auto mt-8 max-w-2xl rounded-[1.75rem] border border-accent-200/70 bg-linear-to-br from-white via-accent-50/60 to-primary-50/40 p-4 shadow-[0_18px_45px_rgba(26,25,24,0.08)] dark:border-accent-300/25 dark:from-[#101916] dark:via-[#161e18] dark:to-[#1f1715] dark:shadow-[0_18px_45px_rgba(0,0,0,0.34)] sm:mt-10 sm:p-5">
           <div className="text-center">
             <span className="inline-flex items-center rounded-full border border-accent-300/70 bg-white/80 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-accent-700">
               {ui.customSectionEyebrow}
