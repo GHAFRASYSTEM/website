@@ -95,6 +95,51 @@ To configure CMS access:
 
 After deployment, editors can log in at `https://www.ghafra.com/admin` with GitHub.
 
+## Contributor Workflow
+
+### Content Editors
+
+Use the CMS when the change is content-only.
+
+- Log in at `https://www.ghafra.com/admin`
+- Edit page copy, program entries, executive profiles, and uploaded images
+- Review the generated content carefully before saving
+- Publish the change from the CMS so it commits back to `GHAFRASYSTEM/website`
+
+Content editors should use the CMS for:
+
+- text and markdown updates
+- image replacements or additions
+- social links and site-level metadata stored in `content/settings.json`
+- team and program content updates
+
+Content editors should not modify:
+
+- `src/`
+- `public/admin/config.yml`
+- OAuth settings or other environment variables
+- build, deployment, or Vercel configuration
+
+### Developers
+
+Use the local project when the change affects application behavior, styling, structure, or deployment.
+
+1. Pull the latest changes from the repository.
+2. Copy `.env.example` to `.env.local` if needed.
+3. Run `npm install`.
+4. Start the app with `npm run dev`.
+5. Make code or configuration changes.
+6. Run `npm run build` before merging or deploying.
+
+Developers should use code changes for:
+
+- React or Next.js page updates
+- component or styling changes
+- CMS schema or collection changes in `public/admin/config.yml`
+- API route, OAuth, or form integration changes
+- SEO, metadata, robots, or sitemap logic changes
+
+
 ## Local CMS Notes
 
 `public/admin/config.yml` has `local_backend: true`, but this repository does not include a Decap proxy server script. The production editing path is the supported one: `/admin` on the deployed Vercel site with GitHub OAuth.
