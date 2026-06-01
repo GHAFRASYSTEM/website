@@ -14,11 +14,15 @@ const logoPath = '/images/extracted/image-12.jpg'
 
 export const metadata: Metadata = {
   metadataBase: new URL(settings.siteUrl),
+  applicationName: settings.siteName,
   title: {
     default: `${settings.siteName} - Ghanaian Community in Lille`,
     template: `%s | ${settings.siteName}`,
   },
   description: settings.siteDescription,
+  alternates: {
+    canonical: settings.siteUrl,
+  },
   icons: {
     icon: logoPath,
     shortcut: logoPath,
@@ -42,6 +46,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     images: [logoPath],
   },
+  manifest: '/manifest.webmanifest',
   robots: {
     index: true,
     follow: true,
@@ -92,9 +97,9 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans text-neutral-800 antialiased">
-        <Header />
+        <Header settings={settings} />
         <main className="min-h-screen">{children}</main>
-        <Footer />
+        <Footer settings={settings} />
         <ScrollToTop />
       </body>
     </html>

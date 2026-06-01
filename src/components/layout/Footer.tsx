@@ -1,22 +1,8 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { getSiteSettings } from '@/lib/content'
+import type { SiteSettings } from '@/lib/types'
 
-const quickLinks = [
-  { name: 'About Us', href: '/about' },
-  { name: 'Our Activities', href: '/programs' },
-  { name: 'Get Involved', href: '/get-involved' },
-]
-
-const involveLinks = [
-  { name: 'Donate', href: '/get-involved#donate' },
-  { name: 'Become a Member', href: '/get-involved#membership' },
-  { name: 'Contact Us', href: '/contact' },
-]
-
-export default function Footer() {
-  const settings = getSiteSettings()
-
+export default function Footer({ settings }: { settings: SiteSettings }) {
   return (
     <footer className="bg-neutral-900 text-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
@@ -32,6 +18,7 @@ export default function Footer() {
                   alt="GHAFRA Nord Logo"
                   fill
                   className="object-cover"
+                  sizes="40px"
                 />
               </div>
               <div>
@@ -50,10 +37,10 @@ export default function Footer() {
 
           <div>
             <h3 className="font-heading font-semibold text-sm uppercase tracking-wider text-neutral-300 mb-4">
-              Quick Links
+              {settings.footer.quickLinksTitle}
             </h3>
             <ul className="space-y-2">
-              {quickLinks.map((link) => (
+              {settings.footer.quickLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
@@ -68,10 +55,10 @@ export default function Footer() {
 
           <div>
             <h3 className="font-heading font-semibold text-sm uppercase tracking-wider text-neutral-300 mb-4">
-              Get Involved
+              {settings.footer.getInvolvedTitle}
             </h3>
             <ul className="space-y-2">
-              {involveLinks.map((link) => (
+              {settings.footer.getInvolvedLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
@@ -86,7 +73,7 @@ export default function Footer() {
 
           <div>
             <h3 className="font-heading font-semibold text-sm uppercase tracking-wider text-neutral-300 mb-4">
-              Contact
+              {settings.footer.contactTitle}
             </h3>
             <div className="space-y-2 text-sm text-neutral-400">
               <p>{settings.address}</p>
@@ -182,8 +169,8 @@ export default function Footer() {
 
         <div className="mt-12 pt-8 border-t border-neutral-800">
           <p className="text-center text-sm text-neutral-500">
-            &copy; {new Date().getFullYear()} {settings.siteName}. All rights
-            reserved.
+            &copy; {new Date().getFullYear()} {settings.siteName}.{' '}
+            {settings.footer.copyrightText}
           </p>
         </div>
       </div>

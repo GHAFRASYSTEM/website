@@ -2,13 +2,16 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
 import { getPrograms, getProgramsPageContent } from '@/lib/content'
+import { buildPageMetadata } from '@/lib/seo'
 
 const programsPage = getProgramsPageContent()
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: 'Our Activities',
   description: programsPage.metaDescription,
-}
+  path: '/programs',
+  imageAlt: 'GHAFRA Nord activities and programs',
+})
 
 const eventIcons: Record<string, React.ReactNode> = {
   users: (
@@ -116,6 +119,7 @@ export default function ProgramsPage() {
             fill
             className="object-cover opacity-40"
             priority
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-tertiary-900/70 via-tertiary-900/45 to-tertiary-900/30" />
         </div>
@@ -153,6 +157,7 @@ export default function ProgramsPage() {
                     alt={program.title}
                     fill
                     className="object-cover"
+                    sizes="(max-width: 767px) 100vw, 50vw"
                   />
                 </div>
                 <div className="p-6">

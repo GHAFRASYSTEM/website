@@ -1,11 +1,18 @@
 'use client'
 
 import { useState, type FormEvent } from 'react'
+import type { ContactContent } from '@/lib/types'
 
 const FORMSPREE_CONTACT_FORM_ID =
   process.env.NEXT_PUBLIC_FORMSPREE_CONTACT_FORM_ID
 
-export default function ContactForm() {
+export default function ContactForm({
+  content,
+  contactEmail,
+}: {
+  content: ContactContent['form']
+  contactEmail: string
+}) {
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>(
     'idle',
   )
@@ -57,12 +64,9 @@ export default function ContactForm() {
           </svg>
         </div>
         <h3 className="font-heading text-xl font-semibold text-neutral-900 mb-2">
-          Message Sent!
+          {content.successTitle}
         </h3>
-        <p className="text-neutral-600">
-          Thank you for reaching out. We will get back to you as soon as
-          possible.
-        </p>
+        <p className="text-neutral-600">{content.successMessage}</p>
       </div>
     )
   }
@@ -73,17 +77,14 @@ export default function ContactForm() {
       className="bg-neutral-50 rounded-xl p-8 membership-form-border"
     >
       <h2 className="font-heading text-2xl font-bold gradient-title mb-6">
-        Send a Message
+        {content.title}
       </h2>
 
       {status === 'error' && (
         <div className="mb-4 rounded-lg bg-red-50 border border-red-200 p-4 text-sm text-red-700">
-          Something went wrong. Please try again or email us directly at{' '}
-          <a
-            href="mailto:ghafra.nord@gmail.com"
-            className="font-medium underline"
-          >
-            ghafra.nord@gmail.com
+          {content.errorIntro}{' '}
+          <a href={`mailto:${contactEmail}`} className="font-medium underline">
+            {contactEmail}
           </a>
         </div>
       )}
@@ -97,13 +98,16 @@ export default function ContactForm() {
         autoComplete="off"
       />
 
+      <input type="hidden" name="_subject" value="New Contact Message" />
+      <input type="hidden" name="formType" value="contact" />
+
       <div className="space-y-4">
         <div>
           <label
             htmlFor="name"
             className="block text-sm font-medium text-neutral-700 mb-1"
           >
-            Full Name
+            {content.fields.nameLabel}
           </label>
           <input
             type="text"
@@ -111,7 +115,7 @@ export default function ContactForm() {
             name="name"
             required
             className="w-full px-4 py-2.5 border border-neutral-300 bg-white text-neutral-900 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors placeholder:text-neutral-400"
-            placeholder="Your name"
+            placeholder={content.fields.namePlaceholder}
           />
         </div>
         <div>
@@ -119,7 +123,7 @@ export default function ContactForm() {
             htmlFor="email"
             className="block text-sm font-medium text-neutral-700 mb-1"
           >
-            Email Address
+            {content.fields.emailLabel}
           </label>
           <input
             type="email"
@@ -127,7 +131,7 @@ export default function ContactForm() {
             name="email"
             required
             className="w-full px-4 py-2.5 border border-neutral-300 bg-white text-neutral-900 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors placeholder:text-neutral-400"
-            placeholder="you@example.com"
+            placeholder={content.fields.emailPlaceholder}
           />
         </div>
         <div>
@@ -135,7 +139,7 @@ export default function ContactForm() {
             htmlFor="subject"
             className="block text-sm font-medium text-neutral-700 mb-1"
           >
-            Subject
+            {content.fields.subjectLabel}
           </label>
           <input
             type="text"
@@ -143,7 +147,7 @@ export default function ContactForm() {
             name="subject"
             required
             className="w-full px-4 py-2.5 border border-neutral-300 bg-white text-neutral-900 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors placeholder:text-neutral-400"
-            placeholder="How can we help?"
+            placeholder={content.fields.subjectPlaceholder}
           />
         </div>
         <div>
@@ -151,7 +155,7 @@ export default function ContactForm() {
             htmlFor="message"
             className="block text-sm font-medium text-neutral-700 mb-1"
           >
-            Message
+            {content.fields.messageLabel}
           </label>
           <textarea
             id="message"
@@ -159,7 +163,7 @@ export default function ContactForm() {
             rows={5}
             required
             className="w-full px-4 py-2.5 border border-neutral-300 bg-white text-neutral-900 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors resize-vertical placeholder:text-neutral-400"
-            placeholder="Your message..."
+            placeholder={content.fields.messagePlaceholder}
           />
         </div>
         <button
@@ -167,7 +171,7 @@ export default function ContactForm() {
           disabled={status === 'sending'}
           className="w-full px-6 py-3 text-base font-semibold text-white rounded-lg cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed gradient-btn"
         >
-          {status === 'sending' ? 'Sending...' : 'Send Message'}
+          {status === 'sending' ? content.sendingText : content.submitText}
         </button>
       </div>
     </form>

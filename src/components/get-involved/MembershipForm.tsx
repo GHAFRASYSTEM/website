@@ -1,11 +1,18 @@
 'use client'
 
 import { useState, type FormEvent } from 'react'
+import type { GetInvolvedContent } from '@/lib/types'
 
 const FORMSPREE_MEMBERSHIP_FORM_ID =
   process.env.NEXT_PUBLIC_FORMSPREE_MEMBERSHIP_FORM_ID
 
-export default function MembershipForm() {
+export default function MembershipForm({
+  content,
+  contactEmail,
+}: {
+  content: GetInvolvedContent['membershipForm']
+  contactEmail: string
+}) {
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>(
     'idle',
   )
@@ -31,6 +38,7 @@ export default function MembershipForm() {
       if (res.ok) {
         setStatus('sent')
         form.reset()
+        setMemberStatus('')
       } else {
         setStatus('error')
       }
@@ -58,12 +66,9 @@ export default function MembershipForm() {
           </svg>
         </div>
         <h3 className="font-heading text-xl font-semibold text-neutral-900 mb-2">
-          Application Submitted!
+          {content.successTitle}
         </h3>
-        <p className="text-neutral-600">
-          Thank you for your interest in joining GHAFRA Nord. Our executive
-          committee will review your application and get back to you soon.
-        </p>
+        <p className="text-neutral-600">{content.successMessage}</p>
       </div>
     )
   }
@@ -74,27 +79,22 @@ export default function MembershipForm() {
       className="bg-neutral-50 rounded-xl p-8 membership-form-border"
     >
       <h3 className="font-heading text-2xl font-bold gradient-title mb-2">
-        Membership Registration
+        {content.title}
       </h3>
-      <p className="text-neutral-500 text-sm mb-6">
-        Fill out the form below to apply for membership. Optional fields can be
-        left blank.
-      </p>
+      <p className="text-neutral-500 text-sm mb-6">{content.intro}</p>
 
       {status === 'error' && (
         <div className="mb-4 rounded-lg bg-red-50 border border-red-200 p-4 text-sm text-red-700">
-          Something went wrong. Please try again or email us directly at{' '}
-          <a
-            href="mailto:ghafra.nord@gmail.com"
-            className="font-medium underline"
-          >
-            ghafra.nord@gmail.com
+          {content.errorIntro}{' '}
+          <a href={`mailto:${contactEmail}`} className="font-medium underline">
+            {contactEmail}
           </a>
         </div>
       )}
 
       {/* Hidden field to identify this as a membership form */}
       <input type="hidden" name="_subject" value="New Membership Application" />
+      <input type="hidden" name="formType" value="membership" />
 
       {/* Honeypot field — hidden from humans, catches bots */}
       <input
@@ -112,7 +112,7 @@ export default function MembershipForm() {
               htmlFor="member-first-name"
               className="block text-sm font-medium text-neutral-700 mb-1"
             >
-              First Name
+              {content.fields.firstNameLabel}
             </label>
             <input
               type="text"
@@ -120,7 +120,7 @@ export default function MembershipForm() {
               name="firstName"
               required
               className="w-full px-4 py-2.5 border border-neutral-300 bg-white text-neutral-900 rounded-lg focus:ring-2 focus:ring-tertiary-500 focus:border-tertiary-500 outline-none transition-colors placeholder:text-neutral-400"
-              placeholder="Kwame"
+              placeholder={content.fields.firstNamePlaceholder}
             />
           </div>
           <div>
@@ -128,7 +128,7 @@ export default function MembershipForm() {
               htmlFor="member-last-name"
               className="block text-sm font-medium text-neutral-700 mb-1"
             >
-              Last Name
+              {content.fields.lastNameLabel}
             </label>
             <input
               type="text"
@@ -136,7 +136,7 @@ export default function MembershipForm() {
               name="lastName"
               required
               className="w-full px-4 py-2.5 border border-neutral-300 bg-white text-neutral-900 rounded-lg focus:ring-2 focus:ring-tertiary-500 focus:border-tertiary-500 outline-none transition-colors placeholder:text-neutral-400"
-              placeholder="Mensah"
+              placeholder={content.fields.lastNamePlaceholder}
             />
           </div>
         </div>
@@ -146,7 +146,7 @@ export default function MembershipForm() {
             htmlFor="member-email"
             className="block text-sm font-medium text-neutral-700 mb-1"
           >
-            Email Address
+            {content.fields.emailLabel}
           </label>
           <input
             type="email"
@@ -154,7 +154,7 @@ export default function MembershipForm() {
             name="email"
             required
             className="w-full px-4 py-2.5 border border-neutral-300 bg-white text-neutral-900 rounded-lg focus:ring-2 focus:ring-tertiary-500 focus:border-tertiary-500 outline-none transition-colors placeholder:text-neutral-400"
-            placeholder="you@example.com"
+            placeholder={content.fields.emailPlaceholder}
           />
         </div>
 
@@ -163,7 +163,7 @@ export default function MembershipForm() {
             htmlFor="member-phone"
             className="block text-sm font-medium text-neutral-700 mb-1"
           >
-            Phone Number
+            {content.fields.phoneLabel}
           </label>
           <input
             type="tel"
@@ -171,7 +171,7 @@ export default function MembershipForm() {
             name="phone"
             required
             className="w-full px-4 py-2.5 border border-neutral-300 bg-white text-neutral-900 rounded-lg focus:ring-2 focus:ring-tertiary-500 focus:border-tertiary-500 outline-none transition-colors placeholder:text-neutral-400"
-            placeholder="+33 6 12 34 56 78"
+            placeholder={content.fields.phonePlaceholder}
           />
         </div>
 
@@ -180,7 +180,7 @@ export default function MembershipForm() {
             htmlFor="member-status"
             className="block text-sm font-medium text-neutral-700 mb-1"
           >
-            Current Status
+            {content.fields.statusLabel}
           </label>
           <select
             id="member-status"
@@ -191,12 +191,14 @@ export default function MembershipForm() {
             onChange={(e) => setMemberStatus(e.target.value)}
           >
             <option value="" disabled>
-              Select your status
+              {content.fields.statusPlaceholder}
             </option>
-            <option value="Student">Student</option>
-            <option value="Working Professional">Working Professional</option>
-            <option value="Retired">Retired</option>
-            <option value="Other">Other</option>
+            <option value="Student">{content.fields.studentOption}</option>
+            <option value="Working Professional">
+              {content.fields.workingProfessionalOption}
+            </option>
+            <option value="Retired">{content.fields.retiredOption}</option>
+            <option value="Other">{content.fields.otherOption}</option>
           </select>
         </div>
 
@@ -207,7 +209,7 @@ export default function MembershipForm() {
                 htmlFor="member-school"
                 className="block text-sm font-medium text-neutral-700 mb-1"
               >
-                School / University
+                {content.fields.schoolLabel}
               </label>
               <input
                 type="text"
@@ -215,7 +217,7 @@ export default function MembershipForm() {
                 name="school"
                 required
                 className="w-full px-4 py-2.5 border border-neutral-300 bg-white text-neutral-900 rounded-lg focus:ring-2 focus:ring-tertiary-500 focus:border-tertiary-500 outline-none transition-colors placeholder:text-neutral-400"
-                placeholder="Université de Lille"
+                placeholder={content.fields.schoolPlaceholder}
               />
             </div>
             <div>
@@ -223,7 +225,7 @@ export default function MembershipForm() {
                 htmlFor="member-program"
                 className="block text-sm font-medium text-neutral-700 mb-1"
               >
-                Program of Study
+                {content.fields.programLabel}
               </label>
               <input
                 type="text"
@@ -231,7 +233,7 @@ export default function MembershipForm() {
                 name="program"
                 required
                 className="w-full px-4 py-2.5 border border-neutral-300 bg-white text-neutral-900 rounded-lg focus:ring-2 focus:ring-tertiary-500 focus:border-tertiary-500 outline-none transition-colors placeholder:text-neutral-400"
-                placeholder="Computer Science"
+                placeholder={content.fields.programPlaceholder}
               />
             </div>
           </div>
@@ -243,7 +245,7 @@ export default function MembershipForm() {
               htmlFor="member-role"
               className="block text-sm font-medium text-neutral-700 mb-1"
             >
-              Current Role
+              {content.fields.currentRoleLabel}
             </label>
             <input
               type="text"
@@ -251,7 +253,7 @@ export default function MembershipForm() {
               name="currentRole"
               required
               className="w-full px-4 py-2.5 border border-neutral-300 bg-white text-neutral-900 rounded-lg focus:ring-2 focus:ring-tertiary-500 focus:border-tertiary-500 outline-none transition-colors placeholder:text-neutral-400"
-              placeholder="Software Engineer"
+              placeholder={content.fields.currentRolePlaceholder}
             />
           </div>
         )}
@@ -262,7 +264,7 @@ export default function MembershipForm() {
               htmlFor="member-previous-role"
               className="block text-sm font-medium text-neutral-700 mb-1"
             >
-              Previous Role
+              {content.fields.previousRoleLabel}
             </label>
             <input
               type="text"
@@ -270,7 +272,7 @@ export default function MembershipForm() {
               name="previousRole"
               required
               className="w-full px-4 py-2.5 border border-neutral-300 bg-white text-neutral-900 rounded-lg focus:ring-2 focus:ring-tertiary-500 focus:border-tertiary-500 outline-none transition-colors placeholder:text-neutral-400"
-              placeholder="Teacher"
+              placeholder={content.fields.previousRolePlaceholder}
             />
           </div>
         )}
@@ -280,7 +282,7 @@ export default function MembershipForm() {
             htmlFor="member-city"
             className="block text-sm font-medium text-neutral-700 mb-1"
           >
-            City of Residence
+            {content.fields.cityLabel}
           </label>
           <input
             type="text"
@@ -288,7 +290,7 @@ export default function MembershipForm() {
             name="city"
             required
             className="w-full px-4 py-2.5 border border-neutral-300 bg-white text-neutral-900 rounded-lg focus:ring-2 focus:ring-tertiary-500 focus:border-tertiary-500 outline-none transition-colors placeholder:text-neutral-400"
-            placeholder="Lille"
+            placeholder={content.fields.cityPlaceholder}
           />
         </div>
 
@@ -297,15 +299,17 @@ export default function MembershipForm() {
             htmlFor="member-special-talent"
             className="block text-sm font-medium text-neutral-700 mb-1"
           >
-            Any Special Talent or Handiwork?{' '}
-            <span className="text-neutral-400">(Optional)</span>
+            {content.fields.specialTalentLabel}{' '}
+            <span className="text-neutral-400">
+              ({content.fields.specialTalentOptionalLabel})
+            </span>
           </label>
           <textarea
             id="member-special-talent"
             name="specialTalentOrHandiwork"
             rows={3}
             className="w-full px-4 py-2.5 border border-neutral-300 bg-white text-neutral-900 rounded-lg focus:ring-2 focus:ring-tertiary-500 focus:border-tertiary-500 outline-none transition-colors resize-vertical placeholder:text-neutral-400"
-            placeholder="Share any skills, trades, crafts, or talents you would like to contribute..."
+            placeholder={content.fields.specialTalentPlaceholder}
           />
         </div>
 
@@ -314,7 +318,7 @@ export default function MembershipForm() {
             htmlFor="member-message"
             className="block text-sm font-medium text-neutral-700 mb-1"
           >
-            Why do you want to join GHAFRA?
+            {content.fields.messageLabel}
           </label>
           <textarea
             id="member-message"
@@ -322,7 +326,7 @@ export default function MembershipForm() {
             rows={3}
             required
             className="w-full px-4 py-2.5 border border-neutral-300 bg-white text-neutral-900 rounded-lg focus:ring-2 focus:ring-tertiary-500 focus:border-tertiary-500 outline-none transition-colors resize-vertical placeholder:text-neutral-400"
-            placeholder="Tell us a little about yourself..."
+            placeholder={content.fields.messagePlaceholder}
           />
         </div>
 
@@ -331,7 +335,7 @@ export default function MembershipForm() {
           disabled={status === 'sending'}
           className="w-full px-6 py-3 text-base font-semibold text-white rounded-lg cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed gradient-btn"
         >
-          {status === 'sending' ? 'Submitting...' : 'Submit Application'}
+          {status === 'sending' ? content.submittingText : content.submitText}
         </button>
       </div>
     </form>

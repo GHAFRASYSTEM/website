@@ -1,9 +1,16 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { getTeamMemberBySlug, getTeamMembers } from '@/lib/content'
+import {
+  getAboutContent,
+  getTeamMemberBySlug,
+  getTeamMembers,
+} from '@/lib/content'
 import { markdownToHtml } from '@/lib/markdown'
 import { notFound } from 'next/navigation'
+import { buildPageMetadata } from '@/lib/seo'
+
+const about = getAboutContent()
 
 export function generateStaticParams() {
   return getTeamMembers().map((member) => ({ slug: member.slug }))
@@ -20,10 +27,13 @@ export async function generateMetadata({
 
   const description = member.body.replace(/\s+/g, ' ').trim().slice(0, 160)
 
-  return {
+  return buildPageMetadata({
     title: member.name,
     description,
-  }
+    path: `/about/executives/${member.slug}`,
+    image: member.image,
+    imageAlt: `${member.name} - ${member.role}`,
+  })
 }
 
 export default async function ExecutiveProfilePage({
@@ -47,6 +57,7 @@ export default async function ExecutiveProfilePage({
             fill
             className="object-cover opacity-40"
             priority
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-tertiary-900/70 via-tertiary-900/45 to-tertiary-900/30" />
         </div>
@@ -68,7 +79,7 @@ export default async function ExecutiveProfilePage({
                 d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
               />
             </svg>
-            Back to About
+            {about.executiveDetailBackLinkText}
           </Link>
 
           <div className="grid items-center gap-10 lg:grid-cols-[320px_minmax(0,1fr)]">
@@ -78,11 +89,12 @@ export default async function ExecutiveProfilePage({
                 alt={member.name}
                 fill
                 className="object-cover"
+                sizes="(max-width: 1023px) 100vw, 320px"
               />
             </div>
             <div className="max-w-3xl">
               <p className="text-sm font-semibold uppercase tracking-[0.22em] text-accent-200">
-                Executive Profile
+                {about.executiveDetailLabel}
               </p>
               <h1 className="mt-3 font-heading text-4xl font-bold md:text-5xl">
                 {member.name}

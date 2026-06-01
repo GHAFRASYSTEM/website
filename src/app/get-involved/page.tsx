@@ -1,16 +1,20 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import { getGetInvolvedContent } from '@/lib/content'
+import { getGetInvolvedContent, getSiteSettings } from '@/lib/content'
 import DonationOptions from '@/components/get-involved/DonationOptions'
 import MemberCarousel from '@/components/shared/MemberCarousel'
 import MembershipForm from '@/components/get-involved/MembershipForm'
+import { buildPageMetadata } from '@/lib/seo'
 
 const content = getGetInvolvedContent()
+const settings = getSiteSettings()
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: 'Get Involved',
   description: content.metaDescription,
-}
+  path: '/get-involved',
+  imageAlt: 'Get involved with GHAFRA Nord',
+})
 
 export default function GetInvolvedPage() {
   return (
@@ -23,6 +27,7 @@ export default function GetInvolvedPage() {
             fill
             className="object-cover opacity-40"
             priority
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-linear-to-r from-tertiary-900/70 via-tertiary-900/45 to-tertiary-900/30" />
         </div>
@@ -58,7 +63,10 @@ export default function GetInvolvedPage() {
               {content.donateBody}
             </p>
           </div>
-          <DonationOptions options={content.donateOptions} />
+          <DonationOptions
+            options={content.donateOptions}
+            ui={content.donationUi}
+          />
         </div>
       </section>
 
@@ -119,7 +127,10 @@ export default function GetInvolvedPage() {
           </div>
 
           <div className="max-w-2xl mx-auto mt-12">
-            <MembershipForm />
+            <MembershipForm
+              content={content.membershipForm}
+              contactEmail={settings.contactEmail}
+            />
           </div>
         </div>
       </section>

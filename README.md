@@ -81,7 +81,7 @@ The CMS is available at `/admin` and is configured to use the GitHub backend for
 
 ## Decap CMS and GitHub OAuth
 
-The CMS no longer uses Netlify Git Gateway. Authentication is handled by GitHub OAuth through the Vercel-hosted routes in `src/app/api/cms/oauth/authorize/route.ts` and `src/app/api/cms/oauth/callback/route.ts`.
+Authentication is handled by GitHub OAuth through the Vercel-hosted routes in `src/app/api/cms/oauth/authorize/route.ts` and `src/app/api/cms/oauth/callback/route.ts`.
 
 To configure CMS access:
 

@@ -3,13 +3,16 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { getAboutContent, getTeamMembers } from '@/lib/content'
 import FAQ from '@/components/about/FAQ'
+import { buildPageMetadata } from '@/lib/seo'
 
 const about = getAboutContent()
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: 'About Us',
   description: about.metaDescription,
-}
+  path: '/about',
+  imageAlt: 'About GHAFRA Nord',
+})
 
 const iconMap: Record<string, React.ReactNode> = {
   heart: (
@@ -92,6 +95,7 @@ export default function AboutPage() {
             fill
             className="object-cover opacity-40"
             priority
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-tertiary-900/70 via-tertiary-900/45 to-tertiary-900/30" />
         </div>
@@ -207,6 +211,7 @@ export default function AboutPage() {
                     alt={member.name}
                     fill
                     className="object-cover"
+                    sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 25vw"
                   />
                 </div>
                 <div className="flex h-full flex-col p-5">

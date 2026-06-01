@@ -43,19 +43,21 @@ galleryImages:
     alt: GHAFRA Workshop
 appDownloadSection:
   eyebrow: Mobile Access
-  title: Download the GHAFRA-NORD App and keep the community close at hand.
-  body: With the GHAFRA-NORD app, you can jump straight into updates, programs,
-    community resources and many more, right from your phone!
+  title: Download the GHAFRA App
+  body: Stay connected with the Ghanaian community in France. Access resources,
+    events, and support right from your phone.
   appImage: /images/ghafra_app.jpeg
-  appImageAlt: Screenshot of the GHAFRA-NORD mobile app home screen
+  appImageAlt: GHAFRA app screenshot showing community events
+  secondaryAppImage: /images/ghafra_app.jpeg
+  secondaryAppImageAlt: GHAFRA app screenshot showing legal resources
   appStoreButton:
     pretitle: Download on the
     title: App Store
-    link: https://example.com/app-store
+    link: https://apps.apple.com/us/app/ghafra/id6761885599
   googlePlayButton:
     pretitle: Get it on
     title: Google Play
-    link: https://example.com/google-play
+    link: https://play.google.com/store/apps/details?id=com.ghafra.ghafra
 ctaTitle: Together in Unity
 ctaBody: Whether you have just arrived in France or have called Lille home for
   many years, this association exists for you. Join over 300 members with about 100 active members building a vibrant, welcoming space where every Ghanaian feels at home.

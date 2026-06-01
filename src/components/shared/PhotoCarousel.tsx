@@ -50,6 +50,7 @@ export default function PhotoCarousel({
               fill
               className="object-cover"
               priority={i === 0}
+              sizes="100vw"
             />
           </div>
         ))}

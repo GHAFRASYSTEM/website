@@ -1,9 +1,16 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { getPrograms, getProgramBySlug } from '@/lib/content'
+import {
+  getPrograms,
+  getProgramBySlug,
+  getProgramsPageContent,
+} from '@/lib/content'
 import { markdownToHtml } from '@/lib/markdown'
 import { notFound } from 'next/navigation'
+import { buildPageMetadata } from '@/lib/seo'
+
+const programsPage = getProgramsPageContent()
 
 export async function generateStaticParams() {
   return getPrograms().map((p) => ({ slug: p.slug }))
@@ -17,10 +24,13 @@ export async function generateMetadata({
   const { slug } = await params
   const program = getProgramBySlug(slug)
   if (!program) return {}
-  return {
+  return buildPageMetadata({
     title: program.title,
     description: program.excerpt,
-  }
+    path: `/programs/${program.slug}`,
+    image: program.image,
+    imageAlt: program.title,
+  })
 }
 
 export default async function ProgramDetailPage({
@@ -44,6 +54,7 @@ export default async function ProgramDetailPage({
             fill
             className="object-cover opacity-40"
             priority
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-tertiary-900/70 via-tertiary-900/45 to-tertiary-900/30" />
         </div>
@@ -65,7 +76,7 @@ export default async function ProgramDetailPage({
                 d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
               />
             </svg>
-            All Activities
+            {programsPage.detailBackLinkText}
           </Link>
           <h1 className="font-heading text-4xl md:text-5xl font-bold">
             {program.title}
@@ -82,6 +93,7 @@ export default async function ProgramDetailPage({
                 alt={program.title}
                 fill
                 className="object-cover"
+                sizes="(max-width: 1023px) 100vw, 768px"
               />
             </div>
           )}
@@ -105,17 +117,19 @@ export default async function ProgramDetailPage({
                       <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-primary-100">
                         <Image
                           src="/images/tip-0.png"
-                          alt="Integration support tip"
+                          alt={programsPage.integrationImageOneAlt}
                           fill
                           className="object-cover"
+                          sizes="(max-width: 1023px) 100vw, 768px"
                         />
                       </div>
                       <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-primary-100">
                         <Image
                           src="/images/tip-1.png"
-                          alt="Integration support tip"
+                          alt={programsPage.integrationImageTwoAlt}
                           fill
                           className="object-cover"
+                          sizes="(max-width: 1023px) 100vw, 768px"
                         />
                       </div>
                     </div>

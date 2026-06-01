@@ -27,6 +27,21 @@ donateOptions:
     inputPlaceholder: Enter any amount in euros
     buttonText: Donate
     minAmount: 1
+donationUi:
+  customSectionEyebrow: Flexible Giving
+  customSectionTitle: Prefer a different amount?
+  customSectionDescription: Choose a custom donation amount that fits what you want to give.
+  customAmountLabel: Enter amount
+  fixedButtonPrefix: Donate
+  readyMessage: Ready to donate {amount}.
+  minimumMessage: Minimum donation {amount}.
+  modalTitle: Donations Coming Soon
+  modalMessage: Online donations will be available soon.
+  modalCloseText: Close
+  errors:
+    emptyAmount: Enter an amount to continue.
+    invalidAmount: Enter a valid euro amount.
+    minimumAmount: Minimum donation is {amount}.
 memberCarouselTitle: Our Community Members
 memberCarouselSubtitle: Meet the vibrant individuals who make up the GHAFRA Nord family.
 memberImages:
@@ -48,6 +63,44 @@ membershipTitle: Become a Member
 membershipBody: GHAFRA Nord welcomes all Ghanaians in Lille and the Nord
   region. Membership gives you access to all our services, events, and the
   support of a vibrant community.
+membershipForm:
+  title: Membership Registration
+  intro: Fill out the form below to apply for membership. Optional fields can be left blank.
+  successTitle: Application Submitted!
+  successMessage: Thank you for your interest in joining GHAFRA Nord. Our executive committee will review your application and get back to you soon.
+  errorIntro: Something went wrong. Please try again or email us directly at
+  submitText: Submit Application
+  submittingText: Submitting...
+  fields:
+    firstNameLabel: First Name
+    firstNamePlaceholder: Kwame
+    lastNameLabel: Last Name
+    lastNamePlaceholder: Mensah
+    emailLabel: Email Address
+    emailPlaceholder: you@example.com
+    phoneLabel: Phone Number
+    phonePlaceholder: '+33 6 12 34 56 78'
+    statusLabel: Current Status
+    statusPlaceholder: Select your status
+    studentOption: Student
+    workingProfessionalOption: Working Professional
+    retiredOption: Retired
+    otherOption: Other
+    schoolLabel: School / University
+    schoolPlaceholder: Université de Lille
+    programLabel: Program of Study
+    programPlaceholder: Computer Science
+    currentRoleLabel: Current Role
+    currentRolePlaceholder: Software Engineer
+    previousRoleLabel: Previous Role
+    previousRolePlaceholder: Teacher
+    cityLabel: City of Residence
+    cityPlaceholder: Lille
+    specialTalentLabel: Any Special Talent or Handiwork?
+    specialTalentOptionalLabel: Optional
+    specialTalentPlaceholder: Share any skills, trades, crafts, or talents you would like to contribute...
+    messageLabel: Why do you want to join GHAFRA?
+    messagePlaceholder: Tell us a little about yourself...
 membershipInfo:
   - title: Eligibility
     description:
