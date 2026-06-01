@@ -4,14 +4,24 @@
 
 :root {
   color-scheme: light;
-  --site-background: #faf8f6;
+  --site-background: #f5efe6;
+  --site-background-alt: #fff8ef;
+  --site-background-depth: #e8dbc7;
+  --site-background-depth-strong: #d8c3aa;
+  --site-background-spot-primary: rgba(193, 8, 50, 0.15);
+  --site-background-spot-secondary: rgba(48, 108, 67, 0.16);
+  --site-background-spot-accent: rgba(232, 195, 50, 0.18);
+  --site-background-veil: rgba(255, 252, 246, 0.7);
+  --site-gradient-sheen: rgba(255, 255, 255, 0.42);
+  --site-gradient-shadow: rgba(17, 16, 16, 0.06);
+  --site-gradient-shadow-soft: rgba(17, 16, 16, 0.03);
   --site-foreground: var(--color-neutral-800);
   --site-foreground-strong: var(--color-neutral-900);
   --site-foreground-muted: var(--color-neutral-700);
   --site-foreground-soft: var(--color-neutral-600);
   --site-foreground-faint: var(--color-neutral-500);
-  --site-surface: #ffffff;
-  --site-surface-muted: var(--color-neutral-50);
+  --site-surface: rgba(255, 252, 247, 0.88);
+  --site-surface-muted: rgba(249, 245, 239, 0.88);
   --site-surface-glass: rgba(255, 255, 255, 0.92);
   --site-surface-glass-soft: rgba(255, 255, 255, 0.85);
   --site-surface-green: rgba(240, 247, 242, 0.85);
@@ -19,11 +29,6 @@
   --site-border-glass: rgba(255, 255, 255, 0.6);
   --site-border-soft: rgba(255, 255, 255, 0.5);
   --site-border-strong: rgba(222, 220, 217, 0.6);
-  --site-pattern-primary: rgba(193, 8, 50, 0.04);
-  --site-pattern-primary-soft: rgba(193, 8, 50, 0.03);
-  --site-pattern-secondary: rgba(48, 108, 67, 0.08);
-  --site-pattern-secondary-soft: rgba(48, 108, 67, 0.04);
-  --site-pattern-accent: rgba(232, 195, 50, 0.05);
   --site-shadow-overlay: rgba(26, 25, 24, 0.06);
   --site-cta-stroke: rgba(0, 0, 0, 0.06);
   --site-cta-shape-1: rgba(0, 0, 0, 0.04);
@@ -35,14 +40,24 @@
 
 html.dark {
   color-scheme: dark;
-  --site-background: #09120f;
+  --site-background: #071311;
+  --site-background-alt: #10201c;
+  --site-background-depth: #18332d;
+  --site-background-depth-strong: #234840;
+  --site-background-spot-primary: rgba(193, 8, 50, 0.24);
+  --site-background-spot-secondary: rgba(48, 108, 67, 0.28);
+  --site-background-spot-accent: rgba(232, 195, 50, 0.12);
+  --site-background-veil: rgba(5, 10, 9, 0.58);
+  --site-gradient-sheen: rgba(255, 255, 255, 0.08);
+  --site-gradient-shadow: rgba(0, 0, 0, 0.28);
+  --site-gradient-shadow-soft: rgba(0, 0, 0, 0.14);
   --site-foreground: #e3ece6;
   --site-foreground-strong: #f6f8f6;
   --site-foreground-muted: #d0dad3;
   --site-foreground-soft: #adb9b1;
   --site-foreground-faint: #89958e;
-  --site-surface: #101916;
-  --site-surface-muted: #0f1d19;
+  --site-surface: rgba(14, 25, 22, 0.88);
+  --site-surface-muted: rgba(11, 20, 18, 0.88);
   --site-surface-glass: rgba(13, 25, 21, 0.92);
   --site-surface-glass-soft: rgba(18, 31, 26, 0.85);
   --site-surface-green: rgba(48, 108, 67, 0.18);
@@ -50,11 +65,6 @@ html.dark {
   --site-border-glass: rgba(117, 143, 131, 0.28);
   --site-border-soft: rgba(117, 143, 131, 0.24);
   --site-border-strong: rgba(117, 143, 131, 0.3);
-  --site-pattern-primary: rgba(193, 8, 50, 0.12);
-  --site-pattern-primary-soft: rgba(193, 8, 50, 0.09);
-  --site-pattern-secondary: rgba(48, 108, 67, 0.18);
-  --site-pattern-secondary-soft: rgba(48, 108, 67, 0.12);
-  --site-pattern-accent: rgba(232, 195, 50, 0.1);
   --site-shadow-overlay: rgba(6, 10, 8, 0.32);
   --site-cta-stroke: rgba(255, 255, 255, 0.08);
   --site-cta-shape-1: rgba(255, 255, 255, 0.06);
@@ -126,6 +136,42 @@ html.dark {
 
   body {
     background-color: var(--site-background);
+    background-image:
+      radial-gradient(
+        circle at 12% 14%,
+        var(--site-background-spot-primary),
+        transparent 30%
+      ),
+      radial-gradient(
+        circle at 88% 14%,
+        var(--site-background-spot-accent),
+        transparent 24%
+      ),
+      radial-gradient(
+        circle at 52% 20%,
+        var(--site-background-spot-secondary),
+        transparent 34%
+      ),
+      radial-gradient(
+        circle at 50% 100%,
+        var(--site-gradient-shadow-soft),
+        transparent 42%
+      ),
+      linear-gradient(
+        145deg,
+        var(--site-background-alt) 0%,
+        var(--site-background) 48%,
+        var(--site-background-depth) 78%,
+        var(--site-background-depth-strong) 100%
+      ),
+      linear-gradient(
+        180deg,
+        var(--site-gradient-sheen) 0%,
+        transparent 22%,
+        transparent 74%,
+        var(--site-gradient-shadow) 100%
+      );
+    background-attachment: fixed;
     color: var(--site-foreground);
     transition:
       background-color 0.25s ease,
@@ -156,105 +202,173 @@ h6 {
 }
 
 /* Prose styles for markdown content */
-/* ─── Geometric background patterns ─── */
-@keyframes geo-drift {
+/* Shared atmospheric section backgrounds */
+@keyframes surface-flow {
   0% {
     background-position: 0 0;
   }
   100% {
-    background-position: 60px 60px;
+    background-position: 80px -60px;
   }
 }
 
-@keyframes geo-drift-reverse {
+@keyframes surface-flow-reverse {
   0% {
-    background-position: 60px 60px;
+    background-position: 80px -60px;
   }
   100% {
     background-position: 0 0;
   }
 }
 
-/* Fine grid lines */
+/* Legacy section hooks now map to gradient-only surfaces */
 .geo-grid {
   background-color: var(--site-surface);
   background-image:
-    linear-gradient(var(--site-pattern-primary) 1px, transparent 1px),
-    linear-gradient(90deg, var(--site-pattern-primary) 1px, transparent 1px);
-  background-size: 40px 40px;
-  animation: geo-drift 30s linear infinite;
+    linear-gradient(160deg, var(--site-background-veil), transparent 42%),
+    radial-gradient(
+      circle at 18% 22%,
+      var(--site-background-spot-secondary),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 78% 14%,
+      var(--site-background-spot-primary),
+      transparent 24%
+    ),
+    linear-gradient(
+      130deg,
+      transparent 18%,
+      var(--site-gradient-sheen) 48%,
+      transparent 82%
+    ),
+    linear-gradient(
+      180deg,
+      var(--site-surface) 0%,
+      color-mix(in srgb, var(--site-surface) 68%, var(--site-background-depth) 32%) 100%
+    );
+  animation: surface-flow 32s ease-in-out infinite alternate;
 }
 
-/* Dot grid */
 .geo-dots {
   background-color: var(--site-surface-muted);
-  background-image: radial-gradient(circle, var(--site-pattern-secondary) 1px, transparent 1px);
-  background-size: 24px 24px;
-  animation: geo-drift 25s linear infinite;
+  background-image:
+    radial-gradient(
+      circle at 84% 18%,
+      var(--site-background-spot-accent),
+      transparent 26%
+    ),
+    radial-gradient(
+      circle at 22% 72%,
+      var(--site-background-spot-secondary),
+      transparent 30%
+    ),
+    linear-gradient(
+      140deg,
+      var(--site-gradient-sheen) 0%,
+      transparent 46%,
+      var(--site-gradient-shadow-soft) 100%
+    ),
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--site-surface-muted) 88%, white 12%) 0%,
+      color-mix(in srgb, var(--site-surface-muted) 72%, var(--site-background-depth) 28%) 100%
+    );
+  animation: surface-flow 28s ease-in-out infinite alternate;
 }
 
-/* Diagonal lines */
 .geo-diagonal {
   background-color: var(--site-surface);
-  background-image: repeating-linear-gradient(
-    45deg,
-    transparent,
-    transparent 20px,
-    var(--site-pattern-accent) 20px,
-    var(--site-pattern-accent) 21px
-  );
-  animation: geo-drift-reverse 35s linear infinite;
+  background-image:
+    linear-gradient(140deg, var(--site-gradient-sheen), transparent 42%),
+    radial-gradient(
+      circle at 16% 14%,
+      var(--site-background-spot-primary),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 86% 86%,
+      var(--site-background-spot-accent),
+      transparent 32%
+    ),
+    linear-gradient(
+      160deg,
+      color-mix(in srgb, var(--site-surface) 78%, var(--site-background-alt) 22%) 0%,
+      color-mix(in srgb, var(--site-surface) 72%, var(--site-background-depth-strong) 28%) 100%
+    );
+  animation: surface-flow-reverse 34s ease-in-out infinite alternate;
 }
 
-/* Hexagonal / honeycomb feel via overlapping radial gradients */
 .geo-hexagon {
   background-color: var(--site-surface);
   background-image:
     radial-gradient(
-      circle at 0% 50%,
-      var(--site-pattern-primary-soft) 9px,
-      transparent 10px
+      circle at 78% 18%,
+      var(--site-background-spot-secondary),
+      transparent 28%
     ),
     radial-gradient(
-      circle at 100% 50%,
-      var(--site-pattern-primary-soft) 9px,
-      transparent 10px
+      circle at 24% 82%,
+      var(--site-background-spot-primary),
+      transparent 28%
     ),
-    radial-gradient(
-      circle at 50% 0%,
-      var(--site-pattern-secondary-soft) 9px,
-      transparent 10px
+    linear-gradient(
+      180deg,
+      var(--site-background-veil) 0%,
+      transparent 44%
+    ),
+    linear-gradient(
+      155deg,
+      color-mix(in srgb, var(--site-surface) 84%, var(--site-background-alt) 16%) 0%,
+      color-mix(in srgb, var(--site-surface) 65%, var(--site-background-depth-strong) 35%) 100%
     );
-  background-size: 40px 46px;
-  animation: geo-drift 40s linear infinite;
+  animation: surface-flow 38s ease-in-out infinite alternate;
 }
 
-/* Cross / plus pattern */
 .geo-cross {
   background-color: var(--site-surface-muted);
   background-image:
-    linear-gradient(var(--site-pattern-primary) 2px, transparent 2px),
-    linear-gradient(90deg, var(--site-pattern-primary) 2px, transparent 2px);
-  background-size: 32px 32px;
+    radial-gradient(
+      circle at 12% 82%,
+      var(--site-background-spot-accent),
+      transparent 24%
+    ),
+    radial-gradient(
+      circle at 82% 18%,
+      var(--site-background-spot-secondary),
+      transparent 28%
+    ),
+    linear-gradient(180deg, var(--site-background-veil), transparent 44%),
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--site-surface-muted) 86%, var(--site-background-alt) 14%) 0%,
+      color-mix(in srgb, var(--site-surface-muted) 68%, var(--site-background-depth) 32%) 100%
+    );
   background-position: center center;
-  animation: geo-drift-reverse 28s linear infinite;
+  animation: surface-flow-reverse 30s ease-in-out infinite alternate;
 }
 
-/* Diamond / rhombus pattern */
 .geo-diamond {
   background-color: var(--site-surface);
   background-image:
-    linear-gradient(45deg, var(--site-pattern-secondary-soft) 25%, transparent 25%),
-    linear-gradient(-45deg, var(--site-pattern-secondary-soft) 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, var(--site-pattern-secondary-soft) 75%),
-    linear-gradient(-45deg, transparent 75%, var(--site-pattern-secondary-soft) 75%);
-  background-size: 36px 36px;
-  background-position:
-    0 0,
-    0 18px,
-    18px -18px,
-    -18px 0px;
-  animation: geo-drift 32s linear infinite;
+    radial-gradient(
+      circle at 88% 14%,
+      var(--site-background-spot-primary),
+      transparent 24%
+    ),
+    radial-gradient(
+      circle at 18% 78%,
+      var(--site-background-spot-accent),
+      transparent 30%
+    ),
+    linear-gradient(150deg, var(--site-gradient-sheen), transparent 44%),
+    linear-gradient(
+      200deg,
+      color-mix(in srgb, var(--site-surface) 86%, var(--site-background-alt) 14%) 0%,
+      color-mix(in srgb, var(--site-surface) 68%, var(--site-background-depth-strong) 32%) 100%
+    );
+  background-position: 0 0;
+  animation: surface-flow 36s ease-in-out infinite alternate;
 }
 
 /* ─── Sophisticated card system ─── */
