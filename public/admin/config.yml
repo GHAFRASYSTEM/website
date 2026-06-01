@@ -3,7 +3,7 @@ backend:
   repo: GHAFRASYSTEM/website
   branch: main
   base_url: https://www.ghafra.com
-  auth_endpoint: api/cms/oauth/authorize
+  auth_endpoint: https://www.ghafra.com/api/cms/oauth/authorize
 
 local_backend: true
 
