@@ -54,10 +54,22 @@ export function getCmsOAuthConfig(requestUrl: string) {
 export function getAuthorizeRouteHtml(authorizeUrl: string) {
   const script = `const authorizeUrl = ${JSON.stringify(authorizeUrl)};
 const handshakeMessage = ${JSON.stringify(`authorizing:${GITHUB_PROVIDER}`)};
+let hasRedirected = false;
+
+function redirectToProvider() {
+  if (hasRedirected) {
+    return;
+  }
+
+  hasRedirected = true;
+  window.location.replace(authorizeUrl);
+}
 
 if (!window.opener) {
   document.body.innerHTML = '<p>Unable to reach the Decap CMS window. Close this popup and try again.</p>';
 } else {
+  const fallbackTimer = window.setTimeout(redirectToProvider, 1500);
+
   window.addEventListener(
     'message',
     event => {
@@ -65,7 +77,8 @@ if (!window.opener) {
         return;
       }
 
-      window.location.replace(authorizeUrl);
+      window.clearTimeout(fallbackTimer);
+      redirectToProvider();
     },
     { once: true },
   );
