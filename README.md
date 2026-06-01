@@ -1,138 +1,168 @@
-This is the website for GHAFRA Nord, built with [Next.js](https://nextjs.org).
+# GHAFRA Nord Website
 
-## Decap CMS Setup On Vercel
+Public website and content platform for GHAFRA Nord, the Ghanaian community association in Lille. The application serves the marketing site at `https://www.ghafra.com`, handles public forms through Formspree, and exposes Decap CMS with GitHub OAuth authentication for content editors.
 
-The production CMS at `/admin` uses Decap CMS with the GitHub backend.
-It uses GitHub OAuth through the Vercel API routes at:
+## Stack
 
-- `/api/auth`
-- `/api/callback`
+- Next.js 16 App Router
+- React 19 and TypeScript
+- Tailwind CSS 4
+- Markdown and JSON content loaded from `content/`
+- Decap CMS in `public/admin`
+- Formspree for the contact and membership forms
+- GitHub OAuth routes hosted on Vercel for CMS authentication
 
-### 1. Create a GitHub OAuth App
+## Project Structure
 
-In GitHub:
+- `src/app`: page routes, metadata routes, and API endpoints
+- `src/app/api/cms/oauth/*`: GitHub OAuth authorize and callback handlers for Decap CMS
+- `src/components`: page sections, forms, layout, and shared UI
+- `src/lib/content.ts`: file-system content loader for markdown and JSON content
+- `src/lib/cms-oauth.ts`: shared helpers for the CMS popup auth flow
+- `content/`: editable page content, site settings, team members, and program entries
+- `public/admin/config.yml`: Decap CMS backend and collection configuration
+- `public/images`: uploaded and static images used by the site and CMS
 
-1. Go to `Settings` -> `Developer settings` -> `OAuth Apps`.
-2. Click `New OAuth App`.
-3. Use these values:
+## Requirements
 
-```text
-Application name: GHAFRA CMS
-Homepage URL: https://www.ghafra.com
-Authorization callback URL: https://www.ghafra.com/api/callback
-```
+- Node.js 20+
+- npm
 
-4. Create the app.
-5. Copy the `Client ID`.
-6. Generate a new `Client secret` and copy it.
+## Development
 
-### 2. Add Environment Variables
-
-In Vercel project settings, add:
-
-```bash
-GITHUB_CLIENT_ID=your-github-oauth-app-client-id
-GITHUB_CLIENT_SECRET=your-github-oauth-app-client-secret
-NEXT_PUBLIC_FORMSPREE_CONTACT_FORM_ID=your-contact-form-id
-NEXT_PUBLIC_FORMSPREE_MEMBERSHIP_FORM_ID=your-membership-form-id
-```
-
-Optional:
+1. Install dependencies:
 
 ```bash
-GITHUB_OAUTH_SCOPE=repo,user
+npm install
 ```
 
-Use `repo,user` for a private GitHub repository. If the repository is public, `public_repo,user` also works.
-
-### 3. Grant Repository Access
-
-Anyone who should use the CMS must have GitHub access to the repository:
-
-```text
-GHAFRASYSTEM/website
-```
-
-### 4. Login Flow
-
-After deployment:
-
-1. Open `https://www.ghafra.com/admin`
-2. Click `Login with GitHub`
-3. Authorize the GitHub app
-4. Decap CMS will use the Vercel OAuth callback to complete login
-
-## Formspree Setup
-
-The site has two live forms:
-
-- Contact Us
-- Membership Registration
-
-Each form can use its own Formspree form ID.
-
-1. Create or log into your Formspree account.
-2. Create one Formspree form for contact submissions.
-3. Create one Formspree form for membership submissions.
-4. Copy each form ID from the Formspree endpoint.
-
-Example:
-
-```text
-https://formspree.io/f/xyzabcde
-```
-
-The form ID is `xyzabcde`.
-
-Create a `.env.local` file in the project root and add:
+2. Create a local env file from the example:
 
 ```bash
-NEXT_PUBLIC_FORMSPREE_CONTACT_FORM_ID=your-contact-form-id
-NEXT_PUBLIC_FORMSPREE_MEMBERSHIP_FORM_ID=your-membership-form-id
+cp .env.example .env.local
 ```
 
-Optional:
+3. Update the values in `.env.local` as needed.
 
-- If you want both forms to go to the same Formspree inbox, you can instead set `NEXT_PUBLIC_FORMSPREE_ID` and leave the two specific variables unset.
-
-The current form components prefer the specific IDs first:
-
-- [src/components/contact/ContactForm.tsx](src/components/contact/ContactForm.tsx)
-- [src/components/get-involved/MembershipForm.tsx](src/components/get-involved/MembershipForm.tsx)
-
-An example env file is included in [.env.example](.env.example).
-
-## Getting Started
-
-First, run the development server:
+4. Start the dev server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The example values live in `.env.example`.
 
-## Learn More
+### Forms
 
-To learn more about Next.js, take a look at the following resources:
+- `NEXT_PUBLIC_FORMSPREE_CONTACT_FORM_ID`: Formspree form ID used by the contact form
+- `NEXT_PUBLIC_FORMSPREE_MEMBERSHIP_FORM_ID`: Formspree form ID used by the membership form
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### CMS OAuth
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `CMS_GITHUB_CLIENT_ID`: GitHub OAuth App client ID
+- `CMS_GITHUB_CLIENT_SECRET`: GitHub OAuth App client secret
+- `CMS_OAUTH_CALLBACK_URL`: public callback URL for the OAuth App, currently `https://www.ghafra.com/api/cms/oauth/callback`
+- `CMS_OAUTH_AUTHORIZE_URL`: documented public authorize URL for deployment consistency; the app serves the authorize route at `/api/cms/oauth/authorize`
 
-## Deploy on Vercel
+## Content Management
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Most site content is stored in the repository and loaded at build time or request time:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `content/home.md`, `about.md`, `programs.md`, `get-involved.md`, `contact.md`: page content
+- `content/programs-list/*.md`: program detail pages
+- `content/team/*.md`: executive profiles
+- `content/settings.json`: shared site settings such as canonical site URL, metadata, and social links
+
+The CMS is available at `/admin` and is configured to use the GitHub backend for the `GHAFRASYSTEM/website` repository.
+
+## Decap CMS and GitHub OAuth
+
+Authentication is handled by GitHub OAuth through the Vercel-hosted routes in `src/app/api/cms/oauth/authorize/route.ts` and `src/app/api/cms/oauth/callback/route.ts`.
+
+To configure CMS access:
+
+1. Create a GitHub OAuth App.
+2. Set the homepage URL to `https://www.ghafra.com`.
+3. Set the authorization callback URL to `https://www.ghafra.com/api/cms/oauth/callback`.
+4. Add `CMS_GITHUB_CLIENT_ID`, `CMS_GITHUB_CLIENT_SECRET`, and `CMS_OAUTH_CALLBACK_URL` in Vercel.
+5. Redeploy the application.
+6. Ensure every editor has write access to `GHAFRASYSTEM/website`.
+7. If the repository is owned by a GitHub organization with OAuth restrictions, approve the OAuth App at the organization level.
+
+After deployment, editors can log in at `https://www.ghafra.com/admin` with GitHub.
+
+## Contributor Workflow
+
+### Content Editors
+
+Use the CMS when the change is content-only.
+
+- Log in at `https://www.ghafra.com/admin`
+- Edit page copy, program entries, executive profiles, and uploaded images
+- Review the generated content carefully before saving
+- Publish the change from the CMS so it commits back to `GHAFRASYSTEM/website`
+
+Content editors should use the CMS for:
+
+- text and markdown updates
+- image replacements or additions
+- social links and site-level metadata stored in `content/settings.json`
+- team and program content updates
+
+Content editors should not modify:
+
+- `src/`
+- `public/admin/config.yml`
+- OAuth settings or other environment variables
+- build, deployment, or Vercel configuration
+
+### Developers
+
+Use the local project when the change affects application behavior, styling, structure, or deployment.
+
+1. Pull the latest changes from the repository.
+2. Copy `.env.example` to `.env.local` if needed.
+3. Run `npm install`.
+4. Start the app with `npm run dev`.
+5. Make code or configuration changes.
+6. Run `npm run build` before merging or deploying.
+
+Developers should use code changes for:
+
+- React or Next.js page updates
+- component or styling changes
+- CMS schema or collection changes in `public/admin/config.yml`
+- API route, OAuth, or form integration changes
+- SEO, metadata, robots, or sitemap logic changes
+
+
+## Local CMS Notes
+
+`public/admin/config.yml` has `local_backend: true`, but this repository does not include a Decap proxy server script. The production editing path is the supported one: `/admin` on the deployed Vercel site with GitHub OAuth.
+
+## Commands
+
+```bash
+npm run dev
+npm run build
+npm run start
+npm run lint
+```
+
+## Deployment
+
+- Production site: `https://www.ghafra.com`
+- Hosting: Vercel
+- CMS backend: GitHub
+- CMS admin: `https://www.ghafra.com/admin`
+
+Before promoting a deployment, verify:
+
+1. The Vercel environment variables are set.
+2. `npm run build` succeeds.
+3. `https://www.ghafra.com/admin` can complete the GitHub login flow.
+4. A content change from the CMS creates a commit in `GHAFRASYSTEM/website`.

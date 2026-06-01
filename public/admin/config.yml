@@ -2,9 +2,8 @@ backend:
   name: github
   repo: GHAFRASYSTEM/website
   branch: main
-  site_domain: www.ghafra.com
   base_url: https://www.ghafra.com
-  auth_endpoint: api/auth
+  auth_endpoint: api/cms/oauth/authorize
 
 local_backend: true
 
