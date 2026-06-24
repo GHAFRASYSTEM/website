@@ -35,7 +35,7 @@ export default function InterviewPage() {
   } = useTabAudioTranscription({
     transcribeUrl: `${API_URL}/interview/transcribe`,
     translateUrl:  `${API_URL}/interview/translate`,
-    authToken: accessToken || '',
+    authToken: accessToken || '', 
     silenceMs: 800,
   });
 
