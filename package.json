@@ -6,9 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "postinstall": "node scripts/copy-vad-assets.js"
   },
   "dependencies": {
+    "@ricky0123/vad-web": "^0.0.30",
+    "@supabase/supabase-js": "^2.108.2",
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.576.0",
     "next": "16.1.6",

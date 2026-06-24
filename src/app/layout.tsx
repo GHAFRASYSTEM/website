@@ -4,6 +4,7 @@ import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import ScrollToTop from '@/components/shared/ScrollToTop'
 import { getSiteSettings } from '@/lib/content'
+import { AuthProvider } from '../../context/AuthContext'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
@@ -54,60 +55,17 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
-  const sameAs = [
-    settings.socialLinks.facebook,
-    settings.socialLinks.instagram,
-    settings.socialLinks.linkedin,
-    settings.socialLinks.youtube,
-    settings.socialLinks.twitter,
-  ].filter(Boolean)
-
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html
-      lang="en"
-      className={`${inter.variable} ${outfit.variable}`}
-      suppressHydrationWarning
-    >
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'NonGovernmentalOrganization',
-              name: settings.siteName,
-              url: settings.siteUrl,
-              logo: `${settings.siteUrl}${logoPath}`,
-              description: settings.siteDescription,
-              address: {
-                '@type': 'PostalAddress',
-                addressLocality: 'Lille',
-                addressRegion: 'Hauts-de-France',
-                addressCountry: 'FR',
-              },
-              contactPoint: {
-                '@type': 'ContactPoint',
-                telephone: settings.contactPhone,
-                contactType: 'general',
-                email: settings.contactEmail,
-              },
-              sameAs,
-            }),
-          }}
-        />
-      </head>
-      <body className="font-sans antialiased">
-        <Header settings={settings} />
-        <main className="min-h-screen">{children}</main>
-        <Footer settings={settings} />
-        <ScrollToTop />
+    <html lang="en" suppressHydrationWarning>
+      <body>
+        <AuthProvider>          {/* ← Wrap here */}
+          <Header settings={settings} />
+          <main className="min-h-screen">{children}</main>
+          <Footer settings={settings} />
+          <ScrollToTop />
+        </AuthProvider>
       </body>
     </html>
-  )
+  );
 }
