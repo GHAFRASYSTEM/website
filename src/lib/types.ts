@@ -32,6 +32,10 @@ export interface SiteSettings {
   contactEmail: string
   contactPhone: string
   address: string
+  addressLink?: {
+    text: string
+    href: string
+  }
 }
 
 export interface HomeContent {

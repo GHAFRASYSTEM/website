@@ -77,6 +77,16 @@ export default function Footer({ settings }: { settings: SiteSettings }) {
             </h3>
             <div className="space-y-2 text-sm text-neutral-400">
               <p>{settings.address}</p>
+              {settings.addressLink && (
+                <p>
+                  <Link
+                    href={settings.addressLink.href}
+                    className="hover:text-white transition-colors"
+                  >
+                    {settings.addressLink.text}
+                  </Link>
+                </p>
+              )}
               <p className="pt-2">
                 <a
                   href={`tel:${settings.contactPhone.replace(/\s/g, '')}`}
