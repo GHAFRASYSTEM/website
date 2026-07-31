@@ -17,6 +17,7 @@ export interface TranscriptEntry {
 interface UseTabAudioTranscriptionOptions {
   transcribeUrl: string;
   translateUrl: string;
+  respondUrl: string;   
   authToken: string;
   silenceMs?: number;
   minSpeechMs?: number;
@@ -29,6 +30,7 @@ const VAD_SAMPLE_RATE = 16000;
 export function useTabAudioTranscription({
   transcribeUrl,
   translateUrl,
+  respondUrl, 
   authToken,
   silenceMs = 800,
   minSpeechMs = 300,
@@ -144,6 +146,60 @@ export function useTabAudioTranscription({
     }
   }, [transcribeUrl, onTranscript, handleError, fetchTranslation]);
 
+  // ── Text-only testing path — bypasses audio/transcribe entirely ───────────
+  // Same transcript shape and translation flow as the mic path, so the UI
+  // renders identically. Lets you test classify/experience-picking/prompt
+  // changes by typing instead of speaking.
+  const sendText = useCallback(async (text: string) => {
+    const trimmed = text.trim();
+    if (!trimmed) return;
+    if (!authTokenRef.current) {
+      handleError(new Error('Authentication required'), 'Auth');
+      return;
+    }
+
+    setIsUploading(true);
+    try {
+      const res = await fetch(respondUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${authTokenRef.current}`,
+        },
+        body: JSON.stringify({ text: trimmed }),
+      });
+
+      if (res.status === 401) throw new Error('Unauthorized');
+      if (!res.ok) {
+        const errorText = await res.text();
+        throw new Error(`Backend error ${res.status}: ${errorText}`);
+      }
+
+      const json = await res.json();
+      // Backend returns { data: { answer, isQuestion } } — see interview.controller.ts respond()
+      const isQuestion: boolean = Boolean(json?.data?.isQuestion);
+      const answer: string = (json?.data?.answer ?? '').trim();
+
+      const entry: TranscriptEntry = {
+        id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+        text: trimmed,
+        translation: null,
+        answerTranslation: null,
+        translating: true,
+        timestamp: Date.now(),
+        isQuestion,
+        answer,
+      };
+      setTranscript((prev) => [...prev, entry]);
+      onTranscript?.(entry);
+      void fetchTranslation(entry.id, trimmed, answer);
+    } catch (err) {
+      handleError(err, 'Send text failed');
+    } finally {
+      setIsUploading(false);
+    }
+  }, [respondUrl, onTranscript, handleError, fetchTranslation]);
+
   // ── Start ────────────────────────────────────────────────────────────────
   const start = useCallback(async () => {
     setError(null);
@@ -232,7 +288,7 @@ const stop = useCallback(() => {
 
   const fullText = useMemo(() => transcript.map((t) => t.text).join(' '), [transcript]);
 
-  return { isCapturing, isSpeechActive, isUploading, transcript, fullText, error, start, stop, clear };
+  return { isCapturing, isSpeechActive, isUploading, transcript, fullText, error, start, stop, clear, sendText };
 }
 
 // ── WAV encoder ───────────────────────────────────────────────────────────────

@@ -31,13 +31,22 @@ export default function InterviewPage() {
 
   const {
     isCapturing, isSpeechActive, isUploading,
-    transcript, fullText, error, start, stop, clear,
+    transcript, fullText, error, start, stop, clear, sendText,   // ← add sendText
   } = useTabAudioTranscription({
     transcribeUrl: `${API_URL}/interview/transcribe`,
     translateUrl:  `${API_URL}/interview/translate`,
-    authToken: accessToken || '', 
+    respondUrl:    `${API_URL}/interview/respond`,               // ← NEW
+    authToken: accessToken || '',
     silenceMs: 800,
   });
+    const [testInput, setTestInput] = useState('');
+
+  const handleSendText = () => {
+    if (!testInput.trim()) return;
+    void sendText(testInput);
+    setTestInput('');
+  };
+
 
   useEffect(() => {
     if (!loading && !user) router.push('/auth/login');
@@ -104,6 +113,30 @@ export default function InterviewPage() {
           Copy FR
         </button>
 
+<button onClick={handleCopy} disabled={!fullText} className="px-3 py-2 rounded-lg text-sm text-gray-400 hover:text-gray-200 disabled:opacity-30 transition-colors">
+          Copy FR
+        </button>
+
+        {/* ── Text testing input — bypasses mic/VAD entirely ────────────── */}
+        <div className="flex items-center gap-2 ml-2">
+          <input
+            type="text"
+            value={testInput}
+            onChange={(e) => setTestInput(e.target.value)}
+            onKeyDown={(e) => { if (e.key === 'Enter') handleSendText(); }}
+            placeholder="Type a question to test…"
+            className="px-3 py-2 rounded-lg bg-gray-800 border border-gray-700 text-sm text-gray-200 placeholder-gray-600 w-64 focus:outline-none focus:border-indigo-600"
+          />
+          <button
+            onClick={handleSendText}
+            disabled={!testInput.trim() || isUploading}
+            className="px-3 py-2 rounded-lg bg-indigo-700 hover:bg-indigo-600 text-white text-sm font-medium disabled:opacity-30 transition-colors"
+          >
+            Send
+          </button>
+        </div>
+
+        <div className="flex-1" />
         <div className="flex-1" />
 
         {/* View mode pill */}
