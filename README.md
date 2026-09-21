@@ -52,6 +52,9 @@ npm run dev
 
 5. Open `http://localhost:3000`.
 
+`npm ci` restores the versions recorded in `package-lock.json` and does not
+add dependencies to the project.
+
 ## Environment Variables
 
 The example values live in `.env.example`.
@@ -152,6 +155,9 @@ npm run build
 npm run start
 npm run lint
 ```
+
+For a clean local setup, use `cp .env.example .env.local` before these
+commands. Do not commit `.env.local`.
 
 ## Deployment
 
