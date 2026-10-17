@@ -68,7 +68,10 @@ export default function Header({ settings }: { settings: SiteSettings }) {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-1">
             {settings.navigation.mainLinks.map((item) => {
-              const isActive = pathname === item.href
+              const isActive =
+                item.href === '/'
+                  ? pathname === '/'
+                  : pathname === item.href || pathname.startsWith(`${item.href}/`)
               return (
                 <Link
                   key={item.name}
@@ -164,7 +167,10 @@ export default function Header({ settings }: { settings: SiteSettings }) {
               <ThemeModeToggle />
             </div>
             {settings.navigation.mainLinks.map((item) => {
-              const isActive = pathname === item.href
+              const isActive =
+                item.href === '/'
+                  ? pathname === '/'
+                  : pathname === item.href || pathname.startsWith(`${item.href}/`)
               return (
                 <Link
                   key={item.name}
