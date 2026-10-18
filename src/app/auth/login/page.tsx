@@ -1,8 +1,22 @@
 'use client';
 import { useAuth } from '../../../../context/AuthContext';
-import { useRouter } from 'next/navigation';
-import { useState, useEffect } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { Suspense, useState, useEffect } from 'react';
 import { createClient } from '@supabase/supabase-js';
+
+function safeNextPath(value: string | null): string {
+  if (!value) return '/interview';
+  let path = value;
+  try {
+    path = decodeURIComponent(value);
+  } catch {
+    return '/interview';
+  }
+  if (!path.startsWith('/') || path.startsWith('//') || path.includes('\\') || path.includes('://')) {
+    return '/interview';
+  }
+  return path;
+}
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -10,8 +24,18 @@ const supabase = createClient(
 );
 
 export default function LoginPage() {
+  return (
+    <Suspense fallback={<div className="p-8 text-center">Loading...</div>}>
+      <LoginForm />
+    </Suspense>
+  );
+}
+
+function LoginForm() {
   const { user, loading } = useAuth();
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const nextPath = safeNextPath(searchParams.get('next'));
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -21,9 +45,9 @@ export default function LoginPage() {
   // Redirect if already logged in
   useEffect(() => {
     if (user) {
-      router.push('/interview');
+      router.push(nextPath);
     }
-  }, [user, router]);
+  }, [user, router, nextPath]);
 
   const handleEmailSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -55,7 +79,7 @@ export default function LoginPage() {
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: `${window.location.origin}/interview`,
+          redirectTo: `${window.location.origin}${nextPath}`,
         },
       });
       if (error) throw error;
@@ -70,7 +94,7 @@ export default function LoginPage() {
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'apple',
         options: {
-          redirectTo: `${window.location.origin}/interview`,
+          redirectTo: `${window.location.origin}${nextPath}`,
         },
       });
       if (error) throw error;
