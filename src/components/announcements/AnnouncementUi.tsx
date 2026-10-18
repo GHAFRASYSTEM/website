@@ -77,7 +77,7 @@ export function AnnouncementGridSkeleton({ count = 3 }: { count?: number }) {
     <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
       {Array.from({ length: count }, (_, index) => (
         <div key={index} className="card overflow-hidden">
-          <div className="aspect-[16/10] animate-pulse bg-primary-100" />
+          <div className="aspect-16/10 animate-pulse bg-primary-100" />
           <div className="space-y-3 p-5 sm:p-6">
             <SkeletonBar className="h-4 w-24 rounded-full" />
             <SkeletonBar className="h-6 w-4/5" />
@@ -96,7 +96,7 @@ export function AnnouncementListSkeleton({ featured }: { featured: boolean }) {
   return (
     <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-8">
       <div className="card p-3 sm:p-4 lg:col-span-7">
-        <div className="aspect-[16/10] animate-pulse rounded-xl bg-primary-100" />
+        <div className="aspect-16/10 animate-pulse rounded-xl bg-primary-100" />
         <div className="space-y-4 px-1 pb-2 pt-5 sm:px-2">
           <SkeletonBar className="h-4 w-32 rounded-full" />
           <SkeletonBar className="h-8 w-11/12" />
@@ -108,7 +108,7 @@ export function AnnouncementListSkeleton({ featured }: { featured: boolean }) {
         <SkeletonBar className="mb-4 h-4 w-28" />
         {Array.from({ length: 3 }, (_, index) => (
           <div key={index} className="flex gap-4 border-t border-neutral-200 py-4 first:border-t-0">
-            <div className="aspect-[4/3] w-28 shrink-0 animate-pulse rounded-lg bg-primary-100 sm:w-36" />
+            <div className="aspect-4/3 w-28 shrink-0 animate-pulse rounded-lg bg-primary-100 sm:w-36" />
             <div className="flex-1 space-y-3 pt-1">
               <SkeletonBar className="h-5 w-full" />
               <SkeletonBar className="h-5 w-3/4" />
