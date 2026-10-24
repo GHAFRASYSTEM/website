@@ -180,10 +180,13 @@ function metaNumber(body: unknown, key: string, fallback: number): number {
   return typeof value === 'number' && Number.isFinite(value) ? value : fallback
 }
 
-export async function fetchAnnouncements(page = 1): Promise<AnnouncementPageResult> {
+export async function fetchAnnouncements(
+  page = 1,
+  limit = ANNOUNCEMENTS_PAGE_SIZE,
+): Promise<AnnouncementPageResult> {
   const params = new URLSearchParams({
     page: String(page),
-    limit: String(ANNOUNCEMENTS_PAGE_SIZE),
+    limit: String(limit),
   })
   const { status, body } = await readResponse(`/announcements?${params}`)
   if (status < 200 || status >= 300) {

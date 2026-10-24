@@ -155,7 +155,7 @@ export default function AnnouncementDetail({ id }: { id: string }) {
             {minutes} min read
           </span>
         </div>
-        <h1 className="max-w-4xl break-words font-heading text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
+        <h1 className="max-w-4xl wrap-break-word font-heading text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
           {announcement.title}
         </h1>
       </DetailHero>
@@ -176,7 +176,7 @@ export default function AnnouncementDetail({ id }: { id: string }) {
           )}
 
           <article className="rounded-2xl border border-neutral-200 bg-white/80 px-5 py-8 shadow-sm backdrop-blur-md sm:px-10 sm:py-12">
-            <div className="mx-auto max-w-[68ch] space-y-5 break-words text-base leading-7 text-neutral-700 sm:text-lg sm:leading-8">
+            <div className="mx-auto max-w-[68ch] space-y-5 wrap-break-word text-base leading-7 text-neutral-700 sm:text-lg sm:leading-8">
               {blocks.map((block, index) =>
                 block.type === 'list' ? (
                   <ul key={index} className="list-disc space-y-2 pl-6 marker:text-primary-500">

@@ -35,7 +35,7 @@ export function FeaturedAnnouncementCard({ announcement }: { announcement: Annou
 
   return (
     <Link href={announcementHref(announcement)} className="group card card-image flex h-full flex-col p-3 sm:p-4">
-      <div className="card-img-wrap relative aspect-[16/10] overflow-hidden rounded-xl bg-primary-100">
+      <div className="card-img-wrap relative aspect-16/10 overflow-hidden rounded-xl bg-primary-100">
         <AnnouncementImage
           src={announcement.image}
           alt={announcement.title}
@@ -46,7 +46,7 @@ export function FeaturedAnnouncementCard({ announcement }: { announcement: Annou
       </div>
       <div className="flex flex-1 flex-col px-1 pb-2 pt-5 sm:px-2">
         <AnnouncementMeta announcement={announcement} className="mb-3" />
-        <h2 className="break-words font-heading text-2xl font-bold leading-tight text-neutral-900 transition-colors group-hover:text-primary-700 sm:text-3xl lg:text-4xl">
+        <h2 className="wrap-break-word font-heading text-2xl font-bold leading-tight text-neutral-900 transition-colors group-hover:text-primary-700 sm:text-3xl lg:text-4xl">
           {announcement.title}
         </h2>
         {preview && (
@@ -68,7 +68,7 @@ export function CompactAnnouncementItem({ announcement }: { announcement: Announ
       href={announcementHref(announcement)}
       className="group flex gap-4 border-t border-neutral-200 py-4 first:border-t-0 first:pt-0 last:pb-0"
     >
-      <div className="relative aspect-[4/3] w-28 shrink-0 overflow-hidden rounded-lg bg-primary-100 sm:w-36">
+      <div className="relative aspect-4/3 w-28 shrink-0 overflow-hidden rounded-lg bg-primary-100 sm:w-36">
         <AnnouncementImage
           src={announcement.image}
           alt=""
@@ -77,7 +77,7 @@ export function CompactAnnouncementItem({ announcement }: { announcement: Announ
         />
       </div>
       <div className="flex min-w-0 flex-1 flex-col justify-between gap-2">
-        <h3 className="line-clamp-3 break-words font-heading text-base font-semibold leading-snug text-neutral-900 transition-colors group-hover:text-primary-700 sm:text-lg">
+        <h3 className="line-clamp-3 wrap-break-word font-heading text-base font-semibold leading-snug text-neutral-900 transition-colors group-hover:text-primary-700 sm:text-lg">
           {announcement.title}
         </h3>
         <div className="flex flex-wrap items-center gap-x-2 text-xs text-neutral-500">
@@ -99,12 +99,12 @@ export default function AnnouncementCard({ announcement }: { announcement: Annou
 
   return (
     <Link href={announcementHref(announcement)} className="group card card-image flex h-full flex-col">
-      <div className="card-img-wrap relative aspect-[16/10] bg-primary-100">
+      <div className="card-img-wrap relative aspect-16/10 bg-primary-100">
         <AnnouncementImage src={announcement.image} alt="" className="h-full w-full" />
       </div>
       <div className="flex flex-1 flex-col p-5 sm:p-6">
         <AnnouncementMeta announcement={announcement} className="mb-3" />
-        <h3 className="line-clamp-2 break-words font-heading text-lg font-semibold leading-snug text-neutral-900 transition-colors group-hover:text-primary-700 sm:text-xl">
+        <h3 className="line-clamp-2 wrap-break-word font-heading text-lg font-semibold leading-snug text-neutral-900 transition-colors group-hover:text-primary-700 sm:text-xl">
           {announcement.title}
         </h3>
         {preview && <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-neutral-600 sm:text-base">{preview}</p>}

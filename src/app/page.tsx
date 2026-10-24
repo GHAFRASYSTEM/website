@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { getHomeContent, getPrograms } from '@/lib/content'
 import PhotoCarousel from '@/components/shared/PhotoCarousel'
 import AppDownloadSection from '@/components/shared/AppDownloadSection'
+import LatestNews from '@/components/announcements/LatestNews'
 import { buildPageMetadata } from '@/lib/seo'
 
 const home = getHomeContent()
@@ -32,7 +33,7 @@ export default function HomePage() {
             priority
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-tertiary-900/70 via-tertiary-900/45 to-tertiary-900/30" />
+          <div className="absolute inset-0 bg-linear-to-r from-tertiary-900/70 via-tertiary-900/45 to-tertiary-900/30" />
         </div>
         <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-24 md:py-32 lg:px-8 lg:py-40">
           <div className="max-w-3xl">
@@ -68,7 +69,7 @@ export default function HomePage() {
       <section className="py-16 md:py-24 geo-grid">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center gap-10 md:gap-14">
-            <div className="relative w-full md:w-2/5 aspect-[4/3] flex-shrink-0 overflow-hidden rounded-2xl shadow-lg">
+            <div className="relative w-full md:w-2/5 aspect-4/3 shrink-0 overflow-hidden rounded-2xl shadow-lg">
               <Image
                 src={home.missionImage}
                 alt={home.missionTitle}
@@ -170,7 +171,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="relative py-16 md:py-24 bg-gradient-to-br from-accent-400 to-accent-600 text-black cta-gradient-top overflow-hidden">
+      <LatestNews />
+
+      <section className="relative py-16 md:py-24 bg-linear-to-br from-accent-400 to-accent-600 text-black cta-gradient-top overflow-hidden">
         <div className="cta-geo-shapes" aria-hidden="true">
           <div className="cta-shape cta-shape-1" />
           <div className="cta-shape cta-shape-2" />
